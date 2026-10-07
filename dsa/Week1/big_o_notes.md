@@ -4,7 +4,8 @@
 
 The Big-O notation signifies the relation between the input to the algorithm to the steps required to execute the algorithm. we denote Big-O with "O(n)", where:
 - The notation is denotes by a capital "O"
-- "n" is the size of the input.
+- "n" is the size of the input. The expression around it (n, n², log n) describes how the steps grow as n grows.
+- machine independent
 
 ```text
 The key takeaway is - the Big-O isn't interested in a particular instance in which you run an algorithm, such as fact(50), but rather, in how well it scales given increasing input. This is a much better metric for evaluating than concrete time for a concrete instance!
@@ -30,7 +31,7 @@ The key takeaway is - the Big-O isn't interested in a particular instance in whi
 
 ## Constant Complexity - O(C)
 
-- The complexity of an algorithm is said to be constant if the steps required to complete the execution of an algorithm remain constant, irrespective to the number of inputs. 
+- The step complexity of an algorithm is said to be constant if the steps required to complete the execution remains the same, irrespective to the number of inputs. 
 - The constant complexity is denoted by O(c) where c can be any constant number.
 
 ```python

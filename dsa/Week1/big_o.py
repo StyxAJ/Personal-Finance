@@ -1,34 +1,20 @@
-# Constant time complexity O(c)
+# O(1) - Constant Time
+def get_first_item(lst):
+    if not lst:
+        return None
+    return lst[0]
 
 
-def constant_algo(items):
-    result = items[0] * items[0]
-    print(result)
+# O(n) - Linear Time
+def sum_list(lst):
+    total = 0
+    for item in lst:
+        total += item  # This operation runs 'n' times
+    return total
 
 
-constant_algo([4, 5, 6, 8])
-
-
-# Linear time complexity O(n)
-
-
-def linear_algo(items):
-    for item in items:
-        print(item)
-
-    for item in items:
-        print(item)
-
-
-linear_algo([4, 5, 6, 8])
-
-# Quadratic time complexity O(n^2)
-
-
-def quadratic_algo(items):
-    for item in items:
-        for item2 in items:
-            print(item, " ", item2)
-
-
-quadratic_algo([4, 5, 6, 8])
+# O(n²) - Quadratic Time
+def print_all_pairs(lst):
+    for i in lst:
+        for j in lst:
+            print(f"({i}, {j})")  # This operation runs 'n * n' times
