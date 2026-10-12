@@ -14,13 +14,17 @@
 
 2026-10-09 | 10:00 SQL | SQLBolt 9-12 (on site) | Query expressions, aggregates. Order of execution
 
-2026-10-09 | 16:00 DSA | Leetcode(LC) 1480 Running Sum of 1d Array | used forloop to calculate and update running sun in a 1D array. | since i used for loop, the time complexity as expected was linear | things to look out for: translation of paper solution into code. 
+2026-10-09 | 16:00 Leetcode | Leetcode(LC) 1480 Running Sum of 1d Array | used forloop to calculate and update running sun in a 1D array. | since i used for loop, the time complexity as expected was linear | things to look out for: translation of paper solution into code. 
 
 2026-10-09 | 20:00 DBMS | dbms-01-basics.md, dbms-02-keys.md (Postgres docs + Wikipedia) | relation = table, cluster > database > table > row; superkey > candidate key > primary key, foreign key = referential integrity
 
 
 2026-10-10 | 10:00 SQL | Notes.md for SQLBolt 13-18 | INSERT, UPDATE, DELETE, CREATE/ALTER/DROP TABLE, data types, table constraints | gotcha: always test the WHERE with a SELECT before UPDATE/DELETE
 
-2026-10-10 | 16:00 DSA | 
+2026-10-10 | 16:00 Leetcode | LC 1929 Concatenation of Array | returned nums + nums, list concatenation builds the new array in one step | time complexity is linear O(n) since every element gets copied
 
-2026-10-10 | 20:00 DBMS | 
+2026-10-10 | 20:00 DBMS | sql/seed.sql | inserted 10 categories, 2 accounts and 20 transactions by hand, then ran it | proof: SELECT * FROM transactions; returns 20 rows
+
+2026-10-12 | 10:00 Python data | data/Notes.md + data/practice_a.py (Python docs) | datetime (date, timedelta, date arithmetic, strftime/strptime), random (seed, randint vs randrange, uniform/expovariate, choices with weights), csv (writer, DictWriter, newline='') | wrote data_eggs.csv with csv.writer using a custom delimiter and quotechar | confused: date() wants 3 ints, not a string
+
+2026-10-12 | 16:00 Leetcode | LC 344 Reverse String | did use arr.reverse(). for a different way to approach this problem used two pointer method | needed help for two pointer logic
