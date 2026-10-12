@@ -78,3 +78,43 @@ with open("data/clean.csv", "w", newline="") as csvfile:
         "description",
     ])
     writer.writerows(rows)
+
+CAT_NAMES = {cat_id: name for cat_id, name, _ in categories}
+raw_rows = []
+for account_id, cat_id, amount, txn_date, description in rows:
+    category = CAT_NAMES[cat_id]  # level 1: every row
+
+    if random.random() < 0.02:
+        category = ""  # level 2: only if blank
+    elif random.random() < 0.30:
+        category = random.choice([category.lower(), category.upper()])
+        category = " " * random.randint(0, 2) + category + " " * random.randint(0, 2)
+
+    if random.random() < 0.10:
+        amount = f"AED {amount:.2f}"  # level 2: only 10%
+
+    if random.random() < 0.05:
+        date_str = txn_date.strftime("%d/%m/%Y")  # level 2: only 5%
+    else:
+        date_str = txn_date.strftime("%Y-%m-%d")  # level 2: the other 95%
+
+    raw_rows.append([
+        account_id,
+        category,
+        amount,
+        date_str,
+        description,
+    ])  # level 1: every row
+
+print(len(raw_rows))  # level 0: once, after the loop
+
+dupes = random.sample(raw_rows, 18)
+raw_rows.extend(row.copy() for row in dupes)
+random.shuffle(raw_rows)
+
+print(len(raw_rows))  # 618
+
+with open("data/raw.csv", "w", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["account_id", "category", "amount", "txn_date", "description"])
+    writer.writerows(raw_rows)
