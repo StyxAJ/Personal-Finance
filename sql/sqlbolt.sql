@@ -1,3 +1,5 @@
+https://sqlbolt.com/
+
 --lesson 1
 SELECT Title FROM movies;
 
@@ -99,3 +101,116 @@ SELECT DISTINCT building_name, role
 FROM buildings 
   LEFT JOIN employees
     ON building_name = building;
+
+--lesson 8
+
+SELECT name, role FROM employees
+WHERE building IS NULL;
+
+SELECT DISTINCT building_name
+FROM buildings 
+  LEFT JOIN employees
+    ON building_name = building
+WHERE role IS NULL;
+
+-- lesson 9
+
+SELECT title, (domestic_sales + international_sales) / 1000000 AS gross_sales_millions
+FROM movies
+  JOIN boxoffice
+    ON movies.id = boxoffice.movie_id;
+    
+SELECT title, rating * 10 AS Percent
+FROM movies
+  JOIN boxoffice
+    ON movies.id = boxoffice.movie_id;
+    
+SELECT title, Year
+FROM movies
+  JOIN boxoffice
+    ON movies.id = boxoffice.movie_id
+
+Where Year%2==0;
+
+--lesson 10
+
+SELECT role, Avg(years_employed) FROM employees
+GROUP BY role;
+
+SELECT building, SUM(years_employed) as Total_years_employed
+FROM employees
+GROUP BY building;
+
+-- lesson 11
+
+SELECT role, COUNT(*) as Number_of_artists
+FROM employees
+WHERE role = "Artist";
+
+SELECT role, COUNT(*)
+FROM employees
+GROUP BY role;
+
+SELECT role,SUM(years_employed) FROM employees
+WHERE role = "Engineer";
+
+--lesson 12
+
+SELECT director, SUM(domestic_sales + international_sales) as Cumulative_sales_from_all_movies
+FROM movies
+    INNER JOIN boxoffice
+        ON movies.id = boxoffice.movie_id
+GROUP BY director;
+
+--lesson 13
+
+INSERT INTO movies VALUES (4, "Toy Story 4", "El Directore", 2015, 90);
+
+INSERT INTO boxoffice
+VALUES (4, 8.7, 340000000, 270000000);
+
+--lesson 14
+
+UPDATE movies
+SET director = "John Lasseter"
+WHERE id = 2;
+
+UPDATE movies
+SET Year = "1999"
+WHERE id = 3;
+
+UPDATE movies
+SET Title = "Toy Story 3", Director = "Lee Unkrich"
+WHERE id = 11;
+
+--lesson 15
+
+DELETE FROM movies
+WHERE Year < 2005;
+
+DELETE FROM movies
+WHERE Director = "Andrew Stanton";
+
+--lesson 16
+
+CREATE TABLE IF NOT EXISTS DATABASE(
+    Name TEXT,
+    Version FLOAT,
+    Download_count INT
+
+);
+
+--lesson 17
+
+ALTER TABLE Movies
+  ADD COLUMN Aspect_ratio FLOAT DEFAULT 2.39;
+
+ALTER TABLE movies
+  ADD COLUMN Language TEXT DEFAULT "English";
+
+--lesson 18
+
+DROP TABLE IF EXISTS movies;
+
+DROP TABLE IF EXISTS boxoffice;
+

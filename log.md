@@ -9,3 +9,18 @@
 2026-10-07 | 16:00 DSA | Time complexity during insert and append | confused: how to calculate and write snippets for time complexity
 
 2026-10-07 | 20:00 Postgres | Worked on navigating postgres in vs code and made a database as well.
+
+2026-10-08 | No progress, thus timeline for the week shifter by a day
+
+2026-10-09 | 10:00 SQL | SQLBolt 9-12 (on site) | Query expressions, aggregates. Order of execution
+
+2026-10-09 | 16:00 DSA | Leetcode(LC) 1480 Running Sum of 1d Array | used forloop to calculate and update running sun in a 1D array. | since i used for loop, the time complexity as expected was linear | things to look out for: translation of paper solution into code. 
+
+2026-10-09 | 20:00 DBMS | dbms-01-basics.md, dbms-02-keys.md (Postgres docs + Wikipedia) | relation = table, cluster > database > table > row; superkey > candidate key > primary key, foreign key = referential integrity
+
+
+2026-10-10 | 10:00 SQL | Notes.md for SQLBolt 13-18 | INSERT, UPDATE, DELETE, CREATE/ALTER/DROP TABLE, data types, table constraints | gotcha: always test the WHERE with a SELECT before UPDATE/DELETE
+
+2026-10-10 | 16:00 DSA | 
+
+2026-10-10 | 20:00 DBMS | 
