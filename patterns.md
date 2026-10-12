@@ -8,4 +8,4 @@ LC #1480 Running Sum of 1d Array | prefix sum | each answer = previous answer + 
 
 LC #1929 Concatenation of Array | concatenation array | doubling the array length by adding the an integer array to itself | solved alone
 
-LC #344 Reverse String | two pointers | swap the values on either ends of the array with the while condition that the head counts is less than tail count are | needed hint
+LC #344 Reverse String | two pointers | reverse a list in place → pointers at both ends, swap, move inward while left < right | needed hint
