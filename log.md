@@ -28,3 +28,7 @@
 2026-10-12 | 10:00 Python data | data/Notes.md + data/practice_a.py (Python docs) | datetime (date, timedelta, date arithmetic, strftime/strptime), random (seed, randint vs randrange, uniform/expovariate, choices with weights), csv (writer, DictWriter, newline='') | wrote data_eggs.csv with csv.writer using a custom delimiter and quotechar | confused: date() wants 3 ints, not a string
 
 2026-10-12 | 16:00 DSA | LC 344 Reverse String | first used s.reverse(), then solved it with two pointers | learned: in-place = change the list you were given; s = s[::-1] only makes a new list | confused: two pointer logic (needed hint)
+
+2026-10-12 | 20:00 Build | generate_data.py → clean.csv (600 rows) + raw.csv (618) | learned: ... | confused: ...
+
+2026-10-13 | 10:00 SQL | sql/w2_where.sql, 8 WHERE queries on 600 rows (PG docs: Querying a Table, IN, comparison operators, LIKE) | learned: AND runs before OR so brackets matter (160 vs 104), IN = shorter OR, BETWEEN includes both ends, LIKE is case-sensitive but ILIKE isn't, % = any chars and _ = one char, = NULL never matches so use IS NULL | confused: single vs double quotes ('Groceries' is a value, "Groceries" is a column name)
