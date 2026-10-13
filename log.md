@@ -32,3 +32,5 @@
 2026-10-12 | 20:00 Build | generate_data.py → clean.csv (600 rows) + raw.csv (618) | learned: ... | confused: ...
 
 2026-10-13 | 10:00 SQL | sql/w2_where.sql, 8 WHERE queries on 600 rows (PG docs: Querying a Table, IN, comparison operators, LIKE) | learned: AND runs before OR so brackets matter (160 vs 104), IN = shorter OR, BETWEEN includes both ends, LIKE is case-sensitive but ILIKE isn't, % = any chars and _ = one char, = NULL never matches so use IS NULL | confused: single vs double quotes ('Groceries' is a value, "Groceries" is a column name)
+
+2026-10-13 | 16:00 DSA | LC 125 Valid Palindrome, two versions (if/elif + continue, then inner while loops) | learned: order of checks matters (skip non-alnum BEFORE comparing), inner loops need their own i < j guard or they run off the end (".," → IndexError), isalnum() covers spaces and punctuation, LeetCode ms is noise; judge by Big-O (both O(n) time, O(1) space) | confused: compared before skipping at first, so Panama failed; needed hint on check order
