@@ -1,19 +1,22 @@
+INSERT INTO categories (id, name, type) VALUES
+    (1,  'Salary',        'income'),
+    (2,  'Freelance',     'income'),
+    (3,  'Interest',      'income'),
+    (4,  'Rent',          'expense'),
+    (5,  'Groceries',     'expense'),
+    (6,  'Utilities',     'expense'),
+    (7,  'Dining Out',    'expense'),
+    (8,  'Transport',     'expense'),
+    (9,  'Entertainment', 'expense'),
+    (10, 'Healthcare',    'expense');
 
-INSERT INTO categories (name, type) VALUES
-    ('Salary',        'income'),   -- 1
-    ('Freelance',     'income'),   -- 2
-    ('Interest',      'income'),   -- 3
-    ('Rent',          'expense'),  -- 4
-    ('Groceries',     'expense'),  -- 5
-    ('Utilities',     'expense'),  -- 6
-    ('Dining Out',    'expense'),  -- 7
-    ('Transport',     'expense'),  -- 8
-    ('Entertainment', 'expense'),  -- 9
-    ('Healthcare',    'expense');  -- 10
+INSERT INTO accounts (id, name) VALUES
+    (1, 'Main Checking'),
+    (2, 'Credit Card');
 
-INSERT INTO accounts (name) VALUES
-    ('Main Checking'),  -- 1
-    ('Credit Card');    -- 2
+-- Explicit ids bypass the SERIAL sequences, so move them past the seeded rows
+SELECT setval(pg_get_serial_sequence('categories', 'id'), (SELECT MAX(id) FROM categories));
+SELECT setval(pg_get_serial_sequence('accounts', 'id'),   (SELECT MAX(id) FROM accounts));
 
 INSERT INTO transactions (account_id, category_id, amount, txn_date, description) VALUES
     (1, 1,  4200.00, '2026-09-01', 'Monthly salary - September'),

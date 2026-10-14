@@ -1,0 +1,619 @@
+account_id,category,amount,txn_date,description
+1,Entertainment,228.5,2026-03-20,Entertainment
+1,Salary,AED 15000.00,2026-07-01,Salary
+1,Groceries,170.68,2026-09-02,Groceries
+1,Groceries,374.23,2026-01-30,Groceries
+1,Utilities,318.37,2026-06-10,Utilities
+1,Utilities,275.42,2026-04-15,Utilities
+1,Dining Out,47.93,2026-09-05,Dining Out
+2,  entertainment  ,206.0,2026-03-14,Entertainment
+2,Dining Out,83.18,2025-12-02,Dining Out
+2,  ENTERTAINMENT ,230.41,2025-12-19,Entertainment
+2,utilities  ,308.19,2026-06-05,Utilities
+1,Transport,87.18,2026-04-15,Transport
+1, salary ,15000.0,01/06/2026,Salary
+2,  ENTERTAINMENT,150.4,21/12/2025,Entertainment
+1,Dining Out,52.79,2026-06-17,Dining Out
+1,Healthcare,334.88,2025-10-26,Healthcare
+1,Groceries,134.31,2026-07-18,Groceries
+1,Healthcare,78.25,2026-06-03,Healthcare
+1,Groceries,364.62,2026-01-16,Groceries
+2,Utilities,328.49,2026-06-04,Utilities
+2,  dining out ,98.25,2026-09-01,Dining Out
+2,Transport,71.91,2026-03-05,Transport
+2,Groceries,83.93,2026-05-09,Groceries
+1,Transport,107.61,2026-07-11,Transport
+1,Groceries,305.41,2026-07-02,Groceries
+1,Interest,60.6,2025-12-01,Interest
+2,Entertainment,212.88,2026-04-11,Entertainment
+1,  utilities  ,573.38,2026-05-11,Utilities
+2,Groceries,123.84,2026-07-18,Groceries
+2,Utilities,543.75,2026-02-13,Utilities
+1,Freelance,2523.58,2026-07-01,Freelance
+2,DINING OUT ,139.42,2025-11-16,Dining Out
+2,dining out  ,195.44,2026-05-04,Dining Out
+1,Healthcare,228.41,2026-07-18,Healthcare
+1,Healthcare,166.06,2026-09-04,Healthcare
+2,  dining out ,98.25,2026-09-01,Dining Out
+1,Dining Out,173.81,2026-09-20,Dining Out
+2,ENTERTAINMENT,129.08,2026-03-10,Entertainment
+1,transport ,126.86,2026-05-30,Transport
+2,Dining Out,AED 55.34,2025-10-11,Dining Out
+2,Entertainment,179.67,2025-10-22,Entertainment
+1,  freelance ,1187.57,2025-11-01,Freelance
+2,UTILITIES,681.34,2025-12-21,Utilities
+2,  DINING OUT  ,117.07,2026-09-09,Dining Out
+2,Healthcare,528.72,2025-11-28,Healthcare
+1,Healthcare,187.55,2026-03-04,Healthcare
+1,Utilities,426.86,2026-02-12,Utilities
+2,Groceries,283.73,2026-05-27,Groceries
+2,,480.77,2026-09-03,Healthcare
+2,Transport,102.03,2026-07-17,Transport
+2,Entertainment,71.14,2025-12-04,Entertainment
+1,Groceries,214.61,2026-07-04,Groceries
+2,Groceries,99.97,08/08/2026,Groceries
+2,Dining Out,124.43,11/08/2026,Dining Out
+1,Dining Out,215.77,2025-11-21,Dining Out
+2,Dining Out,237.98,2026-08-12,Dining Out
+2,Utilities,625.53,2026-05-28,Utilities
+2,Healthcare,558.28,2026-07-17,Healthcare
+2,Transport,40.72,2026-05-12,Transport
+1,Healthcare,501.78,2026-07-23,Healthcare
+1,Utilities,604.41,2026-03-19,Utilities
+1,Entertainment,56.44,2026-08-30,Entertainment
+1,Utilities,608.45,2026-08-06,Utilities
+2,  DINING OUT  ,193.84,2026-09-27,Dining Out
+1,Groceries,190.92,2026-03-23,Groceries
+1,Healthcare,576.16,2026-06-05,Healthcare
+2,Healthcare,461.96,2026-02-12,Healthcare
+1,Utilities,608.45,2026-08-06,Utilities
+2,Transport,106.67,2026-04-29,Transport
+2,Entertainment,253.64,2026-06-30,Entertainment
+2,Groceries,150.67,2025-11-10,Groceries
+1,Groceries,386.27,2025-11-11,Groceries
+2, UTILITIES,332.44,2026-02-04,Utilities
+2,Dining Out,AED 108.16,2026-09-09,Dining Out
+1,Groceries,74.85,2026-08-20,Groceries
+2,Utilities,497.52,2025-11-13,Utilities
+1,Groceries,325.38,2026-02-02,Groceries
+2,  TRANSPORT ,27.84,2026-03-07,Transport
+2,Groceries,181.22,2025-10-15,Groceries
+2,  HEALTHCARE ,85.72,2026-07-05,Healthcare
+2,healthcare ,350.63,2025-11-07,Healthcare
+2,,179.23,2026-07-20,Dining Out
+2,Transport,70.98,2026-07-31,Transport
+1,Interest,20.39,2026-07-01,Interest
+2,Entertainment,88.31,2026-01-28,Entertainment
+1,Rent,5000.0,2026-09-01,Rent
+2,Dining Out,171.31,2026-05-19,Dining Out
+1, entertainment,128.76,2026-04-21,Entertainment
+2,  TRANSPORT ,132.27,2025-10-23,Transport
+1,Entertainment,AED 81.92,2025-11-05,Entertainment
+1,Dining Out,189.22,2026-09-02,Dining Out
+1,  salary  ,15000.0,2025-11-01,Salary
+2,,AED 151.71,07/11/2025,Dining Out
+1,Dining Out,234.9,2026-03-13,Dining Out
+2, utilities ,427.35,2026-03-22,Utilities
+2,Groceries,186.1,2026-09-08,Groceries
+2,Healthcare,102.3,2026-05-07,Healthcare
+1,Transport,23.52,2026-04-09,Transport
+2,Entertainment,132.7,2026-05-15,Entertainment
+2,Groceries,281.01,2026-04-23,Groceries
+1,Dining Out,127.67,2025-11-09,Dining Out
+1,Entertainment,39.73,2026-04-08,Entertainment
+1,Entertainment,210.13,2025-10-24,Entertainment
+1,Dining Out,65.02,2026-09-25,Dining Out
+2,  ENTERTAINMENT,110.59,2026-03-02,Entertainment
+1,DINING OUT,52.49,2026-04-13,Dining Out
+1,Healthcare,AED 278.53,2026-01-11,Healthcare
+2,Dining Out,108.53,25/10/2025,Dining Out
+1,Groceries,67.55,2026-06-02,Groceries
+1,Rent,5000.0,2026-06-01,Rent
+1,Entertainment,207.48,2025-11-05,Entertainment
+2,Entertainment,AED 160.73,2026-02-04,Entertainment
+1,  entertainment ,224.7,2026-01-06,Entertainment
+1,,174.21,2026-04-20,Entertainment
+2,Healthcare,558.28,2026-07-17,Healthcare
+2,Groceries,107.62,2025-10-02,Groceries
+1,Interest,61.89,2026-08-01,Interest
+1,  entertainment  ,289.88,13/02/2026,Entertainment
+1,Transport,54.26,2025-11-07,Transport
+1,Transport,137.8,2025-12-13,Transport
+2,Dining Out,124.75,2026-02-03,Dining Out
+1,Entertainment,131.7,2026-03-18,Entertainment
+2,,446.4,2026-09-15,Healthcare
+2,  DINING OUT ,199.99,2026-05-01,Dining Out
+2,UTILITIES,608.29,2026-05-24,Utilities
+2,Entertainment,202.53,2026-06-12,Entertainment
+2,  HEALTHCARE  ,369.86,2026-05-31,Healthcare
+1,Dining Out,211.86,2025-11-06,Dining Out
+2, TRANSPORT,84.56,2026-01-26,Transport
+2,Healthcare,432.99,2026-06-11,Healthcare
+1,Entertainment,131.71,2025-12-23,Entertainment
+2,Dining Out,56.81,2026-09-12,Dining Out
+2,  GROCERIES  ,238.17,2026-06-17,Groceries
+1,Rent,5000.0,2026-07-01,Rent
+2, ENTERTAINMENT  ,241.31,2026-03-27,Entertainment
+2,dining out  ,184.63,2026-02-16,Dining Out
+1,Healthcare,AED 235.22,2026-08-13,Healthcare
+1,  HEALTHCARE  ,294.15,2026-05-17,Healthcare
+1,Utilities,332.23,2025-11-24,Utilities
+1,Utilities,312.35,2026-03-23,Utilities
+1,Transport,28.31,2026-04-08,Transport
+1,Transport,101.84,2026-06-03,Transport
+1,Dining Out,175.77,2026-04-24,Dining Out
+1,Entertainment,45.17,2026-06-17,Entertainment
+1,Entertainment,113.07,2026-09-18,Entertainment
+1,Groceries,193.8,2026-09-12,Groceries
+1,Entertainment,40.87,2025-10-20,Entertainment
+1,Freelance,2124.71,2026-05-01,Freelance
+2,Dining Out,217.52,2026-07-01,Dining Out
+2,Utilities,423.27,2026-06-05,Utilities
+2,Healthcare,374.27,2026-06-26,Healthcare
+1,Entertainment,217.03,2026-08-29,Entertainment
+1,DINING OUT ,156.3,2026-05-08,Dining Out
+1,Dining Out,223.32,2026-03-07,Dining Out
+2,Healthcare,569.25,2026-08-23,Healthcare
+2, HEALTHCARE,371.52,2026-07-26,Healthcare
+1, GROCERIES,307.82,2026-03-01,Groceries
+2, TRANSPORT  ,21.03,2026-02-28,Transport
+1, entertainment ,231.2,2026-02-24,Entertainment
+2,Transport,80.28,2026-01-29,Transport
+1,Entertainment,204.45,2025-10-21,Entertainment
+2,Groceries,381.99,2026-07-23,Groceries
+2,Dining Out,235.64,2026-01-24,Dining Out
+1,Rent,5000.0,2025-12-01,Rent
+1,Groceries,355.97,2026-05-14,Groceries
+2,Transport,140.57,2026-02-27,Transport
+1,groceries,AED 294.02,2026-03-04,Groceries
+1,Dining Out,AED 158.14,2026-07-21,Dining Out
+1, HEALTHCARE ,290.77,2026-05-13,Healthcare
+1,Dining Out,141.93,2025-12-02,Dining Out
+2,Dining Out,92.7,2026-05-13,Dining Out
+1,transport,75.02,2026-03-24,Transport
+2,Dining Out,219.53,2026-03-13,Dining Out
+1,Salary,15000.0,2025-10-01,Salary
+2,DINING OUT,216.45,2026-08-06,Dining Out
+1,Groceries,310.01,2026-09-19,Groceries
+1,Utilities,431.13,2026-02-16,Utilities
+2,,AED 120.31,2026-01-04,Transport
+2,Groceries,99.26,2026-01-24,Groceries
+2,dining out  ,48.45,2025-12-22,Dining Out
+1,UTILITIES,699.99,2025-12-19,Utilities
+2,Transport,149.25,2026-06-29,Transport
+2,Healthcare,106.54,2026-07-14,Healthcare
+2,Groceries,166.74,2025-12-06,Groceries
+2,Groceries,387.58,2025-12-20,Groceries
+1,Entertainment,214.09,2026-01-01,Entertainment
+2,Groceries,343.71,2026-08-29,Groceries
+2,Healthcare,159.7,2026-02-25,Healthcare
+1,Entertainment,71.31,24/12/2025,Entertainment
+1,Utilities,547.0,2025-10-15,Utilities
+1,  ENTERTAINMENT ,32.74,2026-01-06,Entertainment
+2,Dining Out,78.25,2025-12-10,Dining Out
+2,Transport,117.72,2026-04-14,Transport
+2,Utilities,337.51,2026-08-21,Utilities
+2,  entertainment  ,125.28,2025-10-26,Entertainment
+1,Utilities,426.86,2026-02-12,Utilities
+1, DINING OUT,195.76,03/05/2026,Dining Out
+1,Utilities,410.22,2026-04-13,Utilities
+2,Healthcare,167.67,2026-05-01,Healthcare
+1,Utilities,610.83,2026-02-02,Utilities
+2,Dining Out,91.99,2026-01-16,Dining Out
+2,Healthcare,AED 212.38,03/09/2026,Healthcare
+1,Utilities,640.71,2025-10-13,Utilities
+1, utilities  ,603.28,2025-12-15,Utilities
+2,,225.14,2026-04-13,Utilities
+1,Healthcare,436.56,2026-09-16,Healthcare
+1,Transport,72.76,2026-04-04,Transport
+2,  transport  ,42.97,2026-02-14,Transport
+2, transport  ,21.26,2025-10-21,Transport
+2,Groceries,321.66,2026-01-30,Groceries
+1,Healthcare,281.53,2025-11-28,Healthcare
+1, HEALTHCARE ,175.34,2026-02-26,Healthcare
+1,Dining Out,217.3,2026-09-30,Dining Out
+1, dining out ,39.95,2025-10-27,Dining Out
+1,Entertainment,232.36,2026-01-30,Entertainment
+2,  HEALTHCARE,221.44,2026-09-09,Healthcare
+1,groceries  ,333.84,2026-03-25,Groceries
+2,  TRANSPORT,27.41,2026-09-18,Transport
+1,rent,5000.0,2026-05-01,Rent
+2,transport,114.06,2026-04-16,Transport
+1,ENTERTAINMENT  ,295.64,2026-08-31,Entertainment
+2,Groceries,115.65,2026-04-04,Groceries
+1, DINING OUT ,93.68,2025-12-01,Dining Out
+2,Healthcare,178.06,2025-11-21,Healthcare
+2,Transport,121.01,2025-11-17,Transport
+1,Groceries,258.26,2026-09-11,Groceries
+1, DINING OUT,31.78,2026-09-17,Dining Out
+1,  FREELANCE,1554.8,2026-02-01,Freelance
+2,Healthcare,78.3,2026-02-25,Healthcare
+2,  transport,73.22,2026-01-25,Transport
+1,Transport,125.27,2025-11-07,Transport
+1,Entertainment,140.16,2026-01-24,Entertainment
+2,Dining Out,146.09,2026-08-07,Dining Out
+2,Dining Out,77.44,2025-12-16,Dining Out
+1,Utilities,225.38,2026-06-29,Utilities
+1,Healthcare,302.4,2026-02-09,Healthcare
+1,Freelance,2341.18,2025-12-01,Freelance
+2,Healthcare,94.87,2026-05-15,Healthcare
+2,Transport,135.93,2026-01-06,Transport
+2, HEALTHCARE ,406.02,2025-11-03,Healthcare
+1,Transport,96.96,16/07/2026,Transport
+1,Entertainment,AED 213.71,2025-11-30,Entertainment
+2,Healthcare,330.17,2026-09-13,Healthcare
+2,GROCERIES  ,393.32,2026-04-07,Groceries
+2,Utilities,600.66,2026-08-13,Utilities
+1, groceries  ,389.56,2026-04-25,Groceries
+2,Entertainment,132.7,2025-10-04,Entertainment
+1,Dining Out,149.37,2026-05-01,Dining Out
+2,Transport,22.33,2026-02-07,Transport
+2,Utilities,517.53,2026-07-10,Utilities
+1,Groceries,110.99,2025-10-27,Groceries
+2,Entertainment,AED 160.84,2026-01-31,Entertainment
+1,Freelance,2514.55,2026-08-01,Freelance
+2, ENTERTAINMENT  ,241.31,2026-03-27,Entertainment
+1,Entertainment,275.82,2025-10-08,Entertainment
+1, utilities  ,560.04,2026-06-08,Utilities
+2,Groceries,113.15,2026-09-25,Groceries
+1,Transport,AED 80.54,2026-08-11,Transport
+1,utilities  ,254.61,2026-07-28,Utilities
+2,  TRANSPORT  ,95.77,2026-06-16,Transport
+2,Entertainment,113.51,2026-04-28,Entertainment
+2,Entertainment,190.4,2026-04-15,Entertainment
+2, healthcare ,55.17,2026-05-27,Healthcare
+2,Transport,93.65,2026-08-31,Transport
+1,Utilities,616.45,2026-04-18,Utilities
+1,Salary,15000.0,2026-05-01,Salary
+1,  healthcare  ,329.21,2026-01-10,Healthcare
+1,transport  ,118.43,2026-09-13,Transport
+1,Dining Out,37.2,2026-04-08,Dining Out
+2,Entertainment,228.65,2025-11-01,Entertainment
+2, DINING OUT,220.16,2026-02-20,Dining Out
+1,Utilities,528.37,2026-01-23,Utilities
+1,  rent  ,5000.0,2025-10-01,Rent
+1,Healthcare,150.25,2025-12-09,Healthcare
+1,Groceries,88.8,2026-06-13,Groceries
+1,Utilities,649.34,2026-05-16,Utilities
+2, ENTERTAINMENT ,AED 89.77,2025-11-02,Entertainment
+1, dining out  ,203.32,2026-08-17,Dining Out
+1, ENTERTAINMENT,190.52,2026-08-14,Entertainment
+1,Healthcare,499.41,2026-03-03,Healthcare
+1,Healthcare,501.78,2026-07-23,Healthcare
+1,  interest ,21.5,2025-10-01,Interest
+1,Transport,140.6,2026-01-05,Transport
+2,Healthcare,497.83,2025-11-16,Healthcare
+2,Dining Out,69.93,2026-07-27,Dining Out
+1,Dining Out,131.58,2025-10-20,Dining Out
+1,Interest,33.39,2025-11-01,Interest
+1,Entertainment,32.61,2025-11-08,Entertainment
+1,Freelance,2098.57,2025-10-01,Freelance
+1,Healthcare,216.2,2026-04-28,Healthcare
+1,  DINING OUT ,234.7,2026-05-01,Dining Out
+2,Dining Out,235.34,2026-06-21,Dining Out
+1,entertainment  ,85.41,2026-07-11,Entertainment
+1,Transport,94.87,2026-06-19,Transport
+2,  GROCERIES,355.45,2026-07-21,Groceries
+1,Transport,82.48,2026-07-15,Transport
+1, transport ,71.85,2026-09-11,Transport
+2,Utilities,625.53,2026-05-28,Utilities
+1,Interest,31.93,2026-04-01,Interest
+2,,341.77,2026-04-11,Healthcare
+1,  HEALTHCARE,400.63,2026-04-05,Healthcare
+2,Dining Out,148.05,2026-05-21,Dining Out
+1, dining out ,197.75,2026-07-04,Dining Out
+2,Dining Out,52.57,17/03/2026,Dining Out
+2, transport  ,46.29,2026-02-04,Transport
+2,  ENTERTAINMENT,89.63,2025-12-08,Entertainment
+2,UTILITIES,299.53,2026-06-18,Utilities
+1,Transport,147.82,2025-10-29,Transport
+1,Transport,148.38,2026-08-30,Transport
+2,healthcare,112.91,2026-01-20,Healthcare
+1,Utilities,529.88,2026-07-09,Utilities
+2,Utilities,613.98,2026-02-16,Utilities
+2,Dining Out,53.78,2025-10-14,Dining Out
+2,Healthcare,178.06,2025-11-21,Healthcare
+1,Rent,5000.0,2026-08-01,Rent
+2,Groceries,274.96,2025-12-09,Groceries
+1,Healthcare,526.55,07/12/2025,Healthcare
+1,Entertainment,201.44,2026-07-01,Entertainment
+2,,92.6,2026-08-25,Dining Out
+1,Transport,44.71,2025-11-19,Transport
+2,Entertainment,70.73,2025-11-01,Entertainment
+1,Dining Out,37.2,2026-04-08,Dining Out
+2,Utilities,570.62,2026-07-10,Utilities
+1,Dining Out,218.85,2025-12-14,Dining Out
+1,Transport,26.26,2026-01-29,Transport
+1,  utilities  ,501.2,2026-09-01,Utilities
+2, DINING OUT,247.28,2026-03-03,Dining Out
+2,UTILITIES ,529.37,2026-08-06,Utilities
+2, UTILITIES ,469.62,2026-07-20,Utilities
+1,Salary,15000.0,2026-01-01,Salary
+2, HEALTHCARE,82.95,2026-05-14,Healthcare
+1,Utilities,AED 273.79,2026-09-18,Utilities
+1,Healthcare,223.88,2026-05-14,Healthcare
+2,Groceries,66.71,2026-05-03,Groceries
+2, groceries  ,94.18,2026-01-29,Groceries
+1,Entertainment,133.4,2026-04-29,Entertainment
+1,Entertainment,286.02,2025-11-26,Entertainment
+1,Utilities,592.31,2026-04-27,Utilities
+1,Healthcare,565.16,28/08/2026,Healthcare
+1,dining out ,119.84,2026-03-14,Dining Out
+1,interest,29.33,2026-09-01,Interest
+2,Entertainment,280.85,2026-09-21,Entertainment
+2,healthcare,104.46,2026-06-08,Healthcare
+1,ENTERTAINMENT  ,AED 289.23,2025-11-20,Entertainment
+2,Healthcare,237.1,2026-02-28,Healthcare
+1,Entertainment,131.71,2025-12-23,Entertainment
+1,Rent,5000.0,2026-04-01,Rent
+2,Transport,115.62,2026-07-24,Transport
+2,  DINING OUT,124.89,2026-09-06,Dining Out
+1,,53.24,2026-07-18,Groceries
+1,Transport,135.95,2026-05-20,Transport
+2,Entertainment,199.84,2026-08-14,Entertainment
+2,  GROCERIES,258.8,2026-03-26,Groceries
+1,Healthcare,333.46,2026-02-01,Healthcare
+1,Utilities,503.13,2026-06-21,Utilities
+1,DINING OUT  ,69.48,2025-10-08,Dining Out
+2,Utilities,641.23,2026-04-06,Utilities
+2,Utilities,410.94,2026-02-20,Utilities
+1,Freelance,566.34,2026-04-01,Freelance
+1,  healthcare,567.16,2025-11-25,Healthcare
+1,Dining Out,172.1,2025-11-15,Dining Out
+2,Dining Out,112.03,2026-02-22,Dining Out
+2,Dining Out,57.38,2026-04-07,Dining Out
+1,Salary,15000.0,2026-03-01,Salary
+1,GROCERIES,347.35,2026-06-08,Groceries
+2,Healthcare,214.21,2026-07-28,Healthcare
+1,Healthcare,316.59,2025-10-15,Healthcare
+1,  dining out ,229.17,2025-10-27,Dining Out
+1, UTILITIES  ,251.4,2026-02-09,Utilities
+2,  GROCERIES ,397.87,2025-11-30,Groceries
+1,Groceries,190.25,07/11/2025,Groceries
+2,Utilities,AED 402.71,2026-06-15,Utilities
+1,Healthcare,137.11,2026-07-10,Healthcare
+1,Groceries,204.36,2026-05-03,Groceries
+1,Entertainment,153.45,2026-02-01,Entertainment
+2, UTILITIES ,469.62,2026-07-20,Utilities
+2,Entertainment,71.43,2026-05-19,Entertainment
+2,Entertainment,102.14,2025-10-02,Entertainment
+1,Transport,129.47,2025-11-24,Transport
+2,Healthcare,437.14,2025-11-21,Healthcare
+1,Entertainment,94.58,2026-05-29,Entertainment
+2,healthcare,253.81,2026-06-17,Healthcare
+1,Entertainment,229.45,2025-10-20,Entertainment
+1,  entertainment ,157.82,2025-10-19,Entertainment
+1,Healthcare,190.93,2026-04-07,Healthcare
+2,Transport,57.73,2026-04-08,Transport
+1,Healthcare,AED 103.44,2026-08-18,Healthcare
+1,Freelance,1046.59,2026-03-01,Freelance
+2,DINING OUT ,217.38,2025-11-14,Dining Out
+2,Entertainment,271.63,2025-11-10,Entertainment
+1,Healthcare,282.97,2026-02-19,Healthcare
+1,Entertainment,190.95,2026-08-13,Entertainment
+1,Groceries,AED 322.45,2026-01-21,Groceries
+1,Groceries,176.91,2026-01-01,Groceries
+1,Healthcare,227.28,2026-02-06,Healthcare
+2,Utilities,698.18,2026-02-24,Utilities
+1,  groceries ,341.42,2026-03-01,Groceries
+2,Transport,148.69,2026-03-03,Transport
+1,Freelance,1051.1,2026-06-01,Freelance
+2,Transport,107.52,2026-07-12,Transport
+1,Transport,114.58,2025-12-29,Transport
+2,Healthcare,564.27,2026-06-01,Healthcare
+2,dining out  ,203.8,2026-01-30,Dining Out
+2,Transport,94.99,2026-05-01,Transport
+2,Healthcare,102.46,2025-12-11,Healthcare
+1,  utilities,485.33,2026-01-04,Utilities
+1,Transport,132.1,2026-05-29,Transport
+1,Rent,5000.0,01/11/2025,Rent
+2,DINING OUT ,85.8,2025-10-09,Dining Out
+1,Dining Out,36.31,2026-03-16,Dining Out
+1,Salary,15000.0,2026-02-01,Salary
+2,HEALTHCARE ,114.58,01/03/2026,Healthcare
+2,Utilities,AED 637.24,2025-11-08,Utilities
+1,Utilities,AED 664.46,2026-09-19,Utilities
+2,Dining Out,200.49,2026-09-26,Dining Out
+1,Healthcare,522.78,2025-11-06,Healthcare
+1,Groceries,130.12,2026-09-11,Groceries
+1,healthcare ,159.08,2026-07-31,Healthcare
+2,,381.24,2026-01-22,Groceries
+1, GROCERIES ,382.36,2026-01-11,Groceries
+2, transport ,72.26,2026-01-29,Transport
+2,Healthcare,117.23,2026-03-31,Healthcare
+2,UTILITIES,201.34,2026-05-19,Utilities
+1,healthcare,334.55,2025-12-05,Healthcare
+2,Utilities,364.9,21/09/2026,Utilities
+2,Entertainment,122.43,2026-03-31,Entertainment
+1,TRANSPORT ,26.07,2026-01-24,Transport
+1,Dining Out,107.24,2026-08-27,Dining Out
+1,Utilities,AED 680.26,2025-10-14,Utilities
+2, GROCERIES,187.87,2026-03-23,Groceries
+1,Healthcare,140.77,2026-05-28,Healthcare
+2,  transport ,136.74,2025-12-15,Transport
+2,Dining Out,235.88,2025-10-04,Dining Out
+2,Healthcare,474.1,2025-12-24,Healthcare
+1,Transport,95.48,2026-05-18,Transport
+2,  transport ,90.07,2026-07-22,Transport
+1,Utilities,666.63,2025-11-05,Utilities
+1,Entertainment,282.26,2026-09-30,Entertainment
+2,  transport ,124.57,2025-12-14,Transport
+1,Entertainment,97.67,2026-09-03,Entertainment
+1,Healthcare,558.47,2026-04-29,Healthcare
+2,Entertainment,266.64,2026-04-06,Entertainment
+2,  HEALTHCARE  ,AED 122.28,2026-03-01,Healthcare
+2,Groceries,210.91,2025-11-09,Groceries
+1,Freelance,2730.45,2026-01-01,Freelance
+1,Dining Out,128.1,2026-05-07,Dining Out
+1,Entertainment,65.04,2025-11-14,Entertainment
+2,healthcare,164.0,26/09/2026,Healthcare
+2,Utilities,295.8,2026-07-02,Utilities
+1,Entertainment,200.97,2026-06-29,Entertainment
+1,Entertainment,117.52,2025-10-10,Entertainment
+2,healthcare  ,165.94,2026-07-20,Healthcare
+1,Groceries,104.45,2026-08-13,Groceries
+2,utilities,222.67,2025-10-20,Utilities
+2, groceries,245.29,2026-04-16,Groceries
+2,Utilities,577.47,2025-11-28,Utilities
+2,Dining Out,40.01,2025-10-28,Dining Out
+1,Entertainment,158.14,2026-09-01,Entertainment
+2,Transport,39.7,2026-02-10,Transport
+2,Dining Out,223.67,2026-09-25,Dining Out
+2,Healthcare,305.54,2026-09-22,Healthcare
+1, transport,68.02,2026-08-19,Transport
+1,Entertainment,41.12,2025-10-15,Entertainment
+1,Rent,5000.0,2026-01-01,Rent
+1,DINING OUT  ,107.23,2026-01-01,Dining Out
+2,Healthcare,528.52,2026-03-30,Healthcare
+2,  utilities  ,268.8,2026-02-24,Utilities
+1,Dining Out,238.49,2026-06-06,Dining Out
+2,Utilities,448.1,2026-06-12,Utilities
+1, transport,67.55,2025-10-28,Transport
+1,Healthcare,228.36,2025-10-29,Healthcare
+1,Transport,133.51,2025-12-30,Transport
+1,entertainment,167.23,2025-12-09,Entertainment
+1,Transport,131.93,2025-12-19,Transport
+1, interest,55.36,2026-06-01,Interest
+1,Groceries,135.69,2026-06-01,Groceries
+1,Groceries,306.17,2025-11-05,Groceries
+1,Dining Out,74.35,2026-01-11,Dining Out
+1,Dining Out,167.9,2026-06-07,Dining Out
+2,Groceries,200.71,2026-01-01,Groceries
+1,Transport,22.83,2026-01-17,Transport
+2, entertainment ,276.41,2026-08-17,Entertainment
+2,Healthcare,AED 555.87,2025-11-15,Healthcare
+1, DINING OUT,114.23,2026-07-18,Dining Out
+2,,80.72,2026-01-07,Dining Out
+2, entertainment ,47.15,2026-04-14,Entertainment
+1,Utilities,416.31,2025-10-29,Utilities
+1,Transport,AED 142.59,2026-08-28,Transport
+2, UTILITIES,505.48,2026-08-24,Utilities
+1,Groceries,81.93,2025-11-13,Groceries
+2, UTILITIES,505.48,2026-08-24,Utilities
+1,Entertainment,157.76,2025-12-26,Entertainment
+1,Dining Out,141.93,2025-12-02,Dining Out
+2,Dining Out,41.48,2026-06-04,Dining Out
+2,Dining Out,AED 233.83,2026-05-21,Dining Out
+1,  DINING OUT  ,212.97,2025-11-09,Dining Out
+1,Transport,128.62,2026-05-07,Transport
+2,Dining Out,AED 117.60,2026-06-03,Dining Out
+1,Utilities,239.48,2026-04-14,Utilities
+1,  entertainment  ,97.88,2026-07-11,Entertainment
+1,Groceries,189.35,2026-01-06,Groceries
+1,Utilities,294.95,2026-01-20,Utilities
+1,  groceries ,314.52,2025-11-26,Groceries
+2,Entertainment,85.98,2026-03-16,Entertainment
+1,Transport,AED 77.02,2026-03-24,Transport
+2,Groceries,209.76,2026-05-26,Groceries
+2,,149.44,2026-05-28,Transport
+1,Groceries,173.3,2026-03-23,Groceries
+1,GROCERIES,347.35,2026-06-08,Groceries
+1,  HEALTHCARE,359.61,2026-06-01,Healthcare
+2,Transport,149.53,2026-07-09,Transport
+2,Dining Out,93.12,2026-05-09,Dining Out
+2, UTILITIES,596.31,2026-08-01,Utilities
+2,Healthcare,418.75,2026-06-18,Healthcare
+2,Utilities,274.6,2026-07-16,Utilities
+2,Entertainment,145.91,2026-04-26,Entertainment
+2,Utilities,233.7,2025-10-17,Utilities
+1,Dining Out,210.52,2026-01-25,Dining Out
+2,Utilities,641.23,2026-04-06,Utilities
+1,Transport,100.07,2025-10-16,Transport
+1,Entertainment,183.66,2026-04-26,Entertainment
+1,Groceries,138.37,2026-06-02,Groceries
+2,Transport,119.41,2026-02-13,Transport
+1, interest ,AED 52.70,2026-05-01,Interest
+2,Entertainment,51.23,2026-03-08,Entertainment
+1,Healthcare,293.12,2025-10-27,Healthcare
+2,Utilities,527.72,2026-04-21,Utilities
+2,Transport,145.08,2025-12-04,Transport
+1, ENTERTAINMENT  ,203.07,2026-07-31,Entertainment
+2,Dining Out,37.18,2026-02-25,Dining Out
+1,Entertainment,246.52,2026-01-21,Entertainment
+2,Entertainment,46.19,2026-07-15,Entertainment
+2,healthcare ,190.19,2025-12-18,Healthcare
+1,Transport,80.78,09/05/2026,Transport
+1,Dining Out,187.82,2025-11-21,Dining Out
+2,Groceries,AED 336.45,2026-01-29,Groceries
+2,Utilities,AED 675.65,2026-08-18,Utilities
+2,Dining Out,151.88,2026-04-07,Dining Out
+1,Entertainment,AED 97.68,2025-12-29,Entertainment
+2,Transport,AED 82.14,2025-11-14,Transport
+2,Utilities,435.25,2026-08-30,Utilities
+1,Salary,15000.0,2026-08-01,Salary
+1,Interest,50.32,2026-03-01,Interest
+1,Healthcare,476.9,2026-05-23,Healthcare
+1,Utilities,512.51,2026-08-11,Utilities
+2,Transport,144.51,2026-08-22,Transport
+1,Dining Out,79.33,2025-11-05,Dining Out
+2,Groceries,229.95,2026-02-20,Groceries
+2,Healthcare,AED 233.17,2026-05-31,Healthcare
+2,Healthcare,AED 582.16,2026-03-13,Healthcare
+2,  transport,13.5,2026-07-15,Transport
+2,Transport,77.99,2026-01-18,Transport
+1,Healthcare,273.35,2026-05-21,Healthcare
+2,Groceries,188.97,2025-10-22,Groceries
+1, entertainment,297.31,2026-03-06,Entertainment
+2,Groceries,135.16,2026-07-29,Groceries
+2,  transport ,99.31,2026-05-24,Transport
+1,RENT  ,5000.0,2026-02-01,Rent
+1,transport ,26.78,2026-07-19,Transport
+1,,215.98,2026-04-07,Dining Out
+2,  dining out  ,135.56,2026-07-14,Dining Out
+1,Utilities,366.53,2025-12-26,Utilities
+2,,137.99,2026-09-14,Healthcare
+1,salary ,AED 15000.00,2025-12-01,Salary
+2,  entertainment ,102.01,2025-11-12,Entertainment
+2,,633.24,2026-04-13,Utilities
+2,dining out  ,151.42,2026-07-06,Dining Out
+2,Entertainment,248.21,2026-07-03,Entertainment
+2,Entertainment,AED 48.47,2026-08-20,Entertainment
+2,  groceries ,331.77,2026-04-24,Groceries
+1,dining out,103.89,2026-07-04,Dining Out
+2,Healthcare,528.15,2026-05-25,Healthcare
+1,Salary,15000.0,2026-09-01,Salary
+2,Entertainment,151.6,2026-07-09,Entertainment
+1, utilities  ,350.71,2026-01-17,Utilities
+1,Interest,21.79,2026-02-01,Interest
+1,Groceries,90.37,11/02/2026,Groceries
+2, UTILITIES  ,AED 261.32,2025-11-07,Utilities
+2,Entertainment,131.74,2025-12-28,Entertainment
+2,Dining Out,150.83,2026-02-25,Dining Out
+2,DINING OUT  ,148.07,2025-11-25,Dining Out
+1,Healthcare,450.07,2026-09-27,Healthcare
+2,Transport,44.14,2026-05-26,Transport
+2,Utilities,402.2,2026-02-02,Utilities
+2,Dining Out,102.87,2025-11-26,Dining Out
+2,Healthcare,311.85,2026-09-30,Healthcare
+1,Utilities,594.32,2026-08-02,Utilities
+1,Rent,AED 5000.00,2026-03-01,Rent
+1,Dining Out,170.68,2025-10-30,Dining Out
+1,Entertainment,293.16,2025-11-04,Entertainment
+1,entertainment,167.23,2025-12-09,Entertainment
+1,  DINING OUT,74.94,2026-03-10,Dining Out
+1,transport,109.74,2026-05-16,Transport
+1,,AED 25.22,2026-01-01,Interest
+2,Dining Out,205.15,2026-02-28,Dining Out
+2,Entertainment,114.76,2025-12-03,Entertainment
+2,Healthcare,271.38,2026-02-17,Healthcare
+1,Transport,99.0,2026-04-05,Transport
+1,Transport,54.26,2025-11-07,Transport
+1,Entertainment,179.56,2026-07-29,Entertainment
+2, DINING OUT  ,143.4,2026-08-21,Dining Out
+2, transport  ,AED 25.52,2026-09-13,Transport
+2,Healthcare,134.15,2025-12-30,Healthcare
+1,Utilities,319.93,2026-07-10,Utilities
+1,  freelance,1350.63,2026-09-01,Freelance
+2,  healthcare  ,507.11,2026-09-27,Healthcare
+1,Groceries,AED 298.07,2025-10-01,Groceries
+1,Transport,96.15,10/11/2025,Transport
+2,Dining Out,212.03,2026-04-23,Dining Out
+1,  transport  ,20.85,2026-02-24,Transport
+2,  dining out  ,203.49,2025-10-18,Dining Out
+1,Salary,15000.0,2026-04-01,Salary
+2,Healthcare,271.38,2026-02-17,Healthcare
+1,Groceries,162.74,2025-12-15,Groceries
+2,Transport,73.51,2026-09-09,Transport
+1,entertainment,193.96,2025-11-28,Entertainment
+1,Healthcare,112.93,2026-09-01,Healthcare
+1,Healthcare,398.24,2025-10-16,Healthcare
