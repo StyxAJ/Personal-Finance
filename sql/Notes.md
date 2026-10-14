@@ -44,6 +44,22 @@ WHERE condition
     AND/OR …;
 ```
 
+**Gotcha:** AND runs before OR (like * before + in maths). So `a AND b OR c` is read as `(a AND b) OR c`, and the condition `a` only applies to the first half. Always use brackets when mixing AND and OR, or use IN when it's the same column.
+
+```sql
+-- ❌ returns category 9 rows from ANY account, not just account 2
+SELECT * FROM transactions
+WHERE account_id = 2 AND category_id = 7 OR category_id = 9;
+
+-- ✅ brackets make account_id = 2 apply to both categories
+SELECT * FROM transactions
+WHERE account_id = 2 AND (category_id = 7 OR category_id = 9);
+
+-- ✅ same thing, shorter
+SELECT * FROM transactions
+WHERE account_id = 2 AND category_id IN (7, 9);
+```
+
 ### WHERE conditions
 
 #### Numerical data
@@ -77,6 +93,35 @@ WHERE condition
 **Gotcha:** while "=" compares the whole exact values, "LIKE" compares patterns, where wildcards such as "%" and "_" are used to broaden the search for the data. Without a wildcard, "LIKE" acts exactly as "="
 
 **Note:** these operators are fine for normal filtering, but for full-text search (searching through large amounts of text) dedicated tools like Apache Lucene or Sphinx are used instead.
+
+### WHERE in depth
+
+**Does:** filters rows, using AND, OR, IN, BETWEEN, LIKE/ILIKE and IS NULL.
+
+**Pattern:**
+
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE condition AND (a OR b);
+```
+
+**My example:** query #2 from w2_where.sql, Dining Out (7) or Entertainment (9), only on the Credit Card (account 2).
+
+```sql
+SELECT * FROM transactions
+WHERE (category_id = 7 OR category_id = 9) AND account_id = 2;
+```
+
+**Gotcha:** without brackets, AND runs before OR, so `category_id = 7 OR category_id = 9 AND account_id = 2` gives 160 rows instead of 104 (account_id = 2 only applies to category 9).
+
+**Gotcha:** 'text' uses single quotes, while "name" with double quotes means a column. SQLBolt (SQLite) let us get away with double quotes for strings, Postgres won't.
+
+**Gotcha:** in LIKE, `_` matches exactly one character and `%` matches any number of characters. Without `%`, `ILIKE 'out'` only matches the exact word "out".
+
+**Gotcha:** `= NULL` never matches anything, use `IS NULL`.
+
+**Gotcha:** BETWEEN includes both ends, so `amount BETWEEN 100 AND 200` keeps 100 and 200 too.
 
 ## Filtering and sorting Query results
 

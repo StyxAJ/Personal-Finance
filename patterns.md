@@ -9,3 +9,5 @@ LC #1480 Running Sum of 1d Array | prefix sum | each answer = previous answer + 
 LC #1929 Concatenation of Array | concatenation array | doubling the array length by adding the an integer array to itself | solved alone
 
 LC #344 Reverse String | two pointers | reverse a list in place → pointers at both ends, swap, move inward while left < right | needed hint
+
+LC #125 Valid Palindrome | two pointers | ignore junk while comparing ends → skip non-alnum on each side (with i < j guard), compare lowercase, move inward | needed hint
