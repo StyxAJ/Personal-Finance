@@ -11,3 +11,5 @@ LC #1929 Concatenation of Array | concatenation array | doubling the array lengt
 LC #344 Reverse String | two pointers | reverse a list in place → pointers at both ends, swap, move inward while left < right | needed hint
 
 LC #125 Valid Palindrome | two pointers | ignore junk while comparing ends → skip non-alnum on each side (with i < j guard), compare lowercase, move inward | needed hint
+
+LC #26 Remove Duplicates from Sorted Array | two pointers (slow/fast, same direction) | remove duplicates in place from a sorted array → read pointer scans pairs, write pointer marks last unique; on a new value: write += 1, copy it to nums[write]; return write + 1 | needed hint
