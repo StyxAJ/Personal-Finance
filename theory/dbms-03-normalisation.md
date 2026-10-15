@@ -42,6 +42,29 @@ Book(Title, Author, Pages, …)       -- depends on Title only
 Price(Title, Format, Price)         -- depends on the full {Title, Format} key
 ```
 
+### 3NF
+- **Rule:** be in 2NF, and no non-key column may depend on **another non-key column**. Every non-key column must depend on the key directly, not through some other column.
+- When it goes key → column A → column B, that's a **transitive dependency**, and it's the 3NF violation.
+- In the Book table (key = Title), after 2NF:
+  - **Author Nationality** depends on **Author**, and Author depends on Title.
+  - **Publisher Country** depends on **Publisher**, and Publisher depends on Title.
+  - **Genre Name** depends on **Genre ID**, and Genre ID depends on Title.
+- So the nationality of an author is repeated on every one of their books (the same update anomaly again).
+- **Fix:** move each of those facts into a table keyed by the column it really depends on.
+
+```
+Book(Title, Author, Pages, Thickness, Publisher, Genre_ID)
+Author(Author, Nationality)
+Publisher(Publisher, Country)
+Genre(Genre_ID, Genre_Name)
+Price(Title, Format, Price)         -- unchanged from 2NF
+```
+
+#### Checking my schema
+- `categories(id, name, type)`: **3NF ✅.** The only key is `id`. `name` and `type` both describe the category itself, and neither one decides the other (one name doesn't fix a type, and many categories share a type).
+- `accounts(id, name)`: **3NF ✅.** There's only one non-key column, so there's no other non-key column for it to depend on.
+- `transactions(id, account_id, category_id, amount, txn_date, description)`: **3NF ✅.** Every column describes that one transaction, found by `id`. The category's name and type and the account's name are not copied in; only the FK ids are stored, so there's no `category_id → category_name` chain inside this table.
+
 ## An example
 Using my finance data. Imagine a bad one-table design where every row repeats the category's name and type:
 
@@ -79,4 +102,5 @@ budgets(category_id, month, limit_amount, category_name)   -- key = (category_id
 - Repeated data → insertion, update and deletion anomalies.
 - 1NF: one value per cell, no lists, no repeating column groups.
 - 2NF: 1NF + no column depends on only part of a composite key.
-- Higher normal forms include the lower ones (2NF ⇒ 1NF).
+- 3NF: 2NF + no non-key column depends on another non-key column (no transitive dependency).
+- Higher normal forms include the lower ones (3NF ⇒ 2NF ⇒ 1NF).
