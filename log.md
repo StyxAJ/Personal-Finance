@@ -43,3 +43,6 @@
 
 2026-10-14 | 20:00 Build | missed (busy); skipped per "don't double up" rule, 15-question file dropped
 
+2026-10-15 | 10:00 SQL | sql/w2_aggregates.sql (8 queries) + sql/w2_thu_practice.sql (PG: Aggregate Functions) | learned: COUNT/SUM/AVG/MAX/MIN collapse many rows into one, GROUP BY makes one row per group, HAVING filters groups (sum/count/avg) while WHERE filters rows before grouping, both in one query = WHERE category 5–10 + HAVING avg > 200, ROUND(AVG(x), 2) for clean averages, GROUP BY doesn't sort → add ORDER BY | finding: Interest totals only ~464 AED/year so it drops out of HAVING sum > 2000 | confused: ___
+
+
