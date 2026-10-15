@@ -179,6 +179,44 @@ LIMIT 5 OFFSET 5;
 
 Examples: Refer lesson 4 of sqlbolt file
 
+### Sorting and CASE
+
+**Does:** ORDER BY sorts the result, LIMIT keeps only the first n rows, DISTINCT drops duplicate rows, and CASE builds a new column whose value depends on a condition (an if/else for each row).
+
+**Pattern:**
+
+```sql
+SELECT column,
+    CASE WHEN condition THEN 'label_a'
+         ELSE 'label_b'
+    END AS label_column
+FROM mytable
+ORDER BY column DESC, another_column
+LIMIT n;
+```
+
+**My example:** query #7 from w2_order_case.sql, labels each transaction 'BIG' if it's over 500, else 'SMALL'.
+
+```sql
+SELECT category_id, amount, description,
+    CASE WHEN amount > 500 THEN 'BIG'
+         ELSE 'SMALL'
+    END AS amount_size
+FROM transactions;
+```
+
+**Gotcha:** ORDER BY without DESC is ascending, smallest first. So `ORDER BY amount LIMIT 1` gives the smallest transaction, and we need `ORDER BY amount DESC` for the largest. With 2 columns, each one needs its own DESC: `ORDER BY txn_date, amount DESC` is oldest date first, then largest amount first within each date.
+
+**Gotcha:** CASE belongs in SELECT, not WHERE. It makes a label column; to filter rows, just write the condition in WHERE (`WHERE amount > 500`). We also can't filter on the CASE alias (`WHERE amount_size = 'BIG'` errors), because WHERE runs before SELECT.
+
+**Gotcha:** DISTINCT applies to the whole row, not just the first column. `SELECT DISTINCT account_id, category_id` keeps every different pair, so the same account_id can still show up many times.
+
+**Gotcha:** without ORDER BY, LIMIT returns whichever rows Postgres finds first, which can change between runs. Always sort before using LIMIT.
+
+**Gotcha:** CASE without an ELSE gives NULL for the rows that match no WHEN.
+
+Docs: [LIMIT and OFFSET](https://www.postgresql.org/docs/current/queries-limit.html), [CASE](https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE), [SELECT tutorial](https://www.postgresql.org/docs/current/tutorial-select.html)
+
 ## Multi-table queries with JOINs
 
 Data and data-sets in the real world are often broken down into pieces and stored across multiple separate tables using a process known as normalization.
