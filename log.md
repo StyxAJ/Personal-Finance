@@ -40,3 +40,6 @@
 2026-10-14 | 10:00 SQL | sql/w2_order_case.sql (8 queries) + sql/w2_wed_practice.sql (PG docs: Querying a Table, LIMIT and OFFSET, CASE) | learned: ORDER BY defaults to ascending (DESC for newest/largest), two-column ORDER BY sorts ties by the 2nd column, LIMIT/OFFSET = take N / skip N, DISTINCT removes duplicate rows across ALL selected columns, CASE = if/elif/else per row that makes a new column (first WHEN that matches wins, no ELSE gives NULL) | gotcha: LIMIT with ties is random → add a tie-breaker like id; 16 account-category pairs, not 20, because all monthly rows went to account 1 | confused: ___
 
 2026-10-14 | 16:00 DSA | LC 26 Remove Duplicates from Sorted Array | learned: same-direction two pointers (slow write + fast read) instead of opposite ends, k is a COUNT not a new list (in-place again), sorted array → duplicates sit next to each other so compare neighbours, write = index of last unique → return write + 1 | confused: mixed two methods (compare with nums[write] vs nums[i+1]) and lost values; started i at 1 so pair (0,1) was never checked → [1,2] failed; fixed by tracing [1,2] and [1,2,3] on paper
+
+2026-10-14 | 20:00 Build | missed (busy); skipped per "don't double up" rule, 15-question file dropped
+
