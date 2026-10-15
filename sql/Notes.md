@@ -398,6 +398,114 @@ The HAVING clause constraints are written the same way as the WHERE clause const
 
 **Gotcha:** if we are not using GROUP BY, a normal WHERE clause is enough, no need for HAVING.
 
+### Aggregates and GROUP BY
+
+**Does:** aggregates (COUNT, SUM, AVG, MAX, MIN) squash many rows into 1 value. GROUP BY splits the rows into groups first, so we get 1 value per group, and HAVING then filters those groups.
+
+**Pattern:**
+
+```sql
+SELECT group_column, SUM(column) AS total, COUNT(*), ROUND(AVG(column), 2) AS average
+FROM mytable
+WHERE row_condition
+GROUP BY group_column
+HAVING AGG_FUNC(column) > value
+ORDER BY group_column;
+```
+
+**My example:** query #8 from w2_aggregates.sql, everyday expenses only (categories 5–10), total, count and average per category, only the categories averaging over 200.
+
+```sql
+SELECT category_id, sum(amount) AS total, count(*), ROUND(avg(amount), 2) AS average
+FROM transactions
+WHERE category_id BETWEEN 5 AND 10
+GROUP BY category_id HAVING avg(amount) > 200
+ORDER BY category_id;
+```
+
+**Gotcha:** WHERE filters rows before grouping, HAVING filters groups after. So `category_id BETWEEN 5 AND 10` goes in WHERE, and `avg(amount) > 200` goes in HAVING. An aggregate in WHERE errors, because the groups don't exist yet.
+
+**Gotcha:** every non-aggregate column in SELECT must be in GROUP BY. `SELECT category_id, description … GROUP BY category_id` errors, because each group has many descriptions and Postgres can't pick one.
+
+**Gotcha:** GROUP BY doesn't sort. The groups come back in whatever order Postgres finds them, so add ORDER BY.
+
+**Gotcha:** AVG gives a long decimal (e.g. 228.0609…), so wrap it in `ROUND(avg(amount), 2)`. Round in SELECT for display, not in WHERE, and if amount is a float use `ROUND(avg(amount)::numeric, 2)`.
+
+### Aggregates in depth
+
+**Does:** an aggregate takes many input rows and gives back 1 result (count, sum, avg, max, min). With GROUP BY we get 1 result per group, HAVING filters those groups, and FILTER limits which rows go into just one aggregate.
+
+**Pattern:**
+
+```sql
+SELECT group_column,
+    COUNT(*) AS row_count,
+    COUNT(*) FILTER (WHERE condition) AS matching_count,
+    MAX(column) AS max_value
+FROM mytable
+WHERE row_condition
+GROUP BY group_column
+HAVING AGG_FUNC(column) > value;
+```
+
+**Docs example:** the weather table from the Postgres tutorial, how many readings each city has and its highest low temperature, only for cities whose highest low is under 40.
+
+```sql
+SELECT city, count(*), max(temp_lo)
+FROM weather
+GROUP BY city
+HAVING max(temp_lo) < 40;
+```
+
+#### Aggregate in WHERE vs subquery
+
+We can't use an aggregate inside WHERE, because WHERE picks the rows that go **into** the aggregate, so it has to run before the aggregate is worked out. To find the row that holds the max, we use a subquery, which works out its own aggregate separately from the outer query.
+
+```sql
+-- ❌ errors, WHERE runs before max() is worked out
+SELECT city FROM weather
+WHERE temp_lo = max(temp_lo);
+
+-- ✅ the subquery works out the max first, then the outer WHERE compares to it
+SELECT city FROM weather
+WHERE temp_lo = (SELECT max(temp_lo) FROM weather);
+```
+
+#### WHERE vs HAVING
+
+- **WHERE** picks the input rows **before** groups and aggregates are worked out. It can't contain aggregates.
+- **HAVING** picks the group rows **after** groups and aggregates are worked out. It almost always contains aggregates.
+- a condition that doesn't use an aggregate (e.g. `city LIKE 'S%'`) should go in WHERE, not HAVING. Both give the same result, but WHERE is faster, because it throws the rows away before they get grouped and aggregated.
+
+```sql
+-- ✅ non-aggregate condition in WHERE, rows are dropped before grouping
+SELECT city, count(*), max(temp_lo)
+FROM weather
+WHERE city LIKE 'S%'
+GROUP BY city;
+```
+
+#### FILTER
+
+FILTER lets us choose which rows go into **one** aggregate, without changing the rows that the other aggregates see. It's like a WHERE that only applies to that one aggregate.
+
+```sql
+SELECT city,
+    count(*) FILTER (WHERE temp_lo < 45),
+    max(temp_lo)
+FROM weather
+GROUP BY city;
+```
+- here count only counts the readings under 45, but max still sees every row, so San Francisco gets count 1 and max 46.
+
+**Gotcha:** an aggregate in WHERE errors, use a subquery `(SELECT max(...) FROM ...)` or move the condition to HAVING.
+
+**Gotcha:** putting a normal (non-aggregate) condition in HAVING works, but it's wasted work, as the rows get grouped first and thrown away after. Put it in WHERE.
+
+**Gotcha:** FILTER is Postgres (and standard SQL), SQLite only got it in 3.30 and MySQL doesn't have it. The older way is `SUM(CASE WHEN condition THEN 1 ELSE 0 END)`.
+
+Docs: [Aggregate tutorial](https://www.postgresql.org/docs/current/tutorial-agg.html), [Aggregate functions](https://www.postgresql.org/docs/current/functions-aggregate.html), [Aggregate expressions (FILTER)](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-AGGREGATES)
+
 ### Order of execution of a Query
 
 Complete SELECT query with all the clauses put together:
