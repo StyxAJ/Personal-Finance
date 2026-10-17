@@ -15,3 +15,5 @@ LC #125 Valid Palindrome | two pointers | ignore junk while comparing ends → s
 LC #26 Remove Duplicates from Sorted Array | two pointers (slow/fast, same direction) | remove duplicates in place from a sorted array → read pointer scans pairs, write pointer marks last unique; on a new value: write += 1, copy it to nums[write]; return write + 1 | needed hint
 
 LC #977 Squares of a Sorted Array | two pointers (opposite ends) + fill from the back | sorted array with negatives → biggest squares sit at the ENDS; compare both ends, put the bigger square in the last empty slot, move that pointer in; loop while left <= right (middle element still needs a slot) | needed hint
+
+LC #167 Two Sum II | two pointers (opposite ends) | sorted array + find a pair with a target sum → L at start, R at end; sum too big → R moves left, too small → L moves right, equal → return (1-based) | solved alone

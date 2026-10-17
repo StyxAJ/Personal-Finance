@@ -49,3 +49,14 @@
 2026-10-15 | 16:00 DSA (done 22:30, minimum day) | LC 977 Squares of a Sorted Array | learned: squaring a sorted list with negatives puts the biggest values at both ends, so fill the result from the back instead of sorting (O(n) vs O(n log n)), left <= right because the last middle element still needs a slot | confused: first tried a swap-based sort (never incremented i, read past the end with i+1); needed the "biggest at the ends" hint
 
 2026-10-15 | 20:00 DBMS (done 23:30, minimum day) | theory/dbms-03-normalisation.md: 3NF section + schema check | learned: 3NF = no non-key column depends on another non-key column (no transitive dependency), it's about the design not the data; my schema is 3NF because category/account facts live once and transactions link by id | finding: generated descriptions copy the category name = redundant data (renaming a category wouldn't update them), not a schema flaw | quiz skipped (minimum day)
+
+2026-10-16 | 10:00 SQL | sql/w2_dates.sql (8 queries) + sql/w2_fri_practice.sql (PG: Date/Time Functions) | learned: EXTRACT pulls one part out (month = 10), date_trunc snaps a date to the start of its month/quarter (safe for grouping across years), ::date drops the 00:00:00, DATE - INTERVAL '30 days' for date ranges, isodow 6/7 = weekend, GROUP BY works on a CASE expression | finding: Nov 2025 was the biggest spending month (19382.64), which is why it was the loss month; weekday everyday spend is ~3x weekend | gotcha: forgot the spend filter (category_id >= 4) on #2–#4 so income was counted; non-aggregate column in SELECT without GROUP BY errors
+
+2026-10-16 | 16:00 DSA | missed (out all night) → LC 167 moves into Saturday's redo slot
+
+2026-10-16 | 20:00 Build | missed (out all night) → monthly report covered by Saturday self-test Q1
+
+2026-10-17 | 10:00 Self-test (done 16:11) | sql/w2_selftest.sql | score: 3/5 (Q2 didn't show category_id + grouped by year instead of filtering 2026; Q3 listed all months instead of HAVING net < 0) | fixed both after marking | Mon: first 25 min = HAVING on expressions
+
+2026-10-17 | 16:00 DSA | LC 167 Two Sum II (first attempt, replaced its own redo) | learned: sorted array means moving R left always shrinks the sum and moving L right always grows it, so one pass finds the pair in O(n) with O(1) space; answer is 1-based | solved alone (paper step first) | note: while True works only because one answer is guaranteed; use while L < R
+
