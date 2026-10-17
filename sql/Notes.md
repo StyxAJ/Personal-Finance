@@ -741,3 +741,70 @@ DROP TABLE IF EXISTS mytable;
 - just like CREATE TABLE, dropping a table that doesn't exist throws an error, so we add **IF EXISTS** to skip it.
 
 **Gotcha:** if another table depends on the table being dropped (e.g. through a FOREIGN KEY), we can't drop it straight away. We first have to update the dependent tables to remove the rows that depend on it, or remove those tables completely.
+
+## Dates and times (PostgreSQL)
+
+Docs: [EXTRACT](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT), [date_trunc](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-TRUNC), [operators](https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE)
+
+### EXTRACT
+
+Pulls **one piece** out of a date and gives it back as a number.
+
+```sql
+EXTRACT(field FROM source)
+```
+
+| Field | Returns | Example for `2025-10-16` (a Thursday) |
+|-------|---------|----------------------------------------|
+| `year` | the year | 2025 |
+| `month` | 1–12 | 10 |
+| `quarter` | 1–4 (Jan–Mar = 1, …) | 4 |
+| `isodow` | day of week, Monday = 1 … Sunday = 7 | 4 |
+
+**Gotcha:** `dow` (without "iso") counts Sunday = 0 … Saturday = 6. `isodow` is the one that puts the weekend at 6 and 7, which makes `WHERE EXTRACT(isodow FROM txn_date) >= 6` work.
+
+### date_trunc
+
+Snaps the **whole date back** to the start of the chosen unit (`'year'`, `'quarter'`, `'month'`, `'week'`, `'day'`, …). Everything smaller than that unit is reset to its lowest value.
+
+```sql
+date_trunc('month', txn_date)          -- 2025-10-01 00:00:00
+date_trunc('month', txn_date)::date    -- 2025-10-01
+date_trunc('year',  TIMESTAMP '2001-02-16 20:38:40')   -- 2001-01-01 00:00:00
+date_trunc('hour',  TIMESTAMP '2001-02-16 20:38:40')   -- 2001-02-16 20:00:00
+```
+
+- the input is turned into a timestamp first, so a time comes back attached. Add `::date` to get a clean date.
+- `'week'` snaps back to the Monday of that week.
+
+### EXTRACT vs date_trunc for grouping
+
+`EXTRACT(month …)` throws the year away: October 2025 and October 2026 are both `10`, so grouping on it merges them into one group. `date_trunc('month', …)` keeps the year (`2025-10-01` vs `2026-10-01`), so each month stays separate.
+
+```sql
+-- ❌ Oct 2025 and Oct 2026 end up in the same group
+SELECT EXTRACT(month FROM txn_date) AS month, SUM(amount)
+FROM transactions GROUP BY 1;
+
+-- ✅ one row per real calendar month
+SELECT date_trunc('month', txn_date)::date AS month, SUM(amount)
+FROM transactions GROUP BY 1 ORDER BY 1;
+```
+
+Use `EXTRACT` when we actually want to compare "all Octobers" or "all Saturdays" together.
+
+### Date arithmetic with intervals
+
+| Operator | Example | Result |
+|----------|---------|--------|
+| `date + interval` | `DATE '2001-09-28' + INTERVAL '1 hour'` | `2001-09-28 01:00:00` (timestamp) |
+| `date - interval` | `DATE '2001-09-28' - INTERVAL '1 hour'` | `2001-09-27 23:00:00` (timestamp) |
+
+```sql
+SELECT DATE '2026-09-30' - INTERVAL '30 days';   -- 2026-08-31 00:00:00
+```
+
+- like `date_trunc`, the result is a timestamp, so add `::date` if we want a plain date.
+- common use: "last 30 days" → `WHERE txn_date >= CURRENT_DATE - INTERVAL '30 days'`.
+
+**Gotcha:** `'1 month'` is not a fixed number of days. `DATE '2026-01-31' + INTERVAL '1 month'` gives `2026-02-28`, because Postgres moves to the last valid day when the month is shorter.
