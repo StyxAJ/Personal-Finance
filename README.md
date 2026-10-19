@@ -46,4 +46,6 @@ psql -d finance
 - DSA: two pointers (LC 344, 125, 26, 977, 167).
 - Theory: normalisation (anomalies, 1NF, 2NF, 3NF); checked that this schema is in 3NF.
 - Self-test: 3/5
-
+Sat 17 Oct: Week 2 complete (self-test 3/5). Starting Week 3 Day 1.
+Data: 600 transactions loaded from data/clean.csv; raw.csv waiting for Week 5.
+Pending fixes: Mon 10:00, first 25 min = HAVING on expressions (self-test under 4/5).
