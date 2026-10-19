@@ -12,18 +12,18 @@ PostgreSQL 18 · Python 3 (csv, random, datetime) · VS Code
 ## Project structure
 | Folder / file | What's in it |
 |---|---|
-| `sql/schema.sql` | Tables: `categories`, `accounts`, `transactions` |
-| `sql/seed.sql` | 10 categories and 2 accounts |
+| `sql/project/schema.sql` | Tables: `categories`, `accounts`, `transactions` |
+| `sql/project/seed.sql` | 10 categories and 2 accounts |
 | `data/generate_data.py` | Generates `clean.csv` (600 rows) and a deliberately messy `raw.csv` |
-| `sql/w2_*.sql` | Week 2 query practice |
-| `sql/monthly_totals.sql` | Net savings per month |
+| `sql/practice/` | Daily query practice (`w2_`, `w3_`, …) |
+| `sql/project/monthly_totals.sql` | Net savings per month |
 | `dsa/` | LeetCode solutions by week |
 | `theory/` | DBMS notes |
 
 ## How to run
 
-psql -d finance -f sql/schema.sql
-psql -d finance -f sql/seed.sql
+psql -d finance -f sql/project/schema.sql
+psql -d finance -f sql/project/seed.sql
 python data/generate_data.py
 psql -d finance
 \copy transactions(account_id, category_id, amount, txn_date, description) FROM ‘data/clean.csv’ CSV HEADER
@@ -46,4 +46,6 @@ psql -d finance
 - DSA: two pointers (LC 344, 125, 26, 977, 167).
 - Theory: normalisation (anomalies, 1NF, 2NF, 3NF); checked that this schema is in 3NF.
 - Self-test: 3/5
-
+Sat 17 Oct: Week 2 complete (self-test 3/5). Starting Week 3 Day 1.
+Data: 600 transactions loaded from data/clean.csv; raw.csv waiting for Week 5.
+Pending fixes: Mon 10:00, first 25 min = HAVING on expressions (self-test under 4/5).

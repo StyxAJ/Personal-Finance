@@ -90,7 +90,7 @@ budgets(category_id, month, limit_amount, category_name)   -- key = (category_id
 - `category_name` depends on **category_id only**, not on month. That's the partial dependency, so the 2NF violation. ❌
 - **Fix:** drop `category_name` from budgets and get it from the `categories` table through `category_id`.
 
-**Note:** my actual [schema.sql](../sql/schema.sql) already avoids all this. Category name and type live once in `categories`, account names once in `accounts`, and `transactions` only holds the ids (FKs).
+**Note:** my actual [schema.sql](../sql/project/schema.sql) already avoids all this. Category name and type live once in `categories`, account names once in `accounts`, and `transactions` only holds the ids (FKs).
 
 ## An interview question
 **Q:** What problems does normalisation solve, and how do 1NF and 2NF differ?
