@@ -63,3 +63,5 @@
 2026-10-17 | 20:00 Wrap-up (done 16:48) | README written (Week 1 + 2), LC 125 redo from blank file, Week 3 read, merged via PR | week 2: 15 of 18 sessions (missed Wed C, Fri B + C; Thu B/D minimum) | self-test 3/5 → Mon first 25 min = HAVING redo
 
 2026-10-19 | 10:00 SQL | sql/w3_having_redo.sql (5) + sql/w3_joins_practice.sql (4) (PG: Aggregate Functions, Joins Between Tables) | redo: self-test Q3 now correct from blank, HAVING on SUM(CASE) expressions done | learned: INNER JOIN matches rows on a key (t.category_id = c.id) to show names instead of ids, chain joins for 3 tables, aliases (t, c, a) + table prefixes avoid "ambiguous column" errors, AS renames clashing columns (c.name AS category, a.name AS account), GROUP BY works on joined columns | gotcha: "over" means > not >=; missing ; merges two statements
+
+2026-10-19 | 16:00 DSA (done 20:20) | LC 217 Contains Duplicate, two versions (loop + set, and len(set) vs len(list)) (fCC: Hash Table & Set) | learned: a set stores unique values with O(1) lookup, so check-then-add in one loop is O(n); the same check on a list would be O(n²); the loop can stop early, the len() version can't | solved alone 
