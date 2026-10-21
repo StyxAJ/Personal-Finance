@@ -506,6 +506,86 @@ GROUP BY city;
 
 Docs: [Aggregate tutorial](https://www.postgresql.org/docs/current/tutorial-agg.html), [Aggregate functions](https://www.postgresql.org/docs/current/functions-aggregate.html), [Aggregate expressions (FILTER)](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-AGGREGATES)
 
+### Subqueries
+
+**Does:** a subquery is a SELECT inside another query, written in brackets. The subquery expressions below all give back true/false, so they go in WHERE (or HAVING). EXISTS checks if the subquery found any rows, IN / NOT IN check if a value is in the subquery's list, and ANY / ALL compare a value against every row the subquery gives back.
+
+**Pattern:**
+
+```sql
+SELECT column
+FROM mytable
+WHERE EXISTS (SELECT 1 FROM another_table WHERE another_table.id = mytable.id);
+
+SELECT column
+FROM mytable
+WHERE column IN (SELECT column FROM another_table WHERE condition);
+
+SELECT column
+FROM mytable
+WHERE column > ALL (SELECT column FROM another_table WHERE condition);
+```
+
+| Expression | True when | Subquery gives back 0 rows |
+| --- | --- | --- |
+| `EXISTS (subquery)` | the subquery gives back at least 1 row | false |
+| `expr IN (subquery)` | expr equals any of the rows | false |
+| `expr NOT IN (subquery)` | expr equals none of the rows | true |
+| `expr operator ANY (subquery)` | the comparison is true for at least 1 row | false |
+| `expr operator ALL (subquery)` | the comparison is true for every row | true |
+| `expr operator (subquery)` | the comparison is true for the 1 row it gives back | NULL |
+
+#### EXISTS
+
+**Docs example:** the rows of tab1 that have at least 1 matching row in tab2.
+
+```sql
+SELECT col1
+FROM tab1
+WHERE EXISTS (SELECT 1 FROM tab2 WHERE col2 = tab1.col2);
+```
+
+- the subquery can use columns from the outer query (`tab1.col2`), so it gets worked out again for each outer row, with that row's values acting like constants.
+- EXISTS only cares if any rows come back, not what is in them, so we just write `SELECT 1`.
+- it stops as soon as it finds 1 row, it doesn't run the whole subquery.
+- it works like an INNER JOIN on col2, but gives back at most 1 row per tab1 row, even if tab2 has many matches (a join would repeat the tab1 row for each match).
+
+#### IN and NOT IN
+
+The subquery must give back exactly 1 column. IN is true if any row equals the value, NOT IN is true if none of them do.
+
+```sql
+SELECT column
+FROM mytable
+WHERE column NOT IN (SELECT column FROM another_table WHERE column IS NOT NULL);
+```
+
+#### ANY / SOME and ALL
+
+These take a comparison operator (=, <>, <, >, …) and check it against every row the subquery gives back. ANY is true if it holds for at least 1 row, ALL is true only if it holds for every row. SOME is just another name for ANY.
+- `IN` is the same as `= ANY`.
+- `NOT IN` is the same as `<> ALL`.
+- `> ALL (subquery)` means bigger than every row, i.e. bigger than the max. `> ANY (subquery)` means bigger than at least 1 row, i.e. bigger than the min.
+
+#### Single-row comparison
+
+When we compare with a normal operator (`=`, `>`, …) straight to a subquery, like `WHERE temp_lo = (SELECT max(temp_lo) FROM weather)`, the subquery has to give back at most 1 row.
+- more than 1 row errors.
+- 0 rows gives NULL, so the outer row is dropped.
+- it also works with multiple columns: `WHERE (col1, col2) = (SELECT a, b FROM … )`, the subquery must give back the same number of columns.
+
+**Gotcha:** NOT IN with a NULL in the subquery gives back nothing. If no row matches and one of the rows is NULL, the result is NULL instead of true (since "is x <> NULL?" is unknown), so every outer row gets dropped. Add `WHERE column IS NOT NULL` in the subquery, or use NOT EXISTS instead, which doesn't have this problem.
+
+**Gotcha:** if the left side value is NULL, IN and NOT IN both give NULL, so that row is never returned either way.
+
+**Gotcha:** `= (subquery)` errors with "more than one row returned by a subquery used as an expression" if the subquery gives back many rows. Use IN (or `= ANY`) instead.
+
+**Gotcha:** a scalar subquery gives back 1 value, but many rows can match that value. `WHERE amount = (SELECT max(amount) FROM transactions)` gave back 12 rows, not 1, because all 12 Salary rows are exactly 15000.00 and tie for the largest.
+
+**Gotcha:** ALL with an empty subquery is true, so every outer row passes. NOT IN with an empty subquery is true too.
+
+Docs: [Subquery expressions](https://www.postgresql.org/docs/current/functions-subquery.html)
+
 ### Order of execution of a Query
 
 Complete SELECT query with all the clauses put together:

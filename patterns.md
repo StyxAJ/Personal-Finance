@@ -22,4 +22,6 @@ LC #167 Two Sum II | two pointers (opposite ends) | sorted array + find a pair w
 
 <!-- Week 3 -->
 
-LC #217 Contains Duplicate | hash set | "have I seen this before?" → loop: if x in seen → return True, else seen.add(x); return False after the loop (set lookup O(1), list lookup O(n)) | solved alone
+LC #217 Contains Duplicate | hash set | "have I seen this before?" → loop: if x in seen → return True, else seen.add(x); return False after the loop (set lookup O(1), list lookup O(n)) | solved alone.
+
+LC #1 Two Sum | hash map (dict) | find two numbers that add to target, return indices → for i, x in enumerate(nums): need = target - x; if need in seen → return [seen[need], i]; else seen[x] = i (key = number, value = index; check before store) | needed hint
