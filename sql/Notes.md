@@ -586,6 +586,103 @@ When we compare with a normal operator (`=`, `>`, …) straight to a subquery, l
 
 Docs: [Subquery expressions](https://www.postgresql.org/docs/current/functions-subquery.html)
 
+### WITH queries (CTEs)
+
+**Does:** WITH lets us write a helper query first, give it a name, and then use that name like a table in the main query. Each helper is called a **CTE** (Common Table Expression), and it only exists while that one query runs. It's a way to break a big query with nested subqueries into simple named steps that read top to bottom.
+
+**Pattern:**
+
+```sql
+WITH step_one AS (
+    SELECT column, AGG_FUNC(column) AS total
+    FROM mytable
+    GROUP BY column
+), step_two AS (
+    SELECT column
+    FROM step_one
+    WHERE total > value
+)
+SELECT *
+FROM mytable
+WHERE column IN (SELECT column FROM step_two);
+```
+
+- more than 1 CTE is separated by commas, with only one WITH at the start.
+- a later CTE can use an earlier one (step_two reads from step_one).
+
+**Docs example:** sales per product, but only in the top regions (regions with more than 10% of all sales).
+
+```sql
+WITH regional_sales AS (
+    SELECT region, SUM(amount) AS total_sales
+    FROM orders
+    GROUP BY region
+), top_regions AS (
+    SELECT region
+    FROM regional_sales
+    WHERE total_sales > (SELECT SUM(total_sales)/10 FROM regional_sales)
+)
+SELECT region,
+       product,
+       SUM(quantity) AS product_units,
+       SUM(amount) AS product_sales
+FROM orders
+WHERE region IN (SELECT region FROM top_regions)
+GROUP BY region, product;
+```
+
+- the same thing could be written with nested subqueries, but WITH is much easier to follow, since each step has a name.
+
+#### WITH RECURSIVE
+
+With RECURSIVE, a CTE can read its own output, which lets it loop. It has 2 parts joined by UNION ALL (or UNION):
+- the **non-recursive part** runs once and gives the starting rows.
+- the **recursive part** runs again and again, each time only on the rows made by the last round, until it gives back no new rows.
+
+```sql
+WITH RECURSIVE t(n) AS (
+    VALUES (1)                          -- start: n = 1
+  UNION ALL
+    SELECT n + 1 FROM t WHERE n < 100   -- each round adds n + 1, stops at 100
+)
+SELECT sum(n) FROM t;                   -- 5050
+```
+
+- it's mostly used for tree or hierarchy data, e.g. every sub-part of a product (and their sub-parts), or every employee under a manager.
+- UNION ALL keeps every row, UNION drops duplicate rows (which can help stop loops).
+- Postgres also has `SEARCH DEPTH FIRST / BREADTH FIRST BY …` to order the results of a tree walk, and `CYCLE … SET is_cycle USING path` to stop looping on data that links back to itself.
+
+#### Materialized or not
+
+- a CTE used **once** gets folded into the main query, so Postgres can still use indexes and the main query's WHERE.
+- a CTE used **more than once** is worked out once and stored (materialized), then reused.
+- `WITH w AS MATERIALIZED (…)` / `WITH w AS NOT MATERIALIZED (…)` overrides this. MATERIALIZED is useful when the CTE calls something slow, so it only runs once.
+
+#### Changing data inside WITH
+
+INSERT, UPDATE and DELETE can also go inside a WITH. The rows from their **RETURNING** clause become the CTE's table.
+
+```sql
+-- move October rows from products into products_log in one statement
+WITH moved_rows AS (
+    DELETE FROM products
+    WHERE "date" >= '2010-10-01' AND "date" < '2010-11-01'
+    RETURNING *
+)
+INSERT INTO products_log
+SELECT * FROM moved_rows;
+```
+
+**Gotcha:** a CTE only exists for the one query it's attached to. The next query can't use it, so it has to be written again.
+
+**Gotcha:** a recursive CTE with no stopping condition (like `WHERE n < 100`) loops forever. When testing, a `LIMIT` on the main query can stop it, but don't rely on that in real queries.
+
+**Gotcha:** all parts of a WITH see the same snapshot of the data. After an UPDATE in a CTE, `SELECT * FROM products` in the main query still shows the **old** values. To see the new values, select from the CTE (`SELECT * FROM t`), which holds the RETURNING rows.
+
+**Gotcha:** a data-changing CTE always runs fully, even if the main query never uses its output.
+
+Docs: [WITH queries (CTEs)](https://www.postgresql.org/docs/current/queries-with.html)
+
 ### Order of execution of a Query
 
 Complete SELECT query with all the clauses put together:
