@@ -25,3 +25,5 @@ LC #167 Two Sum II | two pointers (opposite ends) | sorted array + find a pair w
 LC #217 Contains Duplicate | hash set | "have I seen this before?" → loop: if x in seen → return True, else seen.add(x); return False after the loop (set lookup O(1), list lookup O(n)) | solved alone.
 
 LC #1 Two Sum | hash map (dict) | find two numbers that add to target, return indices → for i, x in enumerate(nums): need = target - x; if need in seen → return [seen[need], i]; else seen[x] = i (key = number, value = index; check before store) | needed hint
+
+LC #383 Ransom Note | hash map (counting) | "can I build A from the letters of B?" → count B with counts[ch] = counts.get(ch, 0) + 1; for each ch in A: if counts.get(ch, 0) == 0 → False, else counts[ch] -= 1; end → True | solved alone
