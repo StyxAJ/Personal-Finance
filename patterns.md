@@ -27,3 +27,5 @@ LC #217 Contains Duplicate | hash set | "have I seen this before?" → loop: if 
 LC #1 Two Sum | hash map (dict) | find two numbers that add to target, return indices → for i, x in enumerate(nums): need = target - x; if need in seen → return [seen[need], i]; else seen[x] = i (key = number, value = index; check before store) | needed hint
 
 LC #383 Ransom Note | hash map (counting) | "can I build A from the letters of B?" → count B with counts[ch] = counts.get(ch, 0) + 1; for each ch in A: if counts.get(ch, 0) == 0 → False, else counts[ch] -= 1; end → True | solved alone
+
+LC #242 Valid Anagram | hash map (counting) | same letters, same amounts? → if lengths differ → False; count s (+1), spend t (−1), False if a count is already 0; end → True (same as #383 + a length check) | needed help (googled)

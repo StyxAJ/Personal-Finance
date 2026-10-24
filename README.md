@@ -49,3 +49,13 @@ psql -d finance
 Sat 17 Oct: Week 2 complete (self-test 3/5). Starting Week 3 Day 1.
 Data: 600 transactions loaded from data/clean.csv; raw.csv waiting for Week 5.
 Pending fixes: Mon 10:00, first 25 min = HAVING on expressions (self-test under 4/5).
+
+### Week 3: JOINs, subqueries, CTEs
+- INNER JOIN with table aliases to show category and account names instead of ids; LEFT JOIN to keep rows with no match (COUNT(t.id), filter in ON not WHERE, COALESCE for zeros).
+- Subqueries: scalar, IN, EXISTS / NOT EXISTS, and correlated (transactions above their own category's average).
+- CTEs (WITH): multi-step queries, e.g. months above the average month, and income vs expense per month from two CTEs.
+- Project queries: `sql/project/joins.sql` (spend per account per category, with a proof query that totals match: 183,769.18 AED) and `sql/project/subqueries.sql`.
+- Tested changes safely inside BEGIN … ROLLBACK.
+- DSA: hash sets and hash maps (LC 217, 1, 383, 242).
+- Theory: ACID and transactions.
+- Self-test: 3/4

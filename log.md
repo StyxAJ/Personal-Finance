@@ -79,3 +79,11 @@
 2026-10-22 | 16:00 DSA (done 20:14) | LC 383 Ransom Note | learned: dict as a counter, .get(ch, 0) avoids KeyError for unseen keys, count what you HAVE first then spend it on what you NEED, return False the moment a count hits 0 | needed help
 
 2026-10-22 | 20:00 DBMS | theory/dbms-04-acid.md (Wikipedia: ACID, PG: Transactions) + NotebookLM quiz | learned: Atomicity = all-or-nothing (a 500 AED transfer can't half-happen), Consistency = only valid states (constraints still hold), Isolation = unfinished changes are invisible to others, Durability = once committed, it survives a crash; BEGIN/COMMIT/ROLLBACK group steps into one transaction | quiz: 7/10, ✗ on: ___ | note: moved here from Tue; isolation levels → W4 Thu
+
+2026-10-24 | 10:00 SQL (done 20:00–20:57) | sql/practice/w3_left_join.sql (4) + sql/practice/w3_selftest.sql | learned: LEFT JOIN keeps every left row (NULLs where no match), COUNT(t.id) not COUNT(*) for zero counts, filter the right table in ON not WHERE (WHERE drops the NULL rows), COALESCE(x, 0) turns NULL into 0, test data inside BEGIN … ROLLBACK | self-test: 3/4 (Q3 not counted: used AI; redid it from memory after) | note: INNER JOIN matches any ON condition, not only PK/FK
+
+2026-10-24 | 16:00 DSA (done 21:07–21:32) | LC 242 Valid Anagram (first attempt, replaced its own redo) | learned: it's LC 383 + a length check: equal lengths and no count going below 0 = perfect match | needed help: googled; lesson: check patterns.md for a similar problem before searching
+
+2026-10-24 | 16:00 DSA (redo) | LC 1 Two Sum from memory | result: wrote a correct O(n²) brute force but couldn't recall the hash map version → ⭕ in patterns.md, redo again next Saturday | knew why two pointers fails (unsorted)
+
+2026-10-24 | 20:00 Wrap-up | README Week 3, patterns.md review, Week 4 read | week 3: 13 of 18 sessions (missed Tue all, Fri all; Wed C minimum; Sat done 20:00–23:00) | self-test 3/4 | ⭕ LC 1 → redo next Saturday
