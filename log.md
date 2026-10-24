@@ -79,3 +79,6 @@
 2026-10-22 | 16:00 DSA (done 20:14) | LC 383 Ransom Note | learned: dict as a counter, .get(ch, 0) avoids KeyError for unseen keys, count what you HAVE first then spend it on what you NEED, return False the moment a count hits 0 | needed help
 
 2026-10-22 | 20:00 DBMS | theory/dbms-04-acid.md (Wikipedia: ACID, PG: Transactions) + NotebookLM quiz | learned: Atomicity = all-or-nothing (a 500 AED transfer can't half-happen), Consistency = only valid states (constraints still hold), Isolation = unfinished changes are invisible to others, Durability = once committed, it survives a crash; BEGIN/COMMIT/ROLLBACK group steps into one transaction | quiz: 7/10, ✗ on: ___ | note: moved here from Tue; isolation levels → W4 Thu
+
+2026-10-24 | 10:00 SQL (done 20:00–20:57) | sql/practice/w3_left_join.sql (4) + sql/practice/w3_selftest.sql | learned: LEFT JOIN keeps every left row (NULLs where no match), COUNT(t.id) not COUNT(*) for zero counts, filter the right table in ON not WHERE (WHERE drops the NULL rows), COALESCE(x, 0) turns NULL into 0, test data inside BEGIN … ROLLBACK | self-test: 3/4 (Q3 not counted: used AI; redid it from memory after) | note: INNER JOIN matches any ON condition, not only PK/FK
+

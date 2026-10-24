@@ -294,6 +294,28 @@ LIMIT num_limit OFFSET num_offset;
 
 **Gotcha:** outer joins will often give NULL values in the result, for the rows that had no match in the other table. These need extra care when filtering or reading the results (see NULL below).
 
+**Gotcha:** after a join, GROUP BY the columns of the table we're reporting on, not the foreign key from the other table. `SELECT c.name … GROUP BY t.category_id` errors ("c.name must appear in the GROUP BY clause"), even though they match one-to-one, because Postgres can't tell. `GROUP BY c.id, c.name` works (grouping by a primary key lets us select any other column from that table). With a LEFT JOIN it also matters for correctness: an unmatched row has `t.category_id = NULL`, so grouping on the `t.` column loses the link back to its category.
+
+**Gotcha:** with a LEFT JOIN, use `COUNT(t.id)`, not `COUNT(*)`. An unmatched category still has 1 joined row (all NULLs on the `t.` side), so `COUNT(*)` shows Education as 1. `COUNT(t.id)` skips NULLs and gives 0.
+
+**Gotcha:** a filter on the right table in WHERE turns a LEFT JOIN back into an INNER JOIN. WHERE runs after the join, and the unmatched rows have `t.txn_date = NULL`, so `WHERE EXTRACT(month FROM t.txn_date) = 9` drops them. Conditions on the right table go in ON (they only decide which rows get matched), conditions on the left table go in WHERE (`WHERE c.type = 'expense'`).
+
+```sql
+SELECT c.name, COALESCE(SUM(t.amount), 0) AS spend
+FROM categories c
+LEFT JOIN transactions t
+  ON t.category_id = c.id
+ AND t.txn_date >= '2026-09-01'
+ AND t.txn_date <  '2026-10-01'
+WHERE c.type = 'expense'
+GROUP BY c.id, c.name
+ORDER BY c.id;
+```
+
+**Gotcha:** SUM (and AVG, MAX, …) over only NULLs gives NULL, not 0. Wrap it in `COALESCE(SUM(t.amount), 0)` to show 0.00 for categories with no transactions.
+
+**Gotcha:** a LEFT JOIN only gives extra rows if some left row has no match. My first run gave 10 rows for both INNER and LEFT, because the seed has no Education category, so every category had transactions. If the row counts match, check the data before the query.
+
 **Note:** we may also see LEFT OUTER JOIN, RIGHT OUTER JOIN or FULL OUTER JOIN. The OUTER keyword is only kept for SQL-92 compatibility, they are the same as LEFT JOIN, RIGHT JOIN and FULL JOIN.
 
 ### NULL
