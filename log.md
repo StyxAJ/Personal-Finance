@@ -82,3 +82,6 @@
 
 2026-10-24 | 10:00 SQL (done 20:00–20:57) | sql/practice/w3_left_join.sql (4) + sql/practice/w3_selftest.sql | learned: LEFT JOIN keeps every left row (NULLs where no match), COUNT(t.id) not COUNT(*) for zero counts, filter the right table in ON not WHERE (WHERE drops the NULL rows), COALESCE(x, 0) turns NULL into 0, test data inside BEGIN … ROLLBACK | self-test: 3/4 (Q3 not counted: used AI; redid it from memory after) | note: INNER JOIN matches any ON condition, not only PK/FK
 
+2026-10-24 | 16:00 DSA (done 21:07–21:32) | LC 242 Valid Anagram (first attempt, replaced its own redo) | learned: it's LC 383 + a length check: equal lengths and no count going below 0 = perfect match | needed help: googled; lesson: check patterns.md for a similar problem before searching
+
+2026-10-24 | 16:00 DSA (redo) | LC 1 Two Sum from memory | result: wrote a correct O(n²) brute force but couldn't recall the hash map version → ⭕ in patterns.md, redo again next Saturday | knew why two pointers fails (unsorted)

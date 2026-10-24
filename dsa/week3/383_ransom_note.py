@@ -16,6 +16,6 @@ class Solution:
 
 
 s = Solution()
-print(s.canConstruct("a", "b"))     # False
-print(s.canConstruct("aa", "ab"))   # False
+print(s.canConstruct("a", "b"))  # False
+print(s.canConstruct("aa", "ab"))  # False
 print(s.canConstruct("aa", "aab"))  # True

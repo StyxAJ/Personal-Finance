@@ -29,7 +29,18 @@ ORDER BY month;
 
 --Spend per account per category, with names rather than ids.
 
-
+WITH acct_cat AS (
+    SELECT account_id, category_id, SUM(amount) AS total_spend
+    FROM transactions
+    GROUP BY account_id, category_id 
+)
+-- should act a  bridge between both accounts and category tables
+SELECT a.name AS Account, c.name AS Category, ac.total_spend
+FROM acct_cat ac
+JOIN accounts   a ON a.id = ac.account_id
+JOIN categories c ON c.id = ac.category_id
+WHERE c.type = 'expense'   
+ORDER BY a.name, ac.total_spend DESC;
 
 --In one sentence: INNER JOIN vs LEFT JOIN.
 
