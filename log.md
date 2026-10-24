@@ -85,3 +85,5 @@
 2026-10-24 | 16:00 DSA (done 21:07–21:32) | LC 242 Valid Anagram (first attempt, replaced its own redo) | learned: it's LC 383 + a length check: equal lengths and no count going below 0 = perfect match | needed help: googled; lesson: check patterns.md for a similar problem before searching
 
 2026-10-24 | 16:00 DSA (redo) | LC 1 Two Sum from memory | result: wrote a correct O(n²) brute force but couldn't recall the hash map version → ⭕ in patterns.md, redo again next Saturday | knew why two pointers fails (unsorted)
+
+2026-10-24 | 20:00 Wrap-up | README Week 3, patterns.md review, Week 4 read | week 3: 13 of 18 sessions (missed Tue all, Fri all; Wed C minimum; Sat done 20:00–23:00) | self-test 3/4 | ⭕ LC 1 → redo next Saturday
