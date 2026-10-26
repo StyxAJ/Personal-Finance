@@ -1007,3 +1007,157 @@ SELECT DATE '2026-09-30' - INTERVAL '30 days';   -- 2026-08-31 00:00:00
 - common use: "last 30 days" → `WHERE txn_date >= CURRENT_DATE - INTERVAL '30 days'`.
 
 **Gotcha:** `'1 month'` is not a fixed number of days. `DATE '2026-01-31' + INTERVAL '1 month'` gives `2026-02-28`, because Postgres moves to the last valid day when the month is shorter.
+
+## Constraints (PostgreSQL)
+
+**Does:** constraints are rules on a table that the database checks on every INSERT and UPDATE. If a row breaks a rule, Postgres throws an error and the row isn't saved (even if the bad value came from a DEFAULT). Data types only limit the kind of value (e.g. a number), constraints limit which values are allowed (e.g. a number above 0).
+
+**Pattern:**
+
+```sql
+CREATE TABLE mytable (
+    id          SERIAL PRIMARY KEY,                           -- unique + not null
+    name        TEXT NOT NULL UNIQUE,                          -- column constraints
+    price       NUMERIC CONSTRAINT positive_price CHECK (price > 0),
+    sale_price  NUMERIC,
+    other_id    INTEGER REFERENCES other_table(id) ON DELETE RESTRICT,
+    CONSTRAINT valid_sale CHECK (price > sale_price)          -- table constraint
+);
+```
+
+- a **column constraint** is written right after one column and only talks about that column.
+- a **table constraint** is written on its own line in the column list, and can use more than 1 column.
+- `CONSTRAINT some_name …` gives the constraint a name. It shows up in the error message, and lets us drop it later with ALTER TABLE. Without a name, Postgres makes one up (e.g. `products_price_check`).
+
+**My example:** the Personal Finance schema (sql/project/schema.sql).
+
+```sql
+CREATE TABLE categories (
+    id   SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL CHECK (type IN ('income', 'expense'))
+);
+
+CREATE TABLE transactions (
+    id          SERIAL PRIMARY KEY,
+    account_id  INTEGER NOT NULL REFERENCES accounts(id),
+    category_id INTEGER NOT NULL REFERENCES categories(id),
+    amount      NUMERIC(12,2) NOT NULL,
+    txn_date    DATE NOT NULL,
+    description TEXT
+);
+```
+
+- tested against each constraint in w4_constraints.sql.
+
+### CHECK
+
+Runs a true/false expression on each new or changed row.
+
+```sql
+price numeric CHECK (price > 0)
+```
+
+- the row passes if the expression is **true or NULL**. So `CHECK (price > 0)` lets `price = NULL` through. Add NOT NULL if NULLs aren't allowed.
+- a CHECK should only look at the row being inserted. Postgres doesn't support CHECKs that look at other rows or other tables (use UNIQUE, FOREIGN KEY or EXCLUDE for those).
+- a CHECK only runs on INSERT and UPDATE. Rows already in the table aren't checked again later.
+
+### NOT NULL
+
+The column can't hold NULL.
+
+```sql
+product_no integer NOT NULL
+```
+
+- works the same as `CHECK (product_no IS NOT NULL)`, but is faster.
+- a column can have many constraints, written in any order: `price numeric NOT NULL CHECK (price > 0)`.
+- **Tip from the docs:** most columns in a good database design should be NOT NULL.
+
+### UNIQUE
+
+No 2 rows can have the same value in the column (or the same combination of values, for a group of columns).
+
+```sql
+CREATE TABLE example (
+    a integer UNIQUE,        -- a on its own must be unique
+    b integer,
+    c integer,
+    UNIQUE (b, c)            -- the pair (b, c) must be unique, b or c alone can repeat
+);
+```
+
+- Postgres builds an index for each UNIQUE constraint automatically.
+- by default 2 NULLs are **not** equal to each other, so many rows can have NULL in a UNIQUE column. `UNIQUE NULLS NOT DISTINCT` treats NULLs as equal, so only 1 NULL is allowed.
+- "unique, but only for some rows" can't be a UNIQUE constraint, use a partial unique index instead.
+
+### PRIMARY KEY
+
+Identifies each row. It's the same as `UNIQUE NOT NULL`, plus:
+- a table can have only **1** primary key (but many UNIQUE constraints).
+- it's the default column a FOREIGN KEY points to, so `REFERENCES categories` means `REFERENCES categories(id)`.
+- it can be more than 1 column: `PRIMARY KEY (a, c)`.
+- Postgres doesn't force every table to have one, but every table should.
+
+### FOREIGN KEY (REFERENCES)
+
+The value must match a row that exists in another table. This keeps the links between tables valid (**referential integrity**).
+
+```sql
+CREATE TABLE orders (
+    order_id   integer PRIMARY KEY,
+    product_no integer REFERENCES products (product_no),
+    quantity   integer
+);
+```
+
+- the table with REFERENCES (orders) is the **referencing** table, the one it points to (products) is the **referenced** table.
+- for more than 1 column, use the table form: `FOREIGN KEY (b, c) REFERENCES other_table (c1, c2)`.
+- a table can reference itself, e.g. `parent_id integer REFERENCES tree` for a tree, where the top rows have `parent_id = NULL`.
+- the referenced column must be a PRIMARY KEY or UNIQUE.
+
+#### ON DELETE / ON UPDATE
+
+What happens to the referencing rows when the row they point to is deleted (or its key is changed):
+
+| Action | What it does | Use when |
+|---|---|---|
+| `NO ACTION` (default) | error, if any rows still point to it at the end of the statement (can be put off to the end of the transaction) | the 2 tables are separate things |
+| `RESTRICT` | error straight away, can't be put off | same as above, stricter |
+| `CASCADE` | delete the referencing rows too (ON UPDATE: copy the new key into them) | the child can't exist without the parent, e.g. order items of an order |
+| `SET NULL` | set the referencing column to NULL | the link is optional |
+| `SET DEFAULT` | set the referencing column to its DEFAULT (which must still be valid) | the link is optional, with a fallback |
+
+```sql
+CREATE TABLE order_items (
+    product_no integer REFERENCES products ON DELETE RESTRICT,   -- can't delete a product that's been ordered
+    order_id   integer REFERENCES orders   ON DELETE CASCADE,    -- deleting an order deletes its items
+    quantity   integer,
+    PRIMARY KEY (product_no, order_id)
+);
+```
+
+### EXCLUDE
+
+A more general UNIQUE: for any 2 rows, the given comparison must not be true for all the listed columns. E.g. no 2 circles (or 2 bookings) can overlap:
+
+```sql
+CREATE TABLE circles (
+    c circle,
+    EXCLUDE USING gist (c WITH &&)
+);
+```
+
+**Gotcha:** CHECK passes on NULL. `CHECK (amount > 0)` with `amount = NULL` gives NULL, not false, so the row gets in. It needs NOT NULL as well.
+
+**Gotcha:** a FOREIGN KEY column can still be NULL, and a NULL skips the check. That's why `category_id` is `NOT NULL REFERENCES categories(id)` in my schema.
+
+**Gotcha:** the default ON DELETE is NO ACTION, so deleting a category that still has transactions errors. Pick CASCADE only when losing the child rows is actually what we want (deleting a category should **not** wipe its transactions).
+
+**Gotcha:** a FOREIGN KEY doesn't make an index on the referencing column (`transactions.category_id`), only PRIMARY KEY and UNIQUE do. Deleting a category has to scan transactions to check for links, so add an index by hand on big tables.
+
+**Gotcha:** UNIQUE lets many NULLs in, because NULL is never equal to NULL (same idea as `= NULL` never matching). Use `NULLS NOT DISTINCT` or NOT NULL.
+
+**Gotcha:** inside one BEGIN, the first error aborts the whole transaction, and every later command is ignored ("current transaction is aborted"), until ROLLBACK. Test each constraint in its own BEGIN; … ROLLBACK;.
+
+Docs: [Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html)

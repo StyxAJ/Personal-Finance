@@ -87,3 +87,9 @@
 2026-10-24 | 16:00 DSA (redo) | LC 1 Two Sum from memory | result: wrote a correct O(n²) brute force but couldn't recall the hash map version → ⭕ in patterns.md, redo again next Saturday | knew why two pointers fails (unsorted)
 
 2026-10-24 | 20:00 Wrap-up | README Week 3, patterns.md review, Week 4 read | week 3: 13 of 18 sessions (missed Tue all, Fri all; Wed C minimum; Sat done 20:00–23:00) | self-test 3/4 | ⭕ LC 1 → redo next Saturday
+
+2026-10-26 | 10:00 SQL (done 17:45–20:43, late shift) | sql/practice/w4_constraints.sql (6 predict-then-test) (PG: Constraints) | learned: FK blocks unknown ids and blocks deleting a referenced parent (default NO ACTION), NOT NULL, CHECK (type IN …), each test in its own BEGIN/ROLLBACK because one error aborts the whole transaction | predictions 6/6 | gaps found: no CHECK (amount > 0), no UNIQUE on categories.name | gotcha: sequences don't roll back → id gaps (604, 605, 11, 12 burned)
+
+2026-10-26 | 16:00 DSA (done 20:45–21:20) | LC 121 Best Time to Buy and Sell Stock | learned: sliding window = L (buy) only jumps forward to a cheaper price, R (sell) scans every day, one pass O(n) | needed hint: i =+ 1 (not +=) looped forever, Tails didn't move in the else branch, i and Tails did the same job; skipped the paper trace again
+
+2026-10-26 | 20:00 Build (done 21:45–22:30) | sql/project/schema_v2.sql | added CHECK positive_amount on transactions, UNIQUE unique_category_name on categories, new budgets table (PK, FK, CHECK positive_limit, UNIQUE (category_id, month)), 6 September 2026 budgets | proof: all 5 rejection tests fail with my named constraints | learned: ALTER TABLE ADD CONSTRAINT checks existing rows (fails if any break the rule); named constraints make errors readable; checked data before altering (600 rows, 385323.67)

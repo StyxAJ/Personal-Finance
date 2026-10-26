@@ -29,3 +29,5 @@ LC #1 Two Sum | hash map (dict) | find two numbers that add to target, return in
 LC #383 Ransom Note | hash map (counting) | "can I build A from the letters of B?" → count B with counts[ch] = counts.get(ch, 0) + 1; for each ch in A: if counts.get(ch, 0) == 0 → False, else counts[ch] -= 1; end → True | solved alone
 
 LC #242 Valid Anagram | hash map (counting) | same letters, same amounts? → if lengths differ → False; count s (+1), spend t (−1), False if a count is already 0; end → True (same as #383 + a length check) | needed help (googled)
+
+LC #121 Best Time to Buy and Sell Stock | sliding window (two pointers, same direction) | max profit, buy before sell → L = buy day, R = sell day; if prices[R] < prices[L]: L = R (cheaper buy), else best = max(best, prices[R] - prices[L]); R moves every step | needed hint
