@@ -31,3 +31,5 @@ LC #383 Ransom Note | hash map (counting) | "can I build A from the letters of B
 LC #242 Valid Anagram | hash map (counting) | same letters, same amounts? → if lengths differ → False; count s (+1), spend t (−1), False if a count is already 0; end → True (same as #383 + a length check) | needed help (googled)
 
 LC #121 Best Time to Buy and Sell Stock | sliding window (two pointers, same direction) | max profit, buy before sell → L = buy day, R = sell day; if prices[R] < prices[L]: L = R (cheaper buy), else best = max(best, prices[R] - prices[L]); R moves every step | needed hint
+
+LC #643 Maximum Average Subarray I | sliding window (fixed size k) | best sum/average of k neighbours → sum the first k once; slide: window_sum += nums[i] - nums[i - k]; track max; divide by k once at the end (O(n), not O(n·k)) | solved alone / needed hint
