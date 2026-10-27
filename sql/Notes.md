@@ -811,6 +811,28 @@ WHERE condition;
 ```
 The statement works by taking multiple column/value pairs, and applying those changes to each and every row that satisfies the constraint in the WHERE clause.
 
+**Docs example:** the weather table from the Postgres tutorial. The readings after Nov 28 were all 2 degrees too high, so take 2 off both temperatures for those rows.
+
+```sql
+UPDATE weather
+    SET temp_hi = temp_hi - 2, temp_lo = temp_lo - 2
+    WHERE date > '1994-11-28';
+```
+
+```
+     city      | temp_lo | temp_hi | prcp |    date
+---------------+---------+---------+------+------------
+ San Francisco |      46 |      50 | 0.25 | 1994-11-27
+ San Francisco |      41 |      55 |    0 | 1994-11-29
+ Hayward       |      35 |      52 |      | 1994-11-29
+```
+
+- the value after `=` can use the column's own current value (`temp_hi - 2`), so we can change data relative to what's already there.
+- only the rows matching WHERE change. The 1994-11-27 row is left as it was (46 / 50).
+
+**Gotcha:** every expression in SET sees the **old** row. So `SET a = b, b = a` swaps the 2 values in Postgres, it doesn't copy b into both.
+
+Docs: [UPDATE tutorial](https://www.postgresql.org/docs/current/tutorial-update.html)
 
 ### Taking care
 
@@ -828,6 +850,23 @@ WHERE condition;
 ```
 
 - If we leave out the WHERE constraint, **all** the rows in the table get removed. This is a quick way to empty a table, but only if that is what we actually want.
+
+**Docs example:** we no longer care about Hayward's weather, so remove all of its rows.
+
+```sql
+DELETE FROM weather WHERE city = 'Hayward';
+```
+
+```
+     city      | temp_lo | temp_hi | prcp |    date
+---------------+---------+---------+------+------------
+ San Francisco |      46 |      50 | 0.25 | 1994-11-27
+ San Francisco |      41 |      55 |    0 | 1994-11-29
+```
+
+**Gotcha:** `DELETE FROM tablename;` with no WHERE empties the whole table, and Postgres **doesn't ask for confirmation** first. It just does it.
+
+Docs: [DELETE tutorial](https://www.postgresql.org/docs/current/tutorial-delete.html)
 
 ### Taking care
 
