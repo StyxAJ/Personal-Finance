@@ -97,3 +97,5 @@
 2026-10-27 | 10:00 SQL (done 20:05–21:22, late shift) | sql/practice/w4_update_delete.sql (5 changes, all rolled back) (PG: Updates, Deletions) | learned: safe routine = SELECT the WHERE first → BEGIN → change → check → COMMIT/ROLLBACK; RETURNING * shows changed rows; renaming 1 category renamed it for all 109 transactions (3NF); positive_amount blocks UPDATE to 0 too; DELETE with no WHERE wiped 600 rows → ROLLBACK saved them | final check: 600 | 385323.67
 
 2026-10-27 | 16:00 DSA (done 21:25–22:10) | LC 643 Maximum Average Subarray I | learned: fixed-size sliding window, new sum = old sum + entering number − leaving number, so each step is O(1); re-summing each window would be O(n·k); divide once at the end
+
+2026-10-27 | 20:00 DBMS (minimum, done 23:50) | theory/dbms-05-indexes.md (PG: Indexes intro, B-tree) | learned: an index is a sorted lookup structure (B-tree) that jumps to matching rows instead of scanning every row; cost = slower INSERT/UPDATE/DELETE + extra disk; don't index every column | quiz skipped
