@@ -77,4 +77,4 @@ SELECT count(*) FROM transactions;     -- back to 600
 -- Final check: nothing above should have changed the real data
 
 SELECT count(*), sum(amount) FROM transactions;
--- Actual:
+-- Actual: shows no change
