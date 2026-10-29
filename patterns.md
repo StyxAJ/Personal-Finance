@@ -33,3 +33,5 @@ LC #242 Valid Anagram | hash map (counting) | same letters, same amounts? → if
 LC #121 Best Time to Buy and Sell Stock | sliding window (two pointers, same direction) | max profit, buy before sell → L = buy day, R = sell day; if prices[R] < prices[L]: L = R (cheaper buy), else best = max(best, prices[R] - prices[L]); R moves every step | needed hint
 
 LC #643 Maximum Average Subarray I | sliding window (fixed size k) | best sum/average of k neighbours → sum the first k once; slide: window_sum += nums[i] - nums[i - k]; track max; divide by k once at the end (O(n), not O(n·k)) | solved alone / needed hint
+
+LC #724 Find Pivot Index | prefix sum | "equal sums on both sides of an index" → compute total once, walk once: R -= x, compare, L += x | needed hints (guided paper step)

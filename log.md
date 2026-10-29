@@ -103,3 +103,5 @@
 2026-10-28 | all sessions | missed (interview day, overslept the planned night session) → index lab moved to Thu 20:00 (replaces DBMS review), LC 303 → W13, isolation levels → W11 Thu
 
 2026-10-29 | A | window functions: AVG/COUNT OVER, PARTITION BY 2 columns, ROW_NUMBER/RANK/DENSE_RANK, top 2 per month via 2 CTEs → w4_windows.sql | learned: WHERE runs before window functions, so filter rank in an outer query | confused: semicolon inside CTE, forgot the 5–10 filter twice
+
+2026-10-29 | B (late shift) | LC 724 Find Pivot Index ✅ | learned: the paper routine (table → compare rows → English steps → code); right = total − left − x; nums[-1] is the last element, not nothing | confused: started with pseudocode instead of a table; slice bounds [0:i-1] and [i+1:-1] were off by one
