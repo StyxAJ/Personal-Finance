@@ -1,5 +1,47 @@
 # SQL Notes
 
+## Index
+
+### Contents
+
+- [SELECT queries](#select-queries)
+- [Queries with constraints (WHERE)](#queries-with-constraints) · [operators tables](#where-conditions) · [WHERE in depth](#where-in-depth)
+- [Filtering and sorting](#filtering-and-sorting-query-results) · [DISTINCT](#distinct) · [ORDER BY](#order-by) · [LIMIT and OFFSET](#limit-and-offset) · [Sorting and CASE](#sorting-and-case)
+- [JOINs](#multi-table-queries-with-joins) · [normalization](#database-normalization) · [INNER JOIN](#inner-join) · [OUTER JOIN](#outer-join) · [NULL](#null)
+- [Queries](#queries)
+  - [Expressions and aliases](#queries-with-expressions)
+  - [Aggregates](#queries-with-aggregates) · [GROUP BY](#grouped-aggregate-functions) · [HAVING](#having) · [Aggregates and GROUP BY](#aggregates-and-group-by) · [Aggregates in depth](#aggregates-in-depth) · [FILTER](#filter)
+  - [Subqueries](#subqueries) · [EXISTS](#exists) · [IN / NOT IN](#in-and-not-in) · [ANY / ALL](#any--some-and-all)
+  - [WITH queries (CTEs)](#with-queries-ctes) · [WITH RECURSIVE](#with-recursive)
+  - [Window functions](#window-functions) · [PARTITION BY](#partition-by) · [running totals](#window-frames-running-totals) · [top N per group](#filtering-on-a-window-result)
+  - [Order of execution](#order-of-execution-of-a-query)
+- [INSERT](#inserting-rows) · [UPDATE](#updating-rows) · [DELETE](#deleting-rows)
+- [CREATE TABLE](#creating-tables) · [data types](#data-types) · [ALTER TABLE](#altering-tables) · [DROP TABLE](#dropping-tables)
+- [Dates and times](#dates-and-times-postgresql) · [EXTRACT](#extract) · [date_trunc](#date_trunc) · [intervals](#date-arithmetic-with-intervals)
+- [Constraints](#constraints-postgresql) · [CHECK](#check) · [NOT NULL](#not-null) · [UNIQUE](#unique) · [PRIMARY KEY](#primary-key) · [FOREIGN KEY](#foreign-key-references) · [ON DELETE](#on-delete--on-update) · [EXCLUDE](#exclude)
+
+### Quick lookup
+
+| I want to… | Go to |
+|---|---|
+| filter rows | [WHERE](#where-in-depth) |
+| match text / patterns (LIKE, ILIKE) | [text operators](#text-data) |
+| check for missing values | [NULL](#null) |
+| sort, take top n, page through results | [ORDER BY](#order-by), [LIMIT and OFFSET](#limit-and-offset) |
+| make an if/else column | [CASE](#sorting-and-case) |
+| count / sum / average per group | [Aggregates and GROUP BY](#aggregates-and-group-by) |
+| filter groups | [HAVING](#having), [WHERE vs HAVING](#where-vs-having) |
+| count only some rows inside an aggregate | [FILTER](#filter) |
+| keep every row but add a group total next to it | [PARTITION BY](#partition-by) |
+| running total / rank / top n per group | [Window functions](#window-functions) |
+| combine 2 tables | [JOINs](#join-statements), [LEFT JOIN gotchas](#outer-join) |
+| use one query's result inside another | [Subqueries](#subqueries), [CTEs](#with-queries-ctes) |
+| group by month / weekday | [EXTRACT vs date_trunc](#extract-vs-date_trunc-for-grouping) |
+| "last 30 days" | [intervals](#date-arithmetic-with-intervals) |
+| change or remove rows safely | [UPDATE](#updating-rows), [DELETE](#deleting-rows) |
+| stop bad data getting in | [Constraints](#constraints-postgresql) |
+| know why an alias doesn't work in WHERE | [Order of execution](#order-of-execution-of-a-query) |
+
 ## SELECT queries
 
 A **SELECT** statement (also called a query) is used to pull data out of the database. In the query we say what data we want, where to find it, and optionally how to transform it before it is returned.
@@ -704,6 +746,146 @@ SELECT * FROM moved_rows;
 **Gotcha:** a data-changing CTE always runs fully, even if the main query never uses its output.
 
 Docs: [WITH queries (CTEs)](https://www.postgresql.org/docs/current/queries-with.html)
+
+### Window functions
+
+**Does:** a window function works out a value across a set of rows that are related to the current row (its "window"), like an aggregate does. But unlike GROUP BY, the rows are **not** squashed into 1 row per group, every row stays in the result and just gets the extra value next to it. The `OVER (…)` part is what makes it a window function.
+
+**Pattern:**
+
+```sql
+SELECT column, another_column,
+    AGG_OR_WINDOW_FUNC(column) OVER (PARTITION BY group_column ORDER BY sort_column) AS alias
+FROM mytable;
+```
+
+- `PARTITION BY` splits the rows into groups (partitions), like GROUP BY, but without collapsing them. Leave it out and the whole table is 1 partition.
+- `ORDER BY` inside OVER sets the order the rows are processed in, within each partition.
+- `OVER ()` with nothing inside means the window is every row in the result.
+- any normal aggregate (sum, avg, count, max, min) can be used as a window function, plus window-only ones like `row_number()`, `rank()`, `lag()`, `lead()`.
+
+#### PARTITION BY
+
+**Docs example:** each employee's salary next to the average salary of their department.
+
+```sql
+SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname)
+FROM empsalary;
+```
+
+```
+  depname  | empno | salary |          avg
+-----------+-------+--------+-----------------------
+ develop   |    11 |   5200 | 5020.0000000000000000
+ develop   |     7 |   4200 | 5020.0000000000000000
+ develop   |     9 |   4500 | 5020.0000000000000000
+ develop   |     8 |   6000 | 5020.0000000000000000
+ develop   |    10 |   5200 | 5020.0000000000000000
+ personnel |     5 |   3500 | 3700.0000000000000000
+ personnel |     2 |   3900 | 3700.0000000000000000
+ sales     |     3 |   4800 | 4866.6666666666666667
+ sales     |     1 |   5000 | 4866.6666666666666667
+ sales     |     4 |   4800 | 4866.6666666666666667
+```
+
+- all 10 rows are still there. With GROUP BY depname we'd only get 3 rows and lose empno and salary.
+
+#### ORDER BY inside OVER
+
+**Docs example:** number the employees in each department from highest to lowest salary.
+
+```sql
+SELECT depname, empno, salary,
+    row_number() OVER (PARTITION BY depname ORDER BY salary DESC)
+FROM empsalary;
+```
+
+```
+  depname  | empno | salary | row_number
+-----------+-------+--------+------------
+ develop   |     8 |   6000 |          1
+ develop   |    10 |   5200 |          2
+ develop   |    11 |   5200 |          3
+ develop   |     9 |   4500 |          4
+ develop   |     7 |   4200 |          5
+ personnel |     2 |   3900 |          1
+ personnel |     5 |   3500 |          2
+ sales     |     1 |   5000 |          1
+ sales     |     4 |   4800 |          2
+ sales     |     3 |   4800 |          3
+```
+
+- the numbering starts again at 1 for each department.
+- the ORDER BY inside OVER only decides the order for the window function, it doesn't sort the final output. Add a normal ORDER BY at the end for that.
+
+#### Window frames (running totals)
+
+Some functions (like sum) don't look at the whole partition, only at the row's **window frame**:
+- **with ORDER BY** in OVER, the frame is from the start of the partition up to the current row, plus any later rows that tie with it on the ORDER BY value (its "peers").
+- **without ORDER BY**, the frame is the whole partition.
+
+```sql
+-- no ORDER BY: every row gets the total of the whole table
+SELECT salary, sum(salary) OVER () FROM empsalary;        -- 47100 on every row
+
+-- with ORDER BY: a running total
+SELECT salary, sum(salary) OVER (ORDER BY salary) FROM empsalary;
+```
+
+```
+ salary |  sum
+--------+-------
+   3500 |  3500
+   3900 |  7400
+   4200 | 11600
+   4500 | 16100
+   4800 | 25700
+   4800 | 25700
+   5000 | 30700
+   5200 | 41100
+   5200 | 41100
+   6000 | 47100
+```
+
+- the 2 rows with 4800 both show 25700, because they are peers, so both are in each other's frame.
+
+#### Filtering on a window result
+
+Window functions only run after WHERE, GROUP BY and HAVING, so we can't filter on them there. Wrap the query in a subquery (or a CTE) and filter outside.
+
+**Docs example:** the top 2 earners in each department.
+
+```sql
+SELECT depname, empno, salary, enroll_date
+FROM (
+    SELECT depname, empno, salary, enroll_date,
+        row_number() OVER (PARTITION BY depname ORDER BY salary DESC, empno) AS pos
+    FROM empsalary
+) AS ss
+WHERE pos < 3;
+```
+
+#### Named windows (WINDOW)
+
+When more than 1 function uses the same window, name it once with WINDOW instead of writing the OVER (…) out each time.
+
+```sql
+SELECT sum(salary) OVER w, avg(salary) OVER w
+FROM empsalary
+WINDOW w AS (PARTITION BY depname ORDER BY salary DESC);
+```
+
+**Gotcha:** window functions are only allowed in SELECT and ORDER BY. `WHERE row_number() OVER (…) < 3` errors, use the subquery above.
+
+**Gotcha:** window functions run **after** aggregates (after GROUP BY / HAVING, before DISTINCT, ORDER BY and LIMIT). So an aggregate can go inside a window function, e.g. `sum(sum(amount)) OVER (ORDER BY month)` for a running total of monthly totals, but not the other way round.
+
+**Gotcha:** a running total with ORDER BY gives tied rows the **same** total (both 4800 rows show 25700), it doesn't go up row by row. Add a tie-breaker column to the ORDER BY (`ORDER BY txn_date, id`), or use `ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` so the frame stops exactly at the current row.
+
+**Gotcha:** with ties, `row_number()` hands out the numbers in no fixed order (empno 10 and 11 could swap between runs). Add a tie-breaker (like `, empno` in the top-2 example) so the result doesn't change between runs.
+
+**Gotcha:** adding ORDER BY to OVER changes what sum/avg/count give back. `sum(x) OVER (PARTITION BY d)` is the partition total, `sum(x) OVER (PARTITION BY d ORDER BY y)` is a running total.
+
+Docs: [Window functions tutorial](https://www.postgresql.org/docs/current/tutorial-window.html), [Window function calls (frame options)](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS), [Window functions list](https://www.postgresql.org/docs/current/functions-window.html)
 
 ### Order of execution of a Query
 
