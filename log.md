@@ -107,3 +107,7 @@
 2026-10-29 | B (late shift) | LC 724 Find Pivot Index ✅ | learned: the paper routine (table → compare rows → English steps → code); right = total − left − x; nums[-1] is the last element, not nothing | confused: started with pseudocode instead of a table; slice bounds [0:i-1] and [i+1:-1] were off by one
 
 2026-10-29 | lab (late shift, minimum) | index lab: 200k rows, EXPLAIN ANALYZE before/after composite index → indexes.md | make_big.py (seed 42, 200,000 rows) → big.csv (gitignored) | before 30.421 ms (Parallel Seq Scan, ~197k rows removed by filter), after 1.208 ms (Bitmap Index Scan on idx_tb_cat_date) → ~25x | learned: equality column first, range column second in a composite index; use the 3rd run (cached) | confused: import generate_data runs the whole file (re-seeds, rewrites clean/raw.csv); append() takes one tuple, not 5 args; needed the CREATE TABLE/\copy code given
+
+2026-10-31 | all sessions | missed (course deadline ran over) → SQL self-test → W13 SQL final, README SQL/ERD + CV line → W5 Sat S, LC 1 + 724 → W5 Sat B, LC 121 → W13 | lesson: declare a minimum day in advance when a deadline eats two days
+
+2026-11-02 | A (14:25–15:20) | Excel: Get Data → From Text/CSV, Power Query (Use First Row as Headers, removed Changed Type so mess stays as text), Tables (tbl_raw 618 rows, Total Row, tbl_categories) → excel/finance_analysis.xlsx | mess found: 17 blank categories, 44 "AED" amounts, 22 DD/MM dates, 18 duplicates | confused: headers came in as data; auto type detection would have hidden the mess
