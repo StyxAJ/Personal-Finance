@@ -35,3 +35,5 @@ LC #121 Best Time to Buy and Sell Stock | sliding window (two pointers, same dir
 LC #643 Maximum Average Subarray I | sliding window (fixed size k) | best sum/average of k neighbours → sum the first k once; slide: window_sum += nums[i] - nums[i - k]; track max; divide by k once at the end (O(n), not O(n·k)) | solved alone / needed hint
 
 LC #724 Find Pivot Index | prefix sum | "equal sums on both sides of an index" → compute total once, walk once: R -= x, compare, L += x | needed hints (guided paper step)
+
+Stack (built) | stack = LIFO | top = end of list, so push/pop/peek are O(1) (nothing shifts); pop/peek on empty → raise IndexError; reuse is_empty() for the check | solved alone (paper step first)
