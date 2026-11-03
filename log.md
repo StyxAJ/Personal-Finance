@@ -120,3 +120,5 @@
 
 
 2026-11-03 | B (late shift 21:20–22:15) | LC 20 Valid Parentheses ✅ → dsa/week5/20_valid_parentheses.py | learned: counting checks HOW MANY brackets, a stack checks the ORDER (most recent open bracket must close first = LIFO); dict maps closer → opener; check empty before pop; leftover openers = invalid | confused: started with counters, then popped without checking the match
+
+2026-11-03 | D (late shift, full, 22:22–23:17) | OOP 1: Transaction class → theory/oop_transaction.py, notes → theory/oop-01.md | learned: ___ | confused: Python tutorial alone is too terse → added Real Python OOP to the notebook, Python Tutor to visualise objects | quiz → Thu D
