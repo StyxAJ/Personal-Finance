@@ -37,3 +37,5 @@ LC #643 Maximum Average Subarray I | sliding window (fixed size k) | best sum/av
 LC #724 Find Pivot Index | prefix sum | "equal sums on both sides of an index" → compute total once, walk once: R -= x, compare, L += x | needed hints (guided paper step)
 
 Stack (built) | stack = LIFO | top = end of list, so push/pop/peek are O(1) (nothing shifts); pop/peek on empty → raise IndexError; reuse is_empty() for the check | solved alone (paper step first)
+
+LC #20 Valid Parentheses | stack + dict | "brackets must close in the right ORDER" → push openers, on a closer check the top against dict[closer]; check empty before popping; valid only if the stack is empty at the end | counting fails on "([)]" | solved alone / needed hint

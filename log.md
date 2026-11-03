@@ -117,3 +117,6 @@
 2026-11-02 | C (late shift 22:45–23:40) | Clean sheet: tbl_raw pasted as values → tbl_clean, PROPER(TRIM()) 103 spellings → 10 categories + 17 blanks, Remove Duplicates 618 → 600 | confused: pasted the formula instead of values over category → circular reference, fixed Tue morning
 
 2026-11-03 | A (15:15–16:12, late) | Excel: fixed Monday's circular reference (paste values on B2:B601); amount → numbers in place (___), sum 385323.67 = SQL; txn_date → real dates in place (___), all 22 DD/MM correct, Groceries Mar 2026 = 2087.99 = SQL | learned: select inside a table with Ctrl+Space or the Name Box, not the sheet column; DATEVALUE would misread DD/MM on a US-format PC | confused: didn't write SUBSTITUTE/VALUE or DATE formulas yet → practise in Saturday self-test
+
+
+2026-11-03 | B (late shift 21:20–22:15) | LC 20 Valid Parentheses ✅ → dsa/week5/20_valid_parentheses.py | learned: counting checks HOW MANY brackets, a stack checks the ORDER (most recent open bracket must close first = LIFO); dict maps closer → opener; check empty before pop; leftover openers = invalid | confused: started with counters, then popped without checking the match
