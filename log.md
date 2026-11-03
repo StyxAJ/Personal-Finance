@@ -113,3 +113,5 @@
 2026-11-02 | A (14:25–15:20) | Excel: Get Data → From Text/CSV, Power Query (Use First Row as Headers, removed Changed Type so mess stays as text), Tables (tbl_raw 618 rows, Total Row, tbl_categories) → excel/finance_analysis.xlsx | mess found: 17 blank categories, 44 "AED" amounts, 22 DD/MM dates, 18 duplicates | confused: headers came in as data; auto type detection would have hidden the mess
 
 2026-11-02 | B (late shift 21:45–22:40) | Stack class (push, pop, peek, is_empty) on a list → dsa/week5/stack.py | learned: top = END of the list so every operation is O(1); the speed comes from where the top is, not from LIFO itself; is_empty() only looks and doesn't change the list; raise IndexError on empty pop/peek | confused: thought the stack ops were O(n) at first; paper table step 7 showed [] instead of [1]
+
+2026-11-02 | C (late shift 22:45–23:40) | Clean sheet: tbl_raw pasted as values → tbl_clean, PROPER(TRIM()) 103 spellings → 10 categories + 17 blanks, Remove Duplicates 618 → 600 | confused: pasted the formula instead of values over category → circular reference, fixed Tue morning
