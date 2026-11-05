@@ -128,3 +128,6 @@
 2026-11-04 | C (minimum, 23:37–00:05) | finished cleaning tbl_clean: 17 blanks → Uncategorised (type: ___ because ___), account_id → numbers | proof: 600 rows, 385323.67 = SQL | budget column → W6
 
 2026-11-05 | A (12:20–13:20) | SUMIFS/COUNTIFS/COUNTIF on tbl_clean → Analysis sheet, all 5 checks match (Groceries Mar 2087.99, 8 rows, 91 over 500, Credit Card 62066.54 = SQL, expense 179905.19) | learned: SUMIFS = SUM ... WHERE ... AND (sum range first, then range/condition pairs); dates need two conditions on one column (">=" start, "<" next start); join operator and value with & | gap: 3863.99 vs SQL = expense rows that lost their category in raw.csv (Uncategorised) | bug: used "<=" April 1 in #1, fixed to "<"
+
+2026-11-05 | B (19:45–20:40) | Stack class blank redo (structure right; missing return ×2, duplicate push, print instead of raise) + LC 155 Min Stack ✅ → dsa/week5/155_min_stack.py | learned: a single min variable forgets the old min when overwritten → keep a stack of mins; 0 is a real value, use float('inf') or None as "no value yet" | habits to fix: forgot return (None comes back), forgot () (gives the method, not its value), duplicate method name overwrites
+
