@@ -131,3 +131,4 @@
 
 2026-11-05 | B (19:45–20:40) | Stack class blank redo (structure right; missing return ×2, duplicate push, print instead of raise) + LC 155 Min Stack ✅ → dsa/week5/155_min_stack.py | learned: a single min variable forgets the old min when overwritten → keep a stack of mins; 0 is a real value, use float('inf') or None as "no value yet" | habits to fix: forgot return (None comes back), forgot () (gives the method, not its value), duplicate method name overwrites
 
+2026-11-05 | D (minimum, 22:32–22:57) | OOP 2: encapsulation, Transaction.amount as a property that rejects 0 (ValueError) → theory/oop_transaction.py | learned: ___ | confused: ___ | quiz skipped (minimum) → W11 review
