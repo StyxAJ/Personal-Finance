@@ -122,3 +122,7 @@
 2026-11-03 | B (late shift 21:20–22:15) | LC 20 Valid Parentheses ✅ → dsa/week5/20_valid_parentheses.py | learned: counting checks HOW MANY brackets, a stack checks the ORDER (most recent open bracket must close first = LIFO); dict maps closer → opener; check empty before pop; leftover openers = invalid | confused: started with counters, then popped without checking the match
 
 2026-11-03 | D (late shift, full, 22:22–23:17) | OOP 1: Transaction class → theory/oop_transaction.py, notes → theory/oop-01.md | learned: ___ | confused: Python tutorial alone is too terse → added Real Python OOP to the notebook, Python Tutor to visualise objects | quiz → Thu D
+
+2026-11-04 | A (14:20–15:00, late) | XLOOKUP: tbl_categories (id, name, type) → type column in tbl_clean with "Not found" fallback → 548 expense / 35 income / 17 Not found; tbl_accounts → account_name | learned: XLOOKUP = Excel's JOIN (lookup value, lookup column, return column, if not found); text in formulas needs "double quotes"; text "1" ≠ number 1 in a lookup; XLOOKUP vs VLOOKUP (exact match by default, looks left, no column numbers) | confused: ___
+
+2026-11-04 | C (minimum, 23:37–00:05) | finished cleaning tbl_clean: 17 blanks → Uncategorised (type: ___ because ___), account_id → numbers | proof: 600 rows, 385323.67 = SQL | budget column → W6
