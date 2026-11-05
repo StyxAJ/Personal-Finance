@@ -126,3 +126,9 @@
 2026-11-04 | A (14:20–15:00, late) | XLOOKUP: tbl_categories (id, name, type) → type column in tbl_clean with "Not found" fallback → 548 expense / 35 income / 17 Not found; tbl_accounts → account_name | learned: XLOOKUP = Excel's JOIN (lookup value, lookup column, return column, if not found); text in formulas needs "double quotes"; text "1" ≠ number 1 in a lookup; XLOOKUP vs VLOOKUP (exact match by default, looks left, no column numbers) | confused: ___
 
 2026-11-04 | C (minimum, 23:37–00:05) | finished cleaning tbl_clean: 17 blanks → Uncategorised (type: ___ because ___), account_id → numbers | proof: 600 rows, 385323.67 = SQL | budget column → W6
+
+2026-11-05 | A (12:20–13:20) | SUMIFS/COUNTIFS/COUNTIF on tbl_clean → Analysis sheet, all 5 checks match (Groceries Mar 2087.99, 8 rows, 91 over 500, Credit Card 62066.54 = SQL, expense 179905.19) | learned: SUMIFS = SUM ... WHERE ... AND (sum range first, then range/condition pairs); dates need two conditions on one column (">=" start, "<" next start); join operator and value with & | gap: 3863.99 vs SQL = expense rows that lost their category in raw.csv (Uncategorised) | bug: used "<=" April 1 in #1, fixed to "<"
+
+2026-11-05 | B (19:45–20:40) | Stack class blank redo (structure right; missing return ×2, duplicate push, print instead of raise) + LC 155 Min Stack ✅ → dsa/week5/155_min_stack.py | learned: a single min variable forgets the old min when overwritten → keep a stack of mins; 0 is a real value, use float('inf') or None as "no value yet" | habits to fix: forgot return (None comes back), forgot () (gives the method, not its value), duplicate method name overwrites
+
+2026-11-05 | D (minimum, 22:32–22:57) | OOP 2: encapsulation, Transaction.amount as a property that rejects 0 (ValueError) → theory/oop_transaction.py | learned: ___ | confused: ___ | quiz skipped (minimum) → W11 review

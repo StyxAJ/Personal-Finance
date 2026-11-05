@@ -39,3 +39,5 @@ LC #724 Find Pivot Index | prefix sum | "equal sums on both sides of an index" �
 Stack (built) | stack = LIFO | top = end of list, so push/pop/peek are O(1) (nothing shifts); pop/peek on empty → raise IndexError; reuse is_empty() for the check | solved alone (paper step first)
 
 LC #20 Valid Parentheses | stack + dict | "brackets must close in the right ORDER" → push openers, on a closer check the top against dict[closer]; check empty before popping; valid only if the stack is empty at the end | counting fails on "([)]" | solved alone / needed hint
+
+LC #155 Min Stack | two stacks | "O(1) min after pops" → keep a 2nd stack of mins: push when value ≤ current min, pop when the leaving value == its top | one variable loses the old min when overwritten | level 1 (trace showed the bug; the idea was mine)
