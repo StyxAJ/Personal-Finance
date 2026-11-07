@@ -41,3 +41,7 @@ Stack (built) | stack = LIFO | top = end of list, so push/pop/peek are O(1) (not
 LC #20 Valid Parentheses | stack + dict | "brackets must close in the right ORDER" → push openers, on a closer check the top against dict[closer]; check empty before popping; valid only if the stack is empty at the end | counting fails on "([)]" | solved alone / needed hint
 
 LC #155 Min Stack | two stacks | "O(1) min after pops" → keep a 2nd stack of mins: push when value ≤ current min, pop when the leaving value == its top | one variable loses the old min when overwritten | level 1 (trace showed the bug; the idea was mine)
+
+LC #1 Two Sum redo | hash map value → index | check (target − n) in seen FIRST, then store n → one pass O(n), [3,3] works | redo from blank: level 0 ✅ (was ⭕ since W3)
+
+LC #155 Min Stack redo | two stacks | push to min stack when value ≤ its top, pop it when the leaving value == its top; helpers take the stack as a parameter | redo from blank: level 0 ✅ (~15 min); runtime % is noise, Big-O is the measure
