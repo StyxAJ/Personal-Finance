@@ -45,3 +45,5 @@ LC #155 Min Stack | two stacks | "O(1) min after pops" → keep a 2nd stack of m
 LC #1 Two Sum redo | hash map value → index | check (target − n) in seen FIRST, then store n → one pass O(n), [3,3] works | redo from blank: level 0 ✅ (was ⭕ since W3)
 
 LC #155 Min Stack redo | two stacks | push to min stack when value ≤ its top, pop it when the leaving value == its top; helpers take the stack as a parameter | redo from blank: level 0 ✅ (~15 min); runtime % is noise, Big-O is the measure
+
+Linked list (built) | head + Node(value, next) | prepend O(1): new.next = head THEN head = new (never drop the only pointer); append O(n): walk until current.next is None; visit all: until current is None | opposite of a Python list (insert(0) O(n), append O(1)) | used a site for syntax

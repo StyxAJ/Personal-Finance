@@ -138,3 +138,5 @@
 2026-11-07 | B (19:15–20:05) | blank redos: LC 1 Two Sum (dict, check before store) ✅ ~15 min, off ⭕ since W3; LC 155 Min Stack ✅ ~15 min, cleaner than Thursday (generic _peek/_is_empty, every return and () right) | learned: LeetCode runtime % is noise, judge by Big-O
 
 2026-11-09 | A (14:45–15:20, after micro1 interview) | review: D1 ✓, X8 ✓, A3 partly | PivotTables → Pivot sheet: spend by category (type = expense only) = 179905.19 = SUMIFS; months × type grouped by Years + Months, income 201529.27 | learned: a pivot filter can silently include 2 items ("Multiple Items"); group by Months AND Years or months from different years merge and sort Jan-first | interview: lost on API key questions → primer today, properly in W8
+
+2026-11-09 | B (19:45–21:15, ran over) | Stack blank redo + linked list → dsa/week6/linked_list.py (Node, append, prepend, to_list, length) | learned: head is a pointer, not a node; last node → None; prepend order matters (save the old head first or lose the list); stop ON the last node vs walk PAST it | used a syntax site; paper drawing missed None and head-as-pointer
