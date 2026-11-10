@@ -140,3 +140,6 @@
 2026-11-09 | A (14:45–15:20, after micro1 interview) | review: D1 ✓, X8 ✓, A3 partly | PivotTables → Pivot sheet: spend by category (type = expense only) = 179905.19 = SUMIFS; months × type grouped by Years + Months, income 201529.27 | learned: a pivot filter can silently include 2 items ("Multiple Items"); group by Months AND Years or months from different years merge and sort Jan-first | interview: lost on API key questions → primer today, properly in W8
 
 2026-11-09 | B (19:45–21:15, ran over) | Stack blank redo + linked list → dsa/week6/linked_list.py (Node, append, prepend, to_list, length) | learned: head is a pointer, not a node; last node → None; prepend order matters (save the old head first or lose the list); stop ON the last node vs walk PAST it | used a syntax site; paper drawing missed None and head-as-pointer
+
+2026-11-09 | C (minimum, 21:20–21:45) | Analysis sheet: pivot of month × category (expense), grand total 179905.19 matches SUMIFS and Pivot 1
+
