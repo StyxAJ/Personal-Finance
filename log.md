@@ -132,3 +132,14 @@
 2026-11-05 | B (19:45–20:40) | Stack class blank redo (structure right; missing return ×2, duplicate push, print instead of raise) + LC 155 Min Stack ✅ → dsa/week5/155_min_stack.py | learned: a single min variable forgets the old min when overwritten → keep a stack of mins; 0 is a real value, use float('inf') or None as "no value yet" | habits to fix: forgot return (None comes back), forgot () (gives the method, not its value), duplicate method name overwrites
 
 2026-11-05 | D (minimum, 22:32–22:57) | OOP 2: encapsulation, Transaction.amount as a property that rejects 0 (ValueError) → theory/oop_transaction.py | learned: ___ | confused: ___ | quiz skipped (minimum) → W11 review
+
+2026-11-07 | A (revision quiz, 16:11–17:10) | 15 closed-book questions from review-bank: 3 ✓ (S13, A11, P1), 9 partly, 3 ✗ (D1 ACID, S11 safe DELETE, X5 DATEVALUE) | learned: partly = core idea right, missing the example/formula/term; topics touched once and never again fade first | function moved to Sunday, so Saturday ran as revision
+
+2026-11-07 | B (19:15–20:05) | blank redos: LC 1 Two Sum (dict, check before store) ✅ ~15 min, off ⭕ since W3; LC 155 Min Stack ✅ ~15 min, cleaner than Thursday (generic _peek/_is_empty, every return and () right) | learned: LeetCode runtime % is noise, judge by Big-O
+
+2026-11-09 | A (14:45–15:20, after micro1 interview) | review: D1 ✓, X8 ✓, A3 partly | PivotTables → Pivot sheet: spend by category (type = expense only) = 179905.19 = SUMIFS; months × type grouped by Years + Months, income 201529.27 | learned: a pivot filter can silently include 2 items ("Multiple Items"); group by Months AND Years or months from different years merge and sort Jan-first | interview: lost on API key questions → primer today, properly in W8
+
+2026-11-09 | B (19:45–21:15, ran over) | Stack blank redo + linked list → dsa/week6/linked_list.py (Node, append, prepend, to_list, length) | learned: head is a pointer, not a node; last node → None; prepend order matters (save the old head first or lose the list); stop ON the last node vs walk PAST it | used a syntax site; paper drawing missed None and head-as-pointer
+
+2026-11-09 | C (minimum, 21:20–21:45) | Analysis sheet: pivot of month × category (expense), grand total 179905.19 matches SUMIFS and Pivot 1
+
