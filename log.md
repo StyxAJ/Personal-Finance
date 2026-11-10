@@ -29,21 +29,21 @@
 
 2026-10-12 | 16:00 DSA | LC 344 Reverse String | first used s.reverse(), then solved it with two pointers | learned: in-place = change the list you were given; s = s[::-1] only makes a new list | confused: two pointer logic (needed hint)
 
-2026-10-12 | 20:00 Build | generate_data.py → clean.csv (600 rows) + raw.csv (618) | learned: ... | confused: ...
+2026-10-12 | 20:00 Build | generate_data.py → clean.csv (600 rows) + raw.csv (618) 
 
 2026-10-13 | 10:00 SQL | sql/w2_where.sql, 8 WHERE queries on 600 rows (PG docs: Querying a Table, IN, comparison operators, LIKE) | learned: AND runs before OR so brackets matter (160 vs 104), IN = shorter OR, BETWEEN includes both ends, LIKE is case-sensitive but ILIKE isn't, % = any chars and _ = one char, = NULL never matches so use IS NULL | confused: single vs double quotes ('Groceries' is a value, "Groceries" is a column name)
 
 2026-10-13 | 16:00 DSA | LC 125 Valid Palindrome, two versions (if/elif + continue, then inner while loops) | learned: order of checks matters (skip non-alnum BEFORE comparing), inner loops need their own i < j guard or they run off the end (".," → IndexError), isalnum() covers spaces and punctuation, LeetCode ms is noise; judge by Big-O (both O(n) time, O(1) space) | confused: compared before skipping at first, so Panama failed; needed hint on check order
 
-2026-10-13 | 20:00 DBMS | theory/dbms-03-normalisation.md (Wikipedia: Database normalization) + NotebookLM quiz | learned: 3 anomalies (update = same fact repeated in many rows, insert = can't add a category with no transactions, delete = losing the last row loses the category), 1NF = one value per field (no "food, weekend" lists), 2NF = no column depends on only part of a composite key (category_name depends only on category_id, not on (category_id, month)) | quiz: _/10, ✗ on: ___ | confused: ___
+2026-10-13 | 20:00 DBMS | theory/dbms-03-normalisation.md (Wikipedia: Database normalization) + NotebookLM quiz | learned: 3 anomalies (update = same fact repeated in many rows, insert = can't add a category with no transactions, delete = losing the last row loses the category), 1NF = one value per field (no "food, weekend" lists), 2NF = no column depends on only part of a composite key (category_name depends only on category_id, not on (category_id, month)) | quiz: not recorded
 
-2026-10-14 | 10:00 SQL | sql/w2_order_case.sql (8 queries) + sql/w2_wed_practice.sql (PG docs: Querying a Table, LIMIT and OFFSET, CASE) | learned: ORDER BY defaults to ascending (DESC for newest/largest), two-column ORDER BY sorts ties by the 2nd column, LIMIT/OFFSET = take N / skip N, DISTINCT removes duplicate rows across ALL selected columns, CASE = if/elif/else per row that makes a new column (first WHEN that matches wins, no ELSE gives NULL) | gotcha: LIMIT with ties is random → add a tie-breaker like id; 16 account-category pairs, not 20, because all monthly rows went to account 1 | confused: ___
+2026-10-14 | 10:00 SQL | sql/w2_order_case.sql (8 queries) + sql/w2_wed_practice.sql (PG docs: Querying a Table, LIMIT and OFFSET, CASE) | learned: ORDER BY defaults to ascending (DESC for newest/largest), two-column ORDER BY sorts ties by the 2nd column, LIMIT/OFFSET = take N / skip N, DISTINCT removes duplicate rows across ALL selected columns, CASE = if/elif/else per row that makes a new column (first WHEN that matches wins, no ELSE gives NULL) | gotcha: LIMIT with ties is random → add a tie-breaker like id; 16 account-category pairs, not 20, because all monthly rows went to account 1
 
 2026-10-14 | 16:00 DSA | LC 26 Remove Duplicates from Sorted Array | learned: same-direction two pointers (slow write + fast read) instead of opposite ends, k is a COUNT not a new list (in-place again), sorted array → duplicates sit next to each other so compare neighbours, write = index of last unique → return write + 1 | confused: mixed two methods (compare with nums[write] vs nums[i+1]) and lost values; started i at 1 so pair (0,1) was never checked → [1,2] failed; fixed by tracing [1,2] and [1,2,3] on paper
 
 2026-10-14 | 20:00 Build | missed (busy); skipped per "don't double up" rule, 15-question file dropped
 
-2026-10-15 | 10:00 SQL | sql/w2_aggregates.sql (8 queries) + sql/w2_thu_practice.sql (PG: Aggregate Functions) | learned: COUNT/SUM/AVG/MAX/MIN collapse many rows into one, GROUP BY makes one row per group, HAVING filters groups (sum/count/avg) while WHERE filters rows before grouping, both in one query = WHERE category 5–10 + HAVING avg > 200, ROUND(AVG(x), 2) for clean averages, GROUP BY doesn't sort → add ORDER BY | finding: Interest totals only ~464 AED/year so it drops out of HAVING sum > 2000 | confused: ___
+2026-10-15 | 10:00 SQL | sql/w2_aggregates.sql (8 queries) + sql/w2_thu_practice.sql (PG: Aggregate Functions) | learned: COUNT/SUM/AVG/MAX/MIN collapse many rows into one, GROUP BY makes one row per group, HAVING filters groups (sum/count/avg) while WHERE filters rows before grouping, both in one query = WHERE category 5–10 + HAVING avg > 200, ROUND(AVG(x), 2) for clean averages, GROUP BY doesn't sort → add ORDER BY | finding: Interest totals only ~464 AED/year so it drops out of HAVING sum > 2000
 
 
 2026-10-15 | 16:00 DSA (done 22:30, minimum day) | LC 977 Squares of a Sorted Array | learned: squaring a sorted list with negatives puts the biggest values at both ends, so fill the result from the back instead of sorting (O(n) vs O(n log n)), left <= right because the last middle element still needs a slot | confused: first tried a swap-based sort (never incremented i, read past the end with i+1); needed the "biggest at the ends" hint
@@ -78,7 +78,7 @@
 
 2026-10-22 | 16:00 DSA (done 20:14) | LC 383 Ransom Note | learned: dict as a counter, .get(ch, 0) avoids KeyError for unseen keys, count what you HAVE first then spend it on what you NEED, return False the moment a count hits 0 | needed help
 
-2026-10-22 | 20:00 DBMS | theory/dbms-04-acid.md (Wikipedia: ACID, PG: Transactions) + NotebookLM quiz | learned: Atomicity = all-or-nothing (a 500 AED transfer can't half-happen), Consistency = only valid states (constraints still hold), Isolation = unfinished changes are invisible to others, Durability = once committed, it survives a crash; BEGIN/COMMIT/ROLLBACK group steps into one transaction | quiz: 7/10, ✗ on: ___ | note: moved here from Tue; isolation levels → W4 Thu
+2026-10-22 | 20:00 DBMS | theory/dbms-04-acid.md (Wikipedia: ACID, PG: Transactions) + NotebookLM quiz | learned: Atomicity = all-or-nothing (a 500 AED transfer can't half-happen), Consistency = only valid states (constraints still hold), Isolation = unfinished changes are invisible to others, Durability = once committed, it survives a crash; BEGIN/COMMIT/ROLLBACK group steps into one transaction | quiz: 7/10 | note: moved here from Tue; isolation levels → W4 Thu
 
 2026-10-24 | 10:00 SQL (done 20:00–20:57) | sql/practice/w3_left_join.sql (4) + sql/practice/w3_selftest.sql | learned: LEFT JOIN keeps every left row (NULLs where no match), COUNT(t.id) not COUNT(*) for zero counts, filter the right table in ON not WHERE (WHERE drops the NULL rows), COALESCE(x, 0) turns NULL into 0, test data inside BEGIN … ROLLBACK | self-test: 3/4 (Q3 not counted: used AI; redid it from memory after) | note: INNER JOIN matches any ON condition, not only PK/FK
 
@@ -116,30 +116,35 @@
 
 2026-11-02 | C (late shift 22:45–23:40) | Clean sheet: tbl_raw pasted as values → tbl_clean, PROPER(TRIM()) 103 spellings → 10 categories + 17 blanks, Remove Duplicates 618 → 600 | confused: pasted the formula instead of values over category → circular reference, fixed Tue morning
 
-2026-11-03 | A (15:15–16:12, late) | Excel: fixed Monday's circular reference (paste values on B2:B601); amount → numbers in place (___), sum 385323.67 = SQL; txn_date → real dates in place (___), all 22 DD/MM correct, Groceries Mar 2026 = 2087.99 = SQL | learned: select inside a table with Ctrl+Space or the Name Box, not the sheet column; DATEVALUE would misread DD/MM on a US-format PC | confused: didn't write SUBSTITUTE/VALUE or DATE formulas yet → practise in Saturday self-test
+2026-11-03 | A (15:15–16:12, late) | Excel: fixed Monday's circular reference (paste values on B2:B601); amount → numbers in place, sum 385323.67 = SQL; txn_date → real dates in place, all 22 DD/MM correct, Groceries Mar 2026 = 2087.99 = SQL | learned: select inside a table with Ctrl+Space or the Name Box, not the sheet column; DATEVALUE would misread DD/MM on a US-format PC | confused: didn't write SUBSTITUTE/VALUE or DATE formulas yet → practise in Saturday self-test
 
 
 2026-11-03 | B (late shift 21:20–22:15) | LC 20 Valid Parentheses ✅ → dsa/week5/20_valid_parentheses.py | learned: counting checks HOW MANY brackets, a stack checks the ORDER (most recent open bracket must close first = LIFO); dict maps closer → opener; check empty before pop; leftover openers = invalid | confused: started with counters, then popped without checking the match
 
-2026-11-03 | D (late shift, full, 22:22–23:17) | OOP 1: Transaction class → theory/oop_transaction.py, notes → theory/oop-01.md | learned: ___ | confused: Python tutorial alone is too terse → added Real Python OOP to the notebook, Python Tutor to visualise objects | quiz → Thu D
+2026-11-03 | D (late shift, full, 22:22–23:17) | OOP 1: Transaction class → theory/oop_transaction.py, notes → theory/oop-01.md | learned: class = blueprint, object = one instance with its own data, __init__ sets that data, self = the object the method was called on | confused: Python tutorial alone is too terse → added Real Python OOP to the notebook, Python Tutor to visualise objects | quiz → Thu D
 
-2026-11-04 | A (14:20–15:00, late) | XLOOKUP: tbl_categories (id, name, type) → type column in tbl_clean with "Not found" fallback → 548 expense / 35 income / 17 Not found; tbl_accounts → account_name | learned: XLOOKUP = Excel's JOIN (lookup value, lookup column, return column, if not found); text in formulas needs "double quotes"; text "1" ≠ number 1 in a lookup; XLOOKUP vs VLOOKUP (exact match by default, looks left, no column numbers) | confused: ___
+2026-11-04 | A (14:20–15:00, late) | XLOOKUP: tbl_categories (id, name, type) → type column in tbl_clean with "Not found" fallback → 548 expense / 35 income / 17 Not found; tbl_accounts → account_name | learned: XLOOKUP = Excel's JOIN (lookup value, lookup column, return column, if not found); text in formulas needs "double quotes"; text "1" ≠ number 1 in a lookup; XLOOKUP vs VLOOKUP (exact match by default, looks left, no column numbers) | confused: left out the 4th argument (#N/A on 17 blanks), then wrote Not found without quotes
 
-2026-11-04 | C (minimum, 23:37–00:05) | finished cleaning tbl_clean: 17 blanks → Uncategorised (type: ___ because ___), account_id → numbers | proof: 600 rows, 385323.67 = SQL | budget column → W6
+2026-11-04 | B (16:20–17:20) | LC 20 blank redo, Design B (opener → closer, push the expected closer) | learned: logic ≠ syntax, so translate English steps into Python with a vocabulary table; a dict only looks up key → value fast, so key it by what you're holding; "in stack" ≠ "on top" | blank redo needed level 3 (vocabulary table) | LC 232 → W13
+
+2026-11-04 | C (minimum, 23:37–00:05) | finished cleaning tbl_clean: 17 blanks → Uncategorised (type: Extra expense, because the real type of a blank category is unknown), account_id → numbers | proof: 600 rows, 385323.67 = SQL | budget column → W6
 
 2026-11-05 | A (12:20–13:20) | SUMIFS/COUNTIFS/COUNTIF on tbl_clean → Analysis sheet, all 5 checks match (Groceries Mar 2087.99, 8 rows, 91 over 500, Credit Card 62066.54 = SQL, expense 179905.19) | learned: SUMIFS = SUM ... WHERE ... AND (sum range first, then range/condition pairs); dates need two conditions on one column (">=" start, "<" next start); join operator and value with & | gap: 3863.99 vs SQL = expense rows that lost their category in raw.csv (Uncategorised) | bug: used "<=" April 1 in #1, fixed to "<"
 
 2026-11-05 | B (19:45–20:40) | Stack class blank redo (structure right; missing return ×2, duplicate push, print instead of raise) + LC 155 Min Stack ✅ → dsa/week5/155_min_stack.py | learned: a single min variable forgets the old min when overwritten → keep a stack of mins; 0 is a real value, use float('inf') or None as "no value yet" | habits to fix: forgot return (None comes back), forgot () (gives the method, not its value), duplicate method name overwrites
 
-2026-11-05 | D (minimum, 22:32–22:57) | OOP 2: encapsulation, Transaction.amount as a property that rejects 0 (ValueError) → theory/oop_transaction.py | learned: ___ | confused: ___ | quiz skipped (minimum) → W11 review
+2026-11-05 | D (minimum, 22:32–22:57) | OOP 2: encapsulation, Transaction.amount as a property that rejects 0 (ValueError) → theory/oop_transaction.py | quiz skipped (minimum) → W11 review
+
+2026-11-06 | all sessions | missed (out all day) → LC 682 → W13, month × category grid covered by the W6 pivots
 
 2026-11-07 | A (revision quiz, 16:11–17:10) | 15 closed-book questions from review-bank: 3 ✓ (S13, A11, P1), 9 partly, 3 ✗ (D1 ACID, S11 safe DELETE, X5 DATEVALUE) | learned: partly = core idea right, missing the example/formula/term; topics touched once and never again fade first | function moved to Sunday, so Saturday ran as revision
 
 2026-11-07 | B (19:15–20:05) | blank redos: LC 1 Two Sum (dict, check before store) ✅ ~15 min, off ⭕ since W3; LC 155 Min Stack ✅ ~15 min, cleaner than Thursday (generic _peek/_is_empty, every return and () right) | learned: LeetCode runtime % is noise, judge by Big-O
+
+2026-11-07 | S (Excel self-test, 20:10–20:35) | excel/w5_selftest.xlsx: 4/5 own work (XLOOKUP 548/35/17, Utilities Feb 2026 4990.51, over 500 = 91, 600 rows / 385323.67 = SQL) | Task 1 cleaning done by the Claude Excel add-in → scored 0; cleaning → review Box 1, retry in the W6 Sat self-test | learned: what I never typed myself I can't recall
 
 2026-11-09 | A (14:45–15:20, after micro1 interview) | review: D1 ✓, X8 ✓, A3 partly | PivotTables → Pivot sheet: spend by category (type = expense only) = 179905.19 = SUMIFS; months × type grouped by Years + Months, income 201529.27 | learned: a pivot filter can silently include 2 items ("Multiple Items"); group by Months AND Years or months from different years merge and sort Jan-first | interview: lost on API key questions → primer today, properly in W8
 
 2026-11-09 | B (19:45–21:15, ran over) | Stack blank redo + linked list → dsa/week6/linked_list.py (Node, append, prepend, to_list, length) | learned: head is a pointer, not a node; last node → None; prepend order matters (save the old head first or lose the list); stop ON the last node vs walk PAST it | used a syntax site; paper drawing missed None and head-as-pointer
 
 2026-11-09 | C (minimum, 21:20–21:45) | Analysis sheet: pivot of month × category (expense), grand total 179905.19 matches SUMIFS and Pivot 1
-
