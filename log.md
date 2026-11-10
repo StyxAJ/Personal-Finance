@@ -148,3 +148,5 @@
 2026-11-09 | B (19:45–21:15, ran over) | Stack blank redo + linked list → dsa/week6/linked_list.py (Node, append, prepend, to_list, length) | learned: head is a pointer, not a node; last node → None; prepend order matters (save the old head first or lose the list); stop ON the last node vs walk PAST it | used a syntax site; paper drawing missed None and head-as-pointer
 
 2026-11-09 | C (minimum, 21:20–21:45) | Analysis sheet: pivot of month × category (expense), grand total 179905.19 matches SUMIFS and Pivot 1
+
+2026-11-10 | A (10:55–11:40) | review: linked list ✓, S10 ✓, S15 ✓ (range beats EXTRACT: index-friendly) | pivots: % of Grand Total (Rent 33.35%, Utilities 20.16%), amount bands 0–1000 by 100 (count 600; most = ___ because ___; >1000 = ___), slicer on account type (Credit Card 62066.54 = SUMIFS, no income column because salary goes to Main Checking)
