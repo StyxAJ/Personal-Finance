@@ -1,5 +1,12 @@
 # OOP 01 — Classes and Objects
 
+## TL;DR
+- Class = blueprint, object = one thing built from it.
+- `__init__` sets up a new object's attributes.
+- `self` = the current object. Python passes it automatically.
+- Each object has its own data. Changing one doesn't change the others.
+- Classes keep data and the code that uses it in one place.
+
 Sources: [Python docs: Classes (tutorial 9.3)](https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes)
 
 ## What is it?
@@ -44,10 +51,3 @@ groceries.amount = -300.00
 **Q:** What is `self` in Python, and why do methods need it?
 
 **A:** `self` is the specific object a method is being called on. One class can have many objects, and the method's code is shared between all of them, so it needs to know *which* object's data to use. When I write `groceries.describe()`, Python turns it into `Transaction.describe(groceries)`, so inside the method `self` is `groceries` and `self.amount` is groceries' amount. In `__init__`, `self.amount = amount` is what attaches the value to that one object. Without `self`, `amount` would just be a local variable that disappears when the method ends.
-
-## Key takeaways
-- Class = blueprint, object = one thing built from it.
-- `__init__` sets up a new object's attributes.
-- `self` = the current object. Python passes it automatically.
-- Each object has its own data. Changing one doesn't change the others.
-- Classes keep data and the code that uses it in one place.

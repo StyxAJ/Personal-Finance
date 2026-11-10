@@ -1,5 +1,11 @@
 # DBMS 02 — Keys
 
+## TL;DR
+- Relation/tuple/attribute = table/row/column.
+- Superkey = unique. Candidate key = minimal unique. PK = the chosen candidate key.
+- FK = a pointer to another table's key, enforced by the DB (referential integrity).
+- A key is a rule about all possible data, not just the data you have now.
+
 Sources:
 - [Wikipedia — Relational model](https://en.wikipedia.org/wiki/Relational_model)
 - [PostgreSQL Tutorial 3.3 — Foreign Keys](https://www.postgresql.org/docs/current/tutorial-fk.html)
@@ -72,9 +78,3 @@ INSERT INTO weather VALUES ('Berkeley', 45, 53, 0.0, '1994-11-28');
 - If all constraints are true, the database is **consistent**.
 - The DBMS **rejects** any change that would break a constraint.
 - **Functional dependency** `X → Y`: the value of X determines the value of Y (related idea, used later in normalization).
-
-## Key takeaways
-- Relation/tuple/attribute = table/row/column.
-- Superkey = unique. Candidate key = minimal unique. PK = the chosen candidate key.
-- FK = a pointer to another table's key, enforced by the DB (referential integrity).
-- A key is a rule about all possible data, not just the data you have now.
