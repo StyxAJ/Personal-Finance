@@ -1,5 +1,13 @@
 # DBMS 03 — Normalisation
 
+## TL;DR
+- Normalisation = store each fact once, by splitting tables and linking them with keys.
+- Repeated data → insertion, update and deletion anomalies.
+- 1NF: one value per cell, no lists, no repeating column groups.
+- 2NF: 1NF + no column depends on only part of a composite key.
+- 3NF: 2NF + no non-key column depends on another non-key column (no transitive dependency).
+- Higher normal forms include the lower ones (3NF ⇒ 2NF ⇒ 1NF).
+
 Source: [Wikipedia — Database normalization](https://en.wikipedia.org/wiki/Database_normalization)
 
 ## What is it?
@@ -96,11 +104,3 @@ budgets(category_id, month, limit_amount, category_name)   -- key = (category_id
 **Q:** What problems does normalisation solve, and how do 1NF and 2NF differ?
 
 **A:** It removes duplicated data, which causes insertion, update and deletion anomalies. 1NF means every cell holds a single atomic value (no lists or repeating columns). 2NF builds on 1NF and says every non-key column must depend on the whole composite key, not just part of it. Fixing either one usually means splitting the table and linking the parts with keys.
-
-## Key takeaways
-- Normalisation = store each fact once, by splitting tables and linking them with keys.
-- Repeated data → insertion, update and deletion anomalies.
-- 1NF: one value per cell, no lists, no repeating column groups.
-- 2NF: 1NF + no column depends on only part of a composite key.
-- 3NF: 2NF + no non-key column depends on another non-key column (no transitive dependency).
-- Higher normal forms include the lower ones (3NF ⇒ 2NF ⇒ 1NF).
