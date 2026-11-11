@@ -39,8 +39,10 @@ Amounts are always positive. Whether money comes in or goes out is decided by th
 | `data/generate_data.py` | Generates `clean.csv` (600 rows) and a deliberately messy `raw.csv` |
 | `data/make_big.py` | Generates `big.csv` (200,000 rows, not committed) for the index benchmark |
 | `excel/finance_analysis.xlsx` | Cleaning, lookups, SUMIFS analysis and PivotTables |
-| `dsa/` | LeetCode solutions by week, plus `patterns.md` |
+| `dsa/` | LeetCode solutions by week, plus `dsa/patterns.md` (every problem grouped by pattern) |
+| `notes/` | Study notes: SQL, Python syntax, Python data modules. Index of every note: `notes/README.md` |
 | `theory/` | Notes on DBMS, OOP and API keys |
+| `log.md` | Daily study log, grouped by week |
 
 ## How to run
 ```

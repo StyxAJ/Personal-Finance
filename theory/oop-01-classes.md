@@ -1,5 +1,12 @@
 # OOP 01 — Classes and Objects
 
+## TL;DR
+- Class = blueprint, object = one thing built from it.
+- `__init__` sets up a new object's attributes.
+- `self` = the current object. Python passes it automatically.
+- Each object has its own data. Changing one doesn't change the others.
+- Classes keep data and the code that uses it in one place.
+
 Sources: [Python docs: Classes (tutorial 9.3)](https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes)
 
 ## What is it?

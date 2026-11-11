@@ -1,5 +1,11 @@
 # DBMS 01 — Basics
 
+## TL;DR
+- Relation = table.
+- Same columns in every row, each column typed.
+- Never rely on row order without `ORDER BY`.
+- Cluster ⊃ Database ⊃ Table ⊃ Row.
+
 Source: [PostgreSQL Tutorial 2.2 — Concepts](https://www.postgresql.org/docs/current/tutorial-concepts.html)
 
 ## RDBMS
@@ -29,9 +35,3 @@ Cluster (one server instance)
       └── Table
            └── Row  →  Columns (each with a data type)
 ```
-
-## Key takeaways
-- Relation = table.
-- Same columns in every row, each column typed.
-- Never rely on row order without `ORDER BY`.
-- Cluster ⊃ Database ⊃ Table ⊃ Row.

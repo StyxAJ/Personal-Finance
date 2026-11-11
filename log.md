@@ -1,3 +1,5 @@
+## Week 1 (2026-10-06 – 2026-10-10)
+
 2026-10-06 | 10:00 SQL | SQLBolt 1-4 (on site) | WHERE filters rows, DISTINCT removes duplicate, ORDER BY sorts them, LIMIT reduced the number of rows, OFFSET moves the counts starting point | confused: LIKE vs = 
 
 2026-10-06 | 16:00 DSA | Big-O in big_o.py | time complexity: constant O(c), linear O(n), Quadratic > nested loop = O(n²) | confused: why O(Yn) if Y is a constant then why do we ignore constant in linear time complex
@@ -24,6 +26,8 @@
 2026-10-10 | 16:00 Leetcode | LC 1929 Concatenation of Array | returned nums + nums, list concatenation builds the new array in one step | time complexity is linear O(n) since every element gets copied
 
 2026-10-10 | 20:00 DBMS | sql/seed.sql | inserted 10 categories, 2 accounts and 20 transactions by hand, then ran it | proof: SELECT * FROM transactions; returns 20 rows
+
+## Week 2 (2026-10-12 – 2026-10-17)
 
 2026-10-12 | 10:00 Python data | data/Notes.md + data/practice_a.py (Python docs) | datetime (date, timedelta, date arithmetic, strftime/strptime), random (seed, randint vs randrange, uniform/expovariate, choices with weights), csv (writer, DictWriter, newline='') | wrote data_eggs.csv with csv.writer using a custom delimiter and quotechar | confused: date() wants 3 ints, not a string
 
@@ -62,6 +66,8 @@
 
 2026-10-17 | 20:00 Wrap-up (done 16:48) | README written (Week 1 + 2), LC 125 redo from blank file, Week 3 read, merged via PR | week 2: 15 of 18 sessions (missed Wed C, Fri B + C; Thu B/D minimum) | self-test 3/5 → Mon first 25 min = HAVING redo
 
+## Week 3 (2026-10-19 – 2026-10-24)
+
 2026-10-19 | 10:00 SQL | sql/w3_having_redo.sql (5) + sql/w3_joins_practice.sql (4) (PG: Aggregate Functions, Joins Between Tables) | redo: self-test Q3 now correct from blank, HAVING on SUM(CASE) expressions done | learned: INNER JOIN matches rows on a key (t.category_id = c.id) to show names instead of ids, chain joins for 3 tables, aliases (t, c, a) + table prefixes avoid "ambiguous column" errors, AS renames clashing columns (c.name AS category, a.name AS account), GROUP BY works on joined columns | gotcha: "over" means > not >=; missing ; merges two statements
 
 2026-10-19 | 16:00 DSA (done 20:20) | LC 217 Contains Duplicate, two versions (loop + set, and len(set) vs len(list)) (fCC: Hash Table & Set) | learned: a set stores unique values with O(1) lookup, so check-then-add in one loop is O(n); the same check on a list would be O(n²); the loop can stop early, the len() version can't | solved alone 
@@ -88,6 +94,8 @@
 
 2026-10-24 | 20:00 Wrap-up | README Week 3, patterns.md review, Week 4 read | week 3: 13 of 18 sessions (missed Tue all, Fri all; Wed C minimum; Sat done 20:00–23:00) | self-test 3/4 | ⭕ LC 1 → redo next Saturday
 
+## Week 4 (2026-10-26 – 2026-10-31)
+
 2026-10-26 | 10:00 SQL (done 17:45–20:43, late shift) | sql/practice/w4_constraints.sql (6 predict-then-test) (PG: Constraints) | learned: FK blocks unknown ids and blocks deleting a referenced parent (default NO ACTION), NOT NULL, CHECK (type IN …), each test in its own BEGIN/ROLLBACK because one error aborts the whole transaction | predictions 6/6 | gaps found: no CHECK (amount > 0), no UNIQUE on categories.name | gotcha: sequences don't roll back → id gaps (604, 605, 11, 12 burned)
 
 2026-10-26 | 16:00 DSA (done 20:45–21:20) | LC 121 Best Time to Buy and Sell Stock | learned: sliding window = L (buy) only jumps forward to a cheaper price, R (sell) scans every day, one pass O(n) | needed hint: i =+ 1 (not +=) looped forever, Tails didn't move in the else branch, i and Tails did the same job; skipped the paper trace again
@@ -109,6 +117,8 @@
 2026-10-29 | lab (late shift, minimum) | index lab: 200k rows, EXPLAIN ANALYZE before/after composite index → indexes.md | make_big.py (seed 42, 200,000 rows) → big.csv (gitignored) | before 30.421 ms (Parallel Seq Scan, ~197k rows removed by filter), after 1.208 ms (Bitmap Index Scan on idx_tb_cat_date) → ~25x | learned: equality column first, range column second in a composite index; use the 3rd run (cached) | confused: import generate_data runs the whole file (re-seeds, rewrites clean/raw.csv); append() takes one tuple, not 5 args; needed the CREATE TABLE/\copy code given
 
 2026-10-31 | all sessions | missed (course deadline ran over) → SQL self-test → W13 SQL final, README SQL/ERD + CV line → W5 Sat S, LC 1 + 724 → W5 Sat B, LC 121 → W13 | lesson: declare a minimum day in advance when a deadline eats two days
+
+## Week 5 (2026-11-02 – 2026-11-07)
 
 2026-11-02 | A (14:25–15:20) | Excel: Get Data → From Text/CSV, Power Query (Use First Row as Headers, removed Changed Type so mess stays as text), Tables (tbl_raw 618 rows, Total Row, tbl_categories) → excel/finance_analysis.xlsx | mess found: 17 blank categories, 44 "AED" amounts, 22 DD/MM dates, 18 duplicates | confused: headers came in as data; auto type detection would have hidden the mess
 
@@ -142,6 +152,8 @@
 2026-11-07 | B (19:15–20:05) | blank redos: LC 1 Two Sum (dict, check before store) ✅ ~15 min, off ⭕ since W3; LC 155 Min Stack ✅ ~15 min, cleaner than Thursday (generic _peek/_is_empty, every return and () right) | learned: LeetCode runtime % is noise, judge by Big-O
 
 2026-11-07 | S (Excel self-test, 20:10–20:35) | excel/w5_selftest.xlsx: 4/5 own work (XLOOKUP 548/35/17, Utilities Feb 2026 4990.51, over 500 = 91, 600 rows / 385323.67 = SQL) | Task 1 cleaning done by the Claude Excel add-in → scored 0; cleaning → review Box 1, retry in the W6 Sat self-test | learned: what I never typed myself I can't recall
+
+## Week 6 (2026-11-09 – 2026-11-14)
 
 2026-11-09 | A (14:45–15:20, after micro1 interview) | review: D1 ✓, X8 ✓, A3 partly | PivotTables → Pivot sheet: spend by category (type = expense only) = 179905.19 = SUMIFS; months × type grouped by Years + Months, income 201529.27 | learned: a pivot filter can silently include 2 items ("Multiple Items"); group by Months AND Years or months from different years merge and sort Jan-first | interview: lost on API key questions → primer today, properly in W8
 

@@ -1,5 +1,13 @@
 # DBMS 04 — ACID
 
+## TL;DR
+- Transaction = several steps treated as one all-or-nothing unit (`BEGIN` / `COMMIT` / `ROLLBACK`).
+- **A**tomicity: all or nothing.
+- **C**onsistency: valid state → valid state, rules always hold.
+- **I**solation: no one sees half-finished work.
+- **D**urability: committed = permanent, even after a crash.
+- In PG every statement on its own is already a transaction. `BEGIN` is needed to group several.
+
 Sources: [PG: Transactions (tutorial 3.4)](https://www.postgresql.org/docs/current/tutorial-transactions.html) · [Wikipedia — ACID](https://en.wikipedia.org/wiki/ACID)
 
 ## What is it?
@@ -49,11 +57,3 @@ What goes wrong **without** each letter:
 **Q:** What does ACID stand for, and why does a bank transfer need it?
 
 **A:** Atomicity, Consistency, Isolation, Durability. A transfer is two writes, a debit and a credit. Atomicity makes sure both happen or neither does, so money can't vanish or be created. Consistency makes sure all the database rules still hold afterwards. Isolation stops other queries from seeing the halfway state where the money has left one account but hasn't reached the other. Durability means that once the transfer is confirmed, a crash can't undo it. In SQL you get this by wrapping both updates in `BEGIN` … `COMMIT`.
-
-## Key takeaways
-- Transaction = several steps treated as one all-or-nothing unit (`BEGIN` / `COMMIT` / `ROLLBACK`).
-- **A**tomicity: all or nothing.
-- **C**onsistency: valid state → valid state, rules always hold.
-- **I**solation: no one sees half-finished work.
-- **D**urability: committed = permanent, even after a crash.
-- In PG every statement on its own is already a transaction. `BEGIN` is needed to group several.
