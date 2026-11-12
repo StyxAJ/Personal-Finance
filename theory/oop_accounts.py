@@ -16,7 +16,9 @@ class Account:
         self.transactions.append(-amount)
 
     def describe(self):
-        return f"{type(self).__name__:<15} | {self.owner:<6} | {self.balance:>10.2f} AED"
+        return (
+            f"{type(self).__name__:<15} | {self.owner:<6} | {self.balance:>10.2f} AED"
+        )
 
 
 class SavingsAccount(Account):  # a savings account IS an account
@@ -83,3 +85,12 @@ print("isinstance(my_savings, Account):", isinstance(my_savings, Account))
 print("isinstance(my_savings, CurrentAccount):", isinstance(my_savings, CurrentAccount))
 # current's history: +100 deposit, -1000 withdrawal (the refused savings withdrawal was never recorded)
 print("transactions:", my_current.transactions)
+
+print(isinstance(my_current, Account))  # True
+
+for acc in [my_savings, my_current]:
+    try:
+        acc.withdraw(800)
+        print(acc.describe())
+    except ValueError as e:
+        print(type(acc).__name__, "refused:", e)
