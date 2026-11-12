@@ -164,3 +164,5 @@
 2026-11-10 | A (10:55–11:40) | review: linked list ✓, S10 ✓, S15 ✓ (range beats EXTRACT: index-friendly) | pivots: % of Grand Total (Rent 33.35%, Utilities 20.16%), amount bands 0–1000 by 100 (count 600; most = ___ because ___; >1000 = ___), slicer on account type (Credit Card 62066.54 = SUMIFS, no income column because salary goes to Main Checking)
 
 2026-11-10 | B (19:55–21:00, extended) | linked list redo (from memory; IndentationError on class methods) + LC 206 Reverse Linked List ✅ 28/28 | idea mine: reverse = keep prepending onto a new list; needed the box-and-arrow trace for the flip column (current.next = prev every step, not None) | learned: save → flip → move prev → move current; order matters (flip before save loses the list); don't name a param `list`; LeetCode uses .val and returns the head
+
+2026-11-12 | minimum day (22:55–00:15) | A: PivotChart line of monthly expense (peak Nov 2025) | B: LC 141 Linked List Cycle ✅ (set of nodes, not values; idea mine) | D: Account tests (isinstance, polymorphic withdraw: savings refuses, current → −200) + TL;DR of the 4 pillars

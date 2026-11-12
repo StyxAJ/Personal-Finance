@@ -1,6 +1,12 @@
-# OOP 03 — Inheritance
+# OOP 03 — Inheritance and Polymorphism
 
 ## TL;DR
+- **Encapsulation:** `Account.withdraw()` checks for enough funds before it touches `balance`, so the rule lives inside the class, not in the code that calls it.
+- **Inheritance:** `SavingsAccount(Account)` gets `deposit()`, `withdraw()` and `describe()` from `Account` without writing them, and only adds `interest_rate` and `add_interest()`.
+- **Polymorphism:** the same call `acc.withdraw(800)` refuses on a `SavingsAccount` with 500 AED but succeeds on a `CurrentAccount` (overdraft), and the loop never checks which class it has.
+- **Abstraction:** calling `my_savings.add_interest()` is enough; the caller doesn't need to know it works out balance × rate and records the result through `deposit()`.
+
+## Key points
 - Inheritance = a child class gets everything from a parent class, then adds or changes things. `class SavingsAccount(Account):`
 - Test for whether it fits: **"is-a"**. A savings account *is an* account.
 - `super().__init__(...)` runs the parent's setup, so shared code isn't copied into every child. Forget it and the parent's attributes never get set.

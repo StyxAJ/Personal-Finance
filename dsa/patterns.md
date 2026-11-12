@@ -61,3 +61,5 @@ LC #155 Min Stack redo | two stacks | push to min stack when value ≤ its top, 
 Linked list (built) | head + Node(value, next) | prepend O(1): new.next = head THEN head = new (never drop the only pointer); append O(n): walk until current.next is None; visit all: until current is None | opposite of a Python list (insert(0) O(n), append O(1)) | used a site for syntax
 
 LC #206 Reverse Linked List | pointer reversal (prev / current / saved) | "reverse in place" → loop while current: saved = current.next, current.next = prev, prev = current, current = saved; return prev | each step peels one box off the front and prepends it to the reversed list | idea mine (prepend onto a new list), needed the trace for the flip column
+
+LC #141 Linked List Cycle | hash set of NODES | "does it loop back?" → walk; if current in seen → True; seen.add(current); reach None → False | store the node, not the value (values can repeat without a cycle); can't use length (no end in a cycle) | idea mine (level 1: node vs value) | O(1)-space slow/fast version → W13
