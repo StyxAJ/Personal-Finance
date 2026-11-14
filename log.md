@@ -166,3 +166,9 @@
 2026-11-10 | B (19:55–21:00, extended) | linked list redo (from memory; IndentationError on class methods) + LC 206 Reverse Linked List ✅ 28/28 | idea mine: reverse = keep prepending onto a new list; needed the box-and-arrow trace for the flip column (current.next = prev every step, not None) | learned: save → flip → move prev → move current; order matters (flip before save loses the list); don't name a param `list`; LeetCode uses .val and returns the head
 
 2026-11-12 | minimum day (22:55–00:15) | A: PivotChart line of monthly expense (peak Nov 2025) | B: LC 141 Linked List Cycle ✅ (set of nodes, not values; idea mine) | D: Account tests (isinstance, polymorphic withdraw: savings refuses, current → −200) + TL;DR of the 4 pillars
+
+2026-11-13 | all sessions | planned day off (graduation) → Dashboard → Sat S, Power Query cut (plan's first W6 cut), LC 876 → W13, ERD + CV line → W7 Sat S
+
+2026-11-14 | late shift (birthday, started 21:00) | ...
+
+2026-11-14 | A (self-test, 21:00–22:10) | w6_selftest.xlsx, own work: categories ✓, AED amounts ✓, all 22 DD/MM dates ✓ (converted via ___), XLOOKUP ✓, chart ✓ | missed: Remove Duplicates (618 rows, sum 391329.58 vs 385323.67 = 6005.91 of duplicates) and blanks → Uncategorised | lesson: always finish cleaning with the row count + sum check vs SQL
