@@ -63,3 +63,5 @@ Linked list (built) | head + Node(value, next) | prepend O(1): new.next = head T
 LC #206 Reverse Linked List | pointer reversal (prev / current / saved) | "reverse in place" → loop while current: saved = current.next, current.next = prev, prev = current, current = saved; return prev | each step peels one box off the front and prepends it to the reversed list | idea mine (prepend onto a new list), needed the trace for the flip column
 
 LC #141 Linked List Cycle | hash set of NODES | "does it loop back?" → walk; if current in seen → True; seen.add(current); reach None → False | store the node, not the value (values can repeat without a cycle); can't use length (no end in a cycle) | idea mine (level 1: node vs value) | O(1)-space slow/fast version → W13
+
+LC #21 Merge Two Sorted Lists | dummy node + tail pointer | "merge two sorted lists" → dummy = ListNode(); tail = dummy; while both: attach the smaller head to tail.next, advance that list, tail = tail.next; then tail.next = list1 or list2 (the leftover); return dummy.next | dummy avoids a special case for the first node | ___

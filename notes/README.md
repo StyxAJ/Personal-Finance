@@ -5,6 +5,7 @@ Every note in the repo, one line each.
 | Note | What's in it |
 |---|---|
 | [notes/sql.md](sql.md) | SQL syntax from SQLBolt and the PostgreSQL docs: SELECT, WHERE, JOINs, aggregates, subqueries, CTEs, window functions, dates, constraints |
+| [notes/excel.md](excel.md) | Excel from W5–W6: Power Query import, Tables, cleaning, XLOOKUP, SUMIFS, PivotTables, gotchas, Excel ↔ SQL |
 | [notes/python-vocab.md](python-vocab.md) | English → Python lookup tables for DSA: classes, lists, loops, two pointers, sets/dicts, stacks, linked lists, errors |
 | [notes/python-data.md](python-data.md) | The `datetime`, `random` and `csv` modules used by the data generator |
 | [theory/dbms-01-basics.md](../theory/dbms-01-basics.md) | What an RDBMS is; tables, rows, columns; cluster → database → table |
@@ -22,6 +23,7 @@ Every note in the repo, one line each.
 ## Where do I look for…?
 
 - **SQL syntax** → [notes/sql.md](sql.md) (start with its Quick lookup table)
+- **How to do something in Excel** → [notes/excel.md](excel.md) (start with its Quick lookup table)
 - **Python syntax** → [notes/python-vocab.md](python-vocab.md)
 - **A DSA pattern** → [dsa/patterns.md](../dsa/patterns.md)
 - **Theory** (DBMS, OOP, API keys) → [theory/](../theory/)
