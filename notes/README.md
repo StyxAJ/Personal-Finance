@@ -8,6 +8,7 @@ Every note in the repo, one line each.
 | [notes/excel.md](excel.md) | Excel from W5–W6: Power Query import, Tables, cleaning, XLOOKUP, SUMIFS, PivotTables, gotchas, Excel ↔ SQL |
 | [notes/python-vocab.md](python-vocab.md) | English → Python lookup tables for DSA: classes, lists, loops, two pointers, sets/dicts, stacks, linked lists, errors |
 | [notes/python-data.md](python-data.md) | The `datetime`, `random` and `csv` modules used by the data generator |
+| [notes/linux.md](linux.md) | The Linux command line (TLCL): navigation, files, redirection and pipes, permissions, processes, find, grep and regex, text processing on CSVs, bash scripting, gotchas, Linux ↔ SQL ↔ Excel |
 | [theory/dbms-01-basics.md](../theory/dbms-01-basics.md) | What an RDBMS is; tables, rows, columns; cluster → database → table |
 | [theory/dbms-02-keys.md](../theory/dbms-02-keys.md) | Superkey, candidate key, primary key, foreign key, referential integrity |
 | [theory/dbms-03-normalisation.md](../theory/dbms-03-normalisation.md) | Anomalies, 1NF/2NF/3NF, and a check of this project's schema |
@@ -25,6 +26,7 @@ Every note in the repo, one line each.
 - **SQL syntax** → [notes/sql.md](sql.md) (start with its Quick lookup table)
 - **How to do something in Excel** → [notes/excel.md](excel.md) (start with its Quick lookup table)
 - **Python syntax** → [notes/python-vocab.md](python-vocab.md)
+- **A terminal / bash command** → [notes/linux.md](linux.md) (start with its Quick lookup table)
 - **A DSA pattern** → [dsa/patterns.md](../dsa/patterns.md)
 - **Theory** (DBMS, OOP, API keys) → [theory/](../theory/)
 - **What I did on a day** → [log.md](../log.md)

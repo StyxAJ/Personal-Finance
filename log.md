@@ -172,3 +172,5 @@
 2026-11-14 | late shift (birthday, started 21:00) | ...
 
 2026-11-14 | A (self-test, 21:00–22:10) | w6_selftest.xlsx, own work: categories ✓, AED amounts ✓, all 22 DD/MM dates ✓ (converted via ___), XLOOKUP ✓, chart ✓ | missed: Remove Duplicates (618 rows, sum 391329.58 vs 385323.67 = 6005.91 of duplicates) and blanks → Uncategorised | lesson: always finish cleaning with the row count + sum check vs SQL
+
+2026-11-16 | A (09:40–10:35) | review: S2 ✗ (GROUP BY can't count rows that don't exist → LEFT JOIN from categories) | WSL Ubuntu: pwd, ls, cd ~ / cd -, mkdir -p, cp SRC DEST, mv (rename), rm, find WHERE -name "*.csv" | Bandit 0 → 3 reached: "-" = stdin so use ./- or a full path; spaces → quotes or full path; -- ends options | learned: CAPITALS in docs are placeholders; read the error, it usually says what's wrong
