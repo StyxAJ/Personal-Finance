@@ -178,3 +178,5 @@
 2026-11-16 | B (10:40–12:30) | recursion → dsa/week7/recursion.py: factorial, fibonacci, reverse_string, sum_list (recursive + iterative) | learned: base case + smaller call; "first + f(rest)" shape for lists and strings; fib iterative bug a = b; b = a + b overwrote a → a, b = b, a + b | habit: compare the printed output with the expected comment (16 ≠ 5 was on screen)
 
 2026-11-16 | C (evening) | Bandit 3 → 5: hidden file found with find (ls -a also works), file ./* to spot the one ASCII text file | reached bandit5
+
+2026-11-17 | A (11:40–13:15, with a break) | review: A9 partly (forgot right = total − left − x), X1 partly (args 2 and 3 fuzzy) | pipes + text tools on clean.csv: wc -l 601, 600 rows, per-category counts (7 = 109), grep Groceries 77, saved with > | fixed cut errors by reading them | the pipe = GROUP BY + COUNT + ORDER BY

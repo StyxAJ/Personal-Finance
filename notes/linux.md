@@ -12,7 +12,7 @@ Built from *The Linux Command Line* by William Shotts (TLCL, 25.12 edition, [lin
 
 ### Contents
 
-- ⭐ [Survival kit](#survival-kit)
+- ⭐ [Survival kit](#survival-kit) · [pipeline kit](#pipeline-kit)
 - [The shell](#the-shell) · [command anatomy](#anatomy-of-a-command) · [getting help](#getting-help)
 - [Navigation](#navigation) · [paths](#absolute-vs-relative-paths) · [the file system](#the-file-system-tree)
 - [Looking at files](#looking-at-files) · [ls](#ls) · [less](#less) · [file](#file)
@@ -78,6 +78,23 @@ find WHERE -name "*.csv"  search by name, in WHERE and everything below
 
 - Paths with spaces need "quotes": `cd "/d/VS Codes"`.
 - CAPITALS in docs = placeholders: swap `PATH`, `SRC`, `FILE` for real names.
+
+### Pipeline kit
+
+⭐ Counting and summarising a file (e.g. a CSV) from the terminal. Details in [pipes](#pipes), [sort / uniq](#sort-and-uniq), [cut](#cut-paste-join), [grep](#grep).
+
+```
+wc -l FILE                  count lines
+tail -n +2 FILE             print from line 2 (skip the header)
+head -n 5 FILE              first 5 lines
+cut -d, -f2                 split on commas, keep field 2
+sort | uniq -c | sort -rn   count each value, biggest first (= GROUP BY + COUNT + ORDER BY DESC)
+grep -c WORD FILE           count lines containing WORD
+CMD > FILE                  save output to a file (overwrites)   >> appends
+A | B                       pipe: A's output becomes B's input
+```
+
+- Put together: `tail -n +2 data/raw.csv | cut -d, -f2 | sort | uniq -c | sort -rn` = transactions per category, most first.
 
 ## The shell
 
