@@ -176,3 +176,5 @@
 2026-11-16 | A (09:40–10:35) | review: S2 ✗ (GROUP BY can't count rows that don't exist → LEFT JOIN from categories) | WSL Ubuntu: pwd, ls, cd ~ / cd -, mkdir -p, cp SRC DEST, mv (rename), rm, find WHERE -name "*.csv" | Bandit 0 → 3 reached: "-" = stdin so use ./- or a full path; spaces → quotes or full path; -- ends options | learned: CAPITALS in docs are placeholders; read the error, it usually says what's wrong
 
 2026-11-16 | B (10:40–12:30) | recursion → dsa/week7/recursion.py: factorial, fibonacci, reverse_string, sum_list (recursive + iterative) | learned: base case + smaller call; "first + f(rest)" shape for lists and strings; fib iterative bug a = b; b = a + b overwrote a → a, b = b, a + b | habit: compare the printed output with the expected comment (16 ≠ 5 was on screen)
+
+2026-11-16 | C (evening) | Bandit 3 → 5: hidden file found with find (ls -a also works), file ./* to spot the one ASCII text file | reached bandit5

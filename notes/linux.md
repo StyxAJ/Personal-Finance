@@ -237,6 +237,15 @@ Reading `ls -l`:
 
 `file name` says what a file *actually* is, regardless of extension: `file data/raw.csv` → `CSV text`. Linux doesn't care about extensions; `file` looks at the contents.
 
+```bash
+file NAME        # directory, ASCII text, data, …
+file ./*         # check every file here at once
+```
+
+- **Tip:** `file ./*` is the quick way to find the one human-readable file (`ASCII text`) among many binary ones (`data`).
+- **Gotcha:** use `./*`, not plain `*`. If a name starts with `-`, plain `*` expands to something like `-file00` and `file` reads it as an option. `./` makes every name a path.
+- **Note:** `*` skips hidden (`.`) files; `ls -a` / `ls -la` to see them.
+
 ## Manipulating files and directories
 
 ```bash
@@ -1153,5 +1162,7 @@ Wargame at [overthewire.org/wargames/bandit](https://overthewire.org/wargames/ba
 | 0 | `ssh user@host -p 2220`, then `ls`, `cat` |
 | 1 | file named `-` → `cat ./-` (lone `-` = stdin) |
 | 2 | spaces in the name → quotes or `\ `; `--` for names starting with `-` |
+| 3 | hidden file (name starts with `.`) → `ls -a` / `ls -la` |
+| 4 | find the only text file among many → `file ./*` |
 
 Also used: `pwd` and absolute paths.
