@@ -65,3 +65,9 @@ LC #206 Reverse Linked List | pointer reversal (prev / current / saved) | "rever
 LC #141 Linked List Cycle | hash set of NODES | "does it loop back?" → walk; if current in seen → True; seen.add(current); reach None → False | store the node, not the value (values can repeat without a cycle); can't use length (no end in a cycle) | idea mine (level 1: node vs value) | O(1)-space slow/fast version → W13
 
 LC #21 Merge Two Sorted Lists | dummy node + tail pointer | "merge two sorted lists" → dummy = ListNode(); tail = dummy; while both: attach the smaller head to tail.next, advance that list, tail = tail.next; then tail.next = list1 or list2 (the leftover); return dummy.next | dummy avoids a special case for the first node | ___
+
+## Recursion
+
+Recursion (built) | base case + smaller call | "solve n using the answer for n−1 or the rest of the list" → if base case: return answer; else return combine(first, f(rest)) | no base case → RecursionError | fib loop bug: a = b then b = a + b overwrites a → a, b = b, a + b
+
+LC #509 Fibonacci | recursion vs loop | recursive fib recomputes the same calls → ~O(2ⁿ); loop with a, b = b, a + b → O(n) time, O(1) space; memoise (dict) → O(n) = DP preview

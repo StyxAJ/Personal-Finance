@@ -12,7 +12,7 @@ Built from *The Linux Command Line* by William Shotts (TLCL, 25.12 edition, [lin
 
 ### Contents
 
-- ⭐ [Survival kit](#survival-kit) · [pipeline kit](#pipeline-kit)
+- ⭐ [Survival kit](#survival-kit) · [pipeline kit](#pipeline-kit) · [permissions and processes kit](#permissions-and-processes-kit)
 - [The shell](#the-shell) · [command anatomy](#anatomy-of-a-command) · [getting help](#getting-help)
 - [Navigation](#navigation) · [paths](#absolute-vs-relative-paths) · [the file system](#the-file-system-tree)
 - [Looking at files](#looking-at-files) · [ls](#ls) · [less](#less) · [file](#file)
@@ -95,6 +95,19 @@ A | B                       pipe: A's output becomes B's input
 ```
 
 - Put together: `tail -n +2 data/raw.csv | cut -d, -f2 | sort | uniq -c | sort -rn` = transactions per category, most first.
+
+### Permissions and processes kit
+
+⭐ Running files, background jobs and environment variables. Details in [Permissions](#permissions), [chmod](#chmod), [jobs](#jobs-background-and-foreground), [kill](#kill-and-signals), [The environment](#the-environment).
+
+```
+ls -l               long listing; first 10 chars = type + permissions
+-rwxr-xr-x          [type][you rwx][group r-x][others r-x]   r=read w=write x=run
+chmod +x FILE       make it runnable        ./FILE  run a file in this folder
+CMD &               run in the background → prints [job] PID
+ps                  list my running processes        kill PID / kill %JOB  stop one
+export NAME=value   set an environment variable       echo $NAME  read it
+```
 
 ## The shell
 

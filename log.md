@@ -165,13 +165,21 @@
 
 2026-11-10 | B (19:55–21:00, extended) | linked list redo (from memory; IndentationError on class methods) + LC 206 Reverse Linked List ✅ 28/28 | idea mine: reverse = keep prepending onto a new list; needed the box-and-arrow trace for the flip column (current.next = prev every step, not None) | learned: save → flip → move prev → move current; order matters (flip before save loses the list); don't name a param `list`; LeetCode uses .val and returns the head
 
+2026-11-10 | D (21:20) | OOP 3: read the inheritance explanation only; Account/Savings/Current classes written with autocomplete → finished in Thu D
+
+2026-11-11 | all sessions | missed (fell asleep after graduation-prep shopping) → LC 21 → Sat B, budget sheet → W7 Sat S
+
 2026-11-12 | minimum day (22:55–00:15) | A: PivotChart line of monthly expense (peak Nov 2025) | B: LC 141 Linked List Cycle ✅ (set of nodes, not values; idea mine) | D: Account tests (isinstance, polymorphic withdraw: savings refuses, current → −200) + TL;DR of the 4 pillars
 
 2026-11-13 | all sessions | planned day off (graduation) → Dashboard → Sat S, Power Query cut (plan's first W6 cut), LC 876 → W13, ERD + CV line → W7 Sat S
 
-2026-11-14 | late shift (birthday, started 21:00) | ...
+2026-11-14 | A (self-test, 21:00–22:10) | w6_selftest.xlsx, own work: categories ✓, AED amounts ✓, all 22 DD/MM dates ✓ (converted via Power Query (Replace Values + Change Type Using Locale, UK)), XLOOKUP ✓, chart ✓ | missed: Remove Duplicates (618 rows, sum 391329.58 vs 385323.67 = 6005.91 of duplicates) and blanks → Uncategorised | lesson: always finish cleaning with the row count + sum check vs SQL
 
-2026-11-14 | A (self-test, 21:00–22:10) | w6_selftest.xlsx, own work: categories ✓, AED amounts ✓, all 22 DD/MM dates ✓ (converted via ___), XLOOKUP ✓, chart ✓ | missed: Remove Duplicates (618 rows, sum 391329.58 vs 385323.67 = 6005.91 of duplicates) and blanks → Uncategorised | lesson: always finish cleaning with the row count + sum check vs SQL
+2026-11-14 | B (22:20–22:55) | LC 21 Merge Two Sorted Lists ✅ 208/208 (dummy node + tail)
+
+2026-11-14 | S (minimum, 23:00–23:25) | Dashboard sheet: monthly expense line + spend-by-category bar, one slicer (account type) connected to both | budget table + README W6 → W7 Sat S
+
+## Week 7 (2026-11-16 – 2026-11-21)
 
 2026-11-16 | A (09:40–10:35) | review: S2 ✗ (GROUP BY can't count rows that don't exist → LEFT JOIN from categories) | WSL Ubuntu: pwd, ls, cd ~ / cd -, mkdir -p, cp SRC DEST, mv (rename), rm, find WHERE -name "*.csv" | Bandit 0 → 3 reached: "-" = stdin so use ./- or a full path; spaces → quotes or full path; -- ends options | learned: CAPITALS in docs are placeholders; read the error, it usually says what's wrong
 
@@ -179,4 +187,10 @@
 
 2026-11-16 | C (evening) | Bandit 3 → 5: hidden file found with find (ls -a also works), file ./* to spot the one ASCII text file | reached bandit5
 
-2026-11-17 | A (11:40–13:15, with a break) | review: A9 partly (forgot right = total − left − x), X1 partly (args 2 and 3 fuzzy) | pipes + text tools on clean.csv: wc -l 601, 600 rows, per-category counts (7 = 109), grep Groceries 77, saved with > | fixed cut errors by reading them | the pipe = GROUP BY + COUNT + ORDER BY
+2026-11-17 | A (11:40–13:15) | review: A9 partly, X1 partly | pipes + text tools on clean.csv: wc -l 601, 600 rows, per-category counts (7 = 109), grep Groceries 77, saved with > | fixed cut errors by reading them | the pipe = GROUP BY + COUNT + ORDER BY
+
+2026-11-17 | B | LC 509 Fibonacci ✅ (loop, a, b = b, a + b, O(n) time O(1) space)
+
+2026-11-17 | D | missed (airport drop-off) → OS 1 processes → Thu D, OS 2 → W11 review
+
+2026-11-18 | A (11:50–13:30) | review: fib calls ✓ (3×, O(2ⁿ)), E1 partly | permissions (rwx, chmod +x), processes (sleep &, ps, kill), export + $VAR | lesson: example values are placeholders (killed 4821 instead of my PID 603) | TLCL now a dictionary only; walkthroughs first
