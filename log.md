@@ -194,3 +194,5 @@
 2026-11-17 | D | missed (airport drop-off) → OS 1 processes → Thu D, OS 2 → W11 review
 
 2026-11-18 | A (11:50–13:30) | review: fib calls ✓ (3×, O(2ⁿ)), E1 partly | permissions (rwx, chmod +x), processes (sleep &, ps, kill), export + $VAR | lesson: example values are placeholders (killed 4821 instead of my PID 603) | TLCL now a dictionary only; walkthroughs first
+
+2026-11-18 | B (17:50–18:20) | blank redo LC 509 loop: partly (range(2, n+1) with return a → off by one; traced n = 3, answer is b) | LC 704 Binary Search ✅ | skipped the paper table; answered the why-questions after: mid ± 1 (else infinite loop), <= (one element left), overflow-safe mid, left = insert position when not found
