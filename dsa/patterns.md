@@ -71,3 +71,7 @@ LC #21 Merge Two Sorted Lists | dummy node + tail pointer | "merge two sorted li
 Recursion (built) | base case + smaller call | "solve n using the answer for n−1 or the rest of the list" → if base case: return answer; else return combine(first, f(rest)) | no base case → RecursionError | fib loop bug: a = b then b = a + b overwrites a → a, b = b, a + b
 
 LC #509 Fibonacci | recursion vs loop | recursive fib recomputes the same calls → ~O(2ⁿ); loop with a, b = b, a + b → O(n) time, O(1) space; memoise (dict) → O(n) = DP preview
+
+## Binary Search
+
+LC #704 Binary Search | two pointers that jump halfway | sorted + "find it fast" → left, right = 0, n−1; while left <= right: mid; equal → return; too small → left = mid + 1; too big → right = mid − 1; return −1 | mid ± 1 because mid was already checked (else infinite loop); <= because one element can still be left | O(log n): 1,000,000 items ≈ 20 steps | when not found, left = insert position (→ LC 35)
