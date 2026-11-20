@@ -188,3 +188,16 @@ A Python list is a bad queue because `pop(0)` is O(n). Use `deque`:
 | `NameError` | typo in a name, or using a variable before it exists |
 
 Read the **last line** of the error first, then go to the line number it names.
+
+---
+
+## 12. 2D matrix (grid)
+
+A matrix is a list of lists: each inner list is one row.
+
+| In English | In Python |
+|---|---|
+| number of rows | `len(matrix)` |
+| number of columns | `len(matrix[0])` |
+| total cells | `len(matrix) * len(matrix[0])` |
+| the cell at row r, column c | `matrix[r][c]` |
