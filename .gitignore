@@ -1,6 +1,8 @@
 data/big.csv
 sql/practice/Linkedin_post.sql
 sql/practice/revies_test.sql
-bandit passwords.txt
+/bandit passwords.txt
 backups/
 tempCodeRunnerFile.py
+.venv/
+venv/

@@ -39,13 +39,18 @@ Amounts are always positive. Whether money comes in or goes out is decided by th
 | `data/generate_data.py` | Generates `clean.csv` (600 rows) and a deliberately messy `raw.csv` |
 | `data/make_big.py` | Generates `big.csv` (200,000 rows, not committed) for the index benchmark |
 | `excel/finance_analysis.xlsx` | Cleaning, lookups, SUMIFS analysis and PivotTables |
-| `dsa/` | LeetCode solutions by week, plus `dsa/patterns.md` (every problem grouped by pattern) |
+| `excel/w5_selftest.xlsx` · `w6_selftest.xlsx` | Timed self-tests |
+| `dsa/` | LeetCode solutions by week (e.g. `dsa/week6`: linked lists, `dsa/week7`: recursion), plus `dsa/patterns.md` (every problem grouped by pattern) |
 | `notes/` | Study notes: SQL, Python syntax, Python data modules. Index of every note: `notes/README.md` |
 | `theory/` | Notes on DBMS, OOP and API keys |
+| `theory/oop_*.py` | OOP practice: Transaction and Account classes |
 | `log.md` | Daily study log, grouped by week |
 
 ## How to run
 ```
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 psql -d finance -f sql/project/schema.sql
 psql -d finance -f sql/project/schema_v2.sql
 psql -d finance -f sql/project/seed.sql
@@ -68,7 +73,7 @@ For the index benchmark: `python data/make_big.py`, then follow `sql/project/ind
 ## Roadmap
 - [x] SQL: schema, constraints, reports, window functions, index benchmark
 - [x] Excel: cleaning, lookups, SUMIFS, PivotTables
-- [ ] Excel dashboard that refreshes from new data
+- [x] Excel dashboard: 2 charts + a slicer (auto-refresh from new files: not yet)
 - [ ] REST API over the database (FastAPI) with tests
 - [ ] Docker and Docker Compose (API + database)
 - [ ] Kubernetes deployment
@@ -113,3 +118,15 @@ For the index benchmark: `python data/make_big.py`, then follow `sql/project/ind
 - SUMIFS and COUNTIFS: totals match SQL (600 rows, 385,323.67 AED).
 - DSA: stacks (own Stack class, LC 20, LC 155).
 - Theory: OOP classes, objects and properties (`Transaction` rejects an amount of 0).
+
+### Week 6: PivotTables, dashboard, linked lists
+- PivotTables: spend by category (matches SUMIFS exactly), months × type grouped by Years + Months, % of Grand Total, amount bands, a slicer by account.
+- Dashboard sheet: monthly expense line chart and spend-by-category bar chart, both driven by one slicer.
+- Timed self-test: rebuilt the cleaning from raw.csv with Power Query (types set with an explicit UK locale, so every DD/MM date is correct).
+- DSA: built a linked list (Node, append, prepend); LC 206 Reverse Linked List, LC 21 Merge Two Sorted Lists, LC 141 Linked List Cycle.
+- Theory: OOP encapsulation (a property that rejects a zero amount), inheritance and polymorphism (Account → SavingsAccount / CurrentAccount).
+
+### Week 7: Linux and Git (in progress)
+- Linux in WSL: navigation, files, find, pipes and text tools (counting rows per category in clean.csv with cut | sort | uniq -c, the same answer as SQL's GROUP BY), permissions, processes, environment variables.
+- OverTheWire Bandit: levels 0–5.
+- DSA: recursion (factorial, sum of a list, reverse a string), LC 509 Fibonacci (recursive vs loop, why the recursive one is O(2ⁿ)).

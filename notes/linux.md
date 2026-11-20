@@ -12,7 +12,7 @@ Built from *The Linux Command Line* by William Shotts (TLCL, 25.12 edition, [lin
 
 ### Contents
 
-- ⭐ [Survival kit](#survival-kit)
+- ⭐ [Survival kit](#survival-kit) · [pipeline kit](#pipeline-kit) · [permissions and processes kit](#permissions-and-processes-kit)
 - [The shell](#the-shell) · [command anatomy](#anatomy-of-a-command) · [getting help](#getting-help)
 - [Navigation](#navigation) · [paths](#absolute-vs-relative-paths) · [the file system](#the-file-system-tree)
 - [Looking at files](#looking-at-files) · [ls](#ls) · [less](#less) · [file](#file)
@@ -78,6 +78,36 @@ find WHERE -name "*.csv"  search by name, in WHERE and everything below
 
 - Paths with spaces need "quotes": `cd "/d/VS Codes"`.
 - CAPITALS in docs = placeholders: swap `PATH`, `SRC`, `FILE` for real names.
+
+### Pipeline kit
+
+⭐ Counting and summarising a file (e.g. a CSV) from the terminal. Details in [pipes](#pipes), [sort / uniq](#sort-and-uniq), [cut](#cut-paste-join), [grep](#grep).
+
+```
+wc -l FILE                  count lines
+tail -n +2 FILE             print from line 2 (skip the header)
+head -n 5 FILE              first 5 lines
+cut -d, -f2                 split on commas, keep field 2
+sort | uniq -c | sort -rn   count each value, biggest first (= GROUP BY + COUNT + ORDER BY DESC)
+grep -c WORD FILE           count lines containing WORD
+CMD > FILE                  save output to a file (overwrites)   >> appends
+A | B                       pipe: A's output becomes B's input
+```
+
+- Put together: `tail -n +2 data/raw.csv | cut -d, -f2 | sort | uniq -c | sort -rn` = transactions per category, most first.
+
+### Permissions and processes kit
+
+⭐ Running files, background jobs and environment variables. Details in [Permissions](#permissions), [chmod](#chmod), [jobs](#jobs-background-and-foreground), [kill](#kill-and-signals), [The environment](#the-environment).
+
+```
+ls -l               long listing; first 10 chars = type + permissions
+-rwxr-xr-x          [type][you rwx][group r-x][others r-x]   r=read w=write x=run
+chmod +x FILE       make it runnable        ./FILE  run a file in this folder
+CMD &               run in the background → prints [job] PID
+ps                  list my running processes        kill PID / kill %JOB  stop one
+export NAME=value   set an environment variable       echo $NAME  read it
+```
 
 ## The shell
 
@@ -1125,7 +1155,7 @@ read -t 10 -p "Continue? (y/n) " ans    # time out after 10 s
 - **Spaces in names:** always quote: `"$file"`, `"My Folder"`.
 - **Case sensitive:** `Data.csv` ≠ `data.csv`, `cd Notes` ≠ `cd notes`.
 - **Spaces around `=`:** `x=5` ✅, `x = 5` ❌.
-- **Windows line endings:** a file saved on Windows has `\r\n`. Scripts fail with `$'\r': command not found` and CSVs get a hidden `\r` on the last column. Fix: `tr -d '\r' < f > f2`, `dos2unix f`, or set VS Code's bottom-right "CRLF" to "LF".
+- **Windows line endings:** a file saved on Windows has CRLF (`\r\n`), Linux uses LF (`\n`). CRLF breaks bash scripts: `$'\r': command not found` or `bad interpreter` with a `^M`, and CSVs get a hidden `\r` on the last column. Fix: `tr -d '\r' < f > f2`, `dos2unix f`, or set VS Code's bottom-right "CRLF" to "LF". Permanent fix for a repo: `.gitattributes` with `*.sh text eol=lf`.
 - **`>` vs `>>`:** overwrite vs append.
 - **`uniq` without `sort`:** misses non-adjacent duplicates.
 - **Unquoted wildcard in `find`:** `find . -name *.sql` expands too early. Quote it.

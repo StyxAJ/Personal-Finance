@@ -15,6 +15,8 @@ Every note in the repo, one line each.
 | [theory/dbms-04-acid.md](../theory/dbms-04-acid.md) | Transactions and the four ACID guarantees |
 | theory/dbms-05-indexes.md | missing, rewrite during the W11 DBMS review |
 | [theory/oop-01-classes.md](../theory/oop-01-classes.md) | Classes, objects, `__init__` and `self`, with the `Transaction` class |
+| [theory/oop-02-encapsulation.md](../theory/oop-02-encapsulation.md) | Encapsulation: `_amount`, name mangling, `@property` + setter so `Transaction` rejects a bad amount |
+| [theory/oop-03-inheritance-polymorphism.md](../theory/oop-03-inheritance-polymorphism.md) | The 4 pillars with `Account` → `SavingsAccount` / `CurrentAccount`: inheritance, polymorphic `withdraw()`, abstraction |
 | [theory/api-keys.md](../theory/api-keys.md) | What an API key is, where it goes, and how to keep it out of git |
 | [dsa/patterns.md](../dsa/patterns.md) | Every LeetCode problem, grouped by pattern: "when I see ___ → I do ___" |
 | [notes/big-o.md](big-o.md) | Big-O notation with examples of constant, linear and quadratic code |
