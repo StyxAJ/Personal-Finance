@@ -3,3 +3,5 @@ sql/practice/Linkedin_post.sql
 sql/practice/revies_test.sql
 /bandit passwords.txt
 tempCodeRunnerFile.py
+.venv/
+venv/
