@@ -201,3 +201,5 @@
 2026-11-20 | A (15:20–17:30, Asr break) | review: S3 ✓, S1 partly (no example) | Learn Git Branching: Introduction + Ramping Up (8 levels) | merge conflict on purpose: practice + branch-a edited the same line → markers resolved → merge commit, branches deleted | branch = **_, commit = _**, merge = **_, conflict = _**
 
 2026-11-20 | B (17:40–19:30) | LC 74 Search a 2D Matrix ✅ v1 row loop + binary search (O(m + log n)), v2 two binary searches (O(log m·n)) | learned: len(matrix) = rows; where binary search stops = a position | got pulled into browsing snippets
+
+2026-11-20 | C (21:10–21:45) | first bash script: backup.sh = date → variable → mkdir -p → pg_dump to backups/finance_YYYY-MM-DD.sql, if/else message | built it line by line in the terminal first, then saved as a file | backups/ gitignored, .gitattributes keeps *.sh as LF | keep-last-7 → W13
