@@ -64,7 +64,7 @@ LC #206 Reverse Linked List | pointer reversal (prev / current / saved) | "rever
 
 LC #141 Linked List Cycle | hash set of NODES | "does it loop back?" → walk; if current in seen → True; seen.add(current); reach None → False | store the node, not the value (values can repeat without a cycle); can't use length (no end in a cycle) | idea mine (level 1: node vs value) | O(1)-space slow/fast version → W13
 
-LC #21 Merge Two Sorted Lists | dummy node + tail pointer | "merge two sorted lists" → dummy = ListNode(); tail = dummy; while both: attach the smaller head to tail.next, advance that list, tail = tail.next; then tail.next = list1 or list2 (the leftover); return dummy.next | dummy avoids a special case for the first node | ___
+LC #21 Merge Two Sorted Lists | dummy node + tail pointer | "merge two sorted lists" → dummy = ListNode(); tail = dummy; while both: attach the smaller head to tail.next, advance that list, tail = tail.next; then tail.next = list1 or list2 (the leftover); return dummy.next | dummy avoids a special case for the first node | \_\_\_
 
 ## Recursion
 
@@ -75,3 +75,7 @@ LC #509 Fibonacci | recursion vs loop | recursive fib recomputes the same calls 
 ## Binary Search
 
 LC #704 Binary Search | two pointers that jump halfway | sorted + "find it fast" → left, right = 0, n−1; while left <= right: mid; equal → return; too small → left = mid + 1; too big → right = mid − 1; return −1 | mid ± 1 because mid was already checked (else infinite loop); <= because one element can still be left | O(log n): 1,000,000 items ≈ 20 steps | when not found, left = insert position (→ LC 35)
+
+LC #35 Search Insert Position | binary search | "where would target go?" → LC 704 code, but return left instead of −1 (when the loop ends, left = first index whose value is > target) | predicted from LC 704's trace | level 0
+
+LC #74 Search a 2D Matrix | binary search ×2 | sorted matrix → binary search the rows on matrix[mid][0]; when it ends, bottom = last row whose first ≤ target (LC 35 idea); then LC 704 inside that row → O(log m + log n) | v1 was a row loop O(m + log n) | len(matrix) = rows, not all cells | looked at snippets for ideas, v2 written myself
