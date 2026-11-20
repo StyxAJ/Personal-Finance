@@ -1155,7 +1155,7 @@ read -t 10 -p "Continue? (y/n) " ans    # time out after 10 s
 - **Spaces in names:** always quote: `"$file"`, `"My Folder"`.
 - **Case sensitive:** `Data.csv` ≠ `data.csv`, `cd Notes` ≠ `cd notes`.
 - **Spaces around `=`:** `x=5` ✅, `x = 5` ❌.
-- **Windows line endings:** a file saved on Windows has `\r\n`. Scripts fail with `$'\r': command not found` and CSVs get a hidden `\r` on the last column. Fix: `tr -d '\r' < f > f2`, `dos2unix f`, or set VS Code's bottom-right "CRLF" to "LF".
+- **Windows line endings:** a file saved on Windows has CRLF (`\r\n`), Linux uses LF (`\n`). CRLF breaks bash scripts: `$'\r': command not found` or `bad interpreter` with a `^M`, and CSVs get a hidden `\r` on the last column. Fix: `tr -d '\r' < f > f2`, `dos2unix f`, or set VS Code's bottom-right "CRLF" to "LF". Permanent fix for a repo: `.gitattributes` with `*.sh text eol=lf`.
 - **`>` vs `>>`:** overwrite vs append.
 - **`uniq` without `sort`:** misses non-adjacent duplicates.
 - **Unquoted wildcard in `find`:** `find . -name *.sql` expands too early. Quote it.
