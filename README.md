@@ -48,6 +48,9 @@ Amounts are always positive. Whether money comes in or goes out is decided by th
 
 ## How to run
 ```
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 psql -d finance -f sql/project/schema.sql
 psql -d finance -f sql/project/schema_v2.sql
 psql -d finance -f sql/project/seed.sql
