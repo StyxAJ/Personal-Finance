@@ -7,46 +7,53 @@ It's built as a **foundation**: the same schema and reports work for anyone's ow
 Sample data: one year of transactions (Oct 2025 – Sep 2026), amounts in AED.
 
 ## Highlights
+
 - **25x faster query with one index:** on 200,000 rows, a composite index on `(category_id, txn_date)` took a category + date-range query from **30.4 ms (Parallel Seq Scan) to 1.2 ms (Bitmap Index Scan)**. Write-up: `sql/project/indexes.md`
 - **The database rejects bad data on its own:** `CHECK (amount > 0)`, unique category names, foreign keys, and a `budgets` table with one budget per category per month.
 - **Two tools, one answer:** 618 messy rows cleaned in Excel down to 600, and the totals match PostgreSQL exactly (**600 rows, 385,323.67 AED**).
 - **Real reporting questions:** net savings per month, loss months, top 2 spending categories per month (window functions), categories over budget.
 
 ## Tech
+
 PostgreSQL 18 · Python 3 (`csv`, `random`, `datetime`) · Excel (Power Query, XLOOKUP, SUMIFS, PivotTables) · VS Code · Git/GitHub
 
 ## Data model
-| Table | Holds | Key rules |
-|---|---|---|
-| `categories` | id, name, type (`income` / `expense`) | name is unique |
-| `accounts` | id, name (e.g. Main Checking, Credit Card) | |
+
+![ERD](docs/erd.png)
+
+| Table          | Holds                                                      | Key rules                                                  |
+| -------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `categories`   | id, name, type (`income` / `expense`)                      | name is unique                                             |
+| `accounts`     | id, name (e.g. Main Checking, Credit Card)                 |                                                            |
 | `transactions` | id, account_id, category_id, amount, txn_date, description | amount > 0; account and category must exist (foreign keys) |
-| `budgets` | id, category_id, month, limit_amount | limit > 0; one row per (category, month) |
+| `budgets`      | id, category_id, month, limit_amount                       | limit > 0; one row per (category, month)                   |
 
 Amounts are always positive. Whether money comes in or goes out is decided by the category's `type`, so a transaction can never have the "wrong sign".
 
 ## Project structure
-| Folder / file | What's in it |
-|---|---|
-| `sql/project/schema.sql` | Tables: `categories`, `accounts`, `transactions` |
-| `sql/project/schema_v2.sql` | Constraints + the `budgets` table |
-| `sql/project/seed.sql` | The 10 categories and 2 accounts |
-| `sql/project/budgets.sql` | Monthly budgets (September 2026) |
-| `sql/project/monthly_totals.sql` | Income, expense and net savings per month |
-| `sql/project/joins.sql` · `subqueries.sql` | Spend per account and category; transactions above their category's average |
-| `sql/project/indexes.md` | The 200k-row index benchmark (plans and timings) |
-| `sql/practice/` | Daily query practice (`w2_`, `w3_`, `w4_`, …), incl. the first 20 hand-typed transactions |
-| `data/generate_data.py` | Generates `clean.csv` (600 rows) and a deliberately messy `raw.csv` |
-| `data/make_big.py` | Generates `big.csv` (200,000 rows, not committed) for the index benchmark |
-| `excel/finance_analysis.xlsx` | Cleaning, lookups, SUMIFS analysis and PivotTables |
-| `excel/w5_selftest.xlsx` · `w6_selftest.xlsx` | Timed self-tests |
-| `dsa/` | LeetCode solutions by week (e.g. `dsa/week6`: linked lists, `dsa/week7`: recursion), plus `dsa/patterns.md` (every problem grouped by pattern) |
-| `notes/` | Study notes: SQL, Python syntax, Python data modules. Index of every note: `notes/README.md` |
-| `theory/` | Notes on DBMS, OOP and API keys |
-| `theory/oop_*.py` | OOP practice: Transaction and Account classes |
-| `log.md` | Daily study log, grouped by week |
+
+| Folder / file                                 | What's in it                                                                                                                                   |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sql/project/schema.sql`                      | Tables: `categories`, `accounts`, `transactions`                                                                                               |
+| `sql/project/schema_v2.sql`                   | Constraints + the `budgets` table                                                                                                              |
+| `sql/project/seed.sql`                        | The 10 categories and 2 accounts                                                                                                               |
+| `sql/project/budgets.sql`                     | Monthly budgets (September 2026)                                                                                                               |
+| `sql/project/monthly_totals.sql`              | Income, expense and net savings per month                                                                                                      |
+| `sql/project/joins.sql` · `subqueries.sql`    | Spend per account and category; transactions above their category's average                                                                    |
+| `sql/project/indexes.md`                      | The 200k-row index benchmark (plans and timings)                                                                                               |
+| `sql/practice/`                               | Daily query practice (`w2_`, `w3_`, `w4_`, …), incl. the first 20 hand-typed transactions                                                      |
+| `data/generate_data.py`                       | Generates `clean.csv` (600 rows) and a deliberately messy `raw.csv`                                                                            |
+| `data/make_big.py`                            | Generates `big.csv` (200,000 rows, not committed) for the index benchmark                                                                      |
+| `excel/finance_analysis.xlsx`                 | Cleaning, lookups, SUMIFS analysis and PivotTables                                                                                             |
+| `excel/w5_selftest.xlsx` · `w6_selftest.xlsx` | Timed self-tests                                                                                                                               |
+| `dsa/`                                        | LeetCode solutions by week (e.g. `dsa/week6`: linked lists, `dsa/week7`: recursion), plus `dsa/patterns.md` (every problem grouped by pattern) |
+| `notes/`                                      | Study notes: SQL, Python syntax, Python data modules. Index of every note: `notes/README.md`                                                   |
+| `theory/`                                     | Notes on DBMS, OOP and API keys                                                                                                                |
+| `theory/oop_*.py`                             | OOP practice: Transaction and Account classes                                                                                                  |
+| `log.md`                                      | Daily study log, grouped by week                                                                                                               |
 
 ## How to run
+
 ```
 python -m venv .venv
 .venv\Scripts\activate
@@ -59,11 +66,15 @@ python data/generate_data.py
 psql -d finance
 \copy transactions(account_id, category_id, amount, txn_date, description) FROM 'data/clean.csv' CSV HEADER
 ```
+
 Check: `SELECT count(*), sum(amount) FROM transactions;` returns **600 | 385323.67**.
 
 For the index benchmark: `python data/make_big.py`, then follow `sql/project/indexes.md`.
 
+To back up the database (from WSL or any bash shell): `./backup.sh` writes a dated `pg_dump` file. Dumps are gitignored.
+
 ## Use it for your own finances
+
 1. Create the database and run the two schema files.
 2. Edit `seed.sql` with your own categories (each marked `income` or `expense`) and accounts.
 3. Export your bank statement as CSV and shape it into five columns: `account_id, category_id, amount, txn_date, description`. Amounts positive, dates as `YYYY-MM-DD`. If the export is messy, the Excel cleaning steps in `finance_analysis.xlsx` show how to fix it.
@@ -71,6 +82,7 @@ For the index benchmark: `python data/make_big.py`, then follow `sql/project/ind
 5. Replace the rows in `budgets.sql` with your own monthly limits, then run the reports in `sql/project/`.
 
 ## Roadmap
+
 - [x] SQL: schema, constraints, reports, window functions, index benchmark
 - [x] Excel: cleaning, lookups, SUMIFS, PivotTables
 - [x] Excel dashboard: 2 charts + a slicer (auto-refresh from new files: not yet)
@@ -81,12 +93,14 @@ For the index benchmark: `python data/make_big.py`, then follow `sql/project/ind
 ## Progress log
 
 ### Week 1: SQL basics
+
 - SQLBolt lessons 1–18 (SELECT, JOINs, aggregates, INSERT/UPDATE/DELETE, CREATE TABLE).
 - Designed the schema and seeded it by hand.
 - DSA: Big-O basics, Python list costs, LC 1480, LC 1929.
 - Theory: what a DBMS is; primary, candidate and foreign keys.
 
 ### Week 2: SQL on my own data
+
 - Python data generator: 600 realistic transactions plus a messy `raw.csv` for cleaning practice.
 - Loaded with `\copy` and verified the totals match the file exactly.
 - WHERE (AND/OR, IN, BETWEEN, LIKE), ORDER BY, LIMIT, DISTINCT, CASE, aggregates, GROUP BY/HAVING, date functions.
@@ -95,6 +109,7 @@ For the index benchmark: `python data/make_big.py`, then follow `sql/project/ind
 - Theory: normalisation (anomalies, 1NF–3NF); this schema is in 3NF.
 
 ### Week 3: JOINs, subqueries, CTEs
+
 - INNER and LEFT JOINs with aliases; COUNT(t.id), filtering in ON, COALESCE for zeros.
 - Subqueries: scalar, IN, EXISTS / NOT EXISTS, correlated (transactions above their own category's average).
 - CTEs for multi-step questions, e.g. income vs expense per month.
@@ -104,14 +119,16 @@ For the index benchmark: `python data/make_big.py`, then follow `sql/project/ind
 - Theory: ACID and transactions.
 
 ### Week 4: Constraints, indexes, window functions
+
 - `schema_v2.sql`: named constraints (positive amounts, unique category names) and a `budgets` table. Six bad inserts tested, each rejected by the expected rule.
-- Safe change routine: SELECT the WHERE first → BEGIN → change with RETURNING * → check → COMMIT or ROLLBACK.
+- Safe change routine: SELECT the WHERE first → BEGIN → change with RETURNING \* → check → COMMIT or ROLLBACK.
 - Index benchmark on 200,000 generated rows: 30.4 ms → 1.2 ms (~25x) with a composite index; equality column first, range column second.
 - Window functions: top 2 spending categories per month with ROW_NUMBER, RANK and DENSE_RANK, filtered in an outer query.
 - DSA: sliding window (LC 121, 643) and prefix sums (LC 724).
 - Theory: indexes and B-trees.
 
 ### Week 5: Excel cleaning and lookups
+
 - Imported the messy `raw.csv` with Power Query (type detection off, so the mess stays visible).
 - Cleaning: 103 category spellings → 10 (TRIM, PROPER), 18 duplicate rows removed, 44 "AED 45.50"-style text amounts and 22 DD/MM dates converted, 17 blank categories → "Uncategorised". Found that DATEVALUE would have silently put 13 of the 22 dates in the wrong month on a US-format PC.
 - XLOOKUP (Excel's JOIN) for category type and account name, with a "Not found" fallback.
@@ -120,13 +137,17 @@ For the index benchmark: `python data/make_big.py`, then follow `sql/project/ind
 - Theory: OOP classes, objects and properties (`Transaction` rejects an amount of 0).
 
 ### Week 6: PivotTables, dashboard, linked lists
+
 - PivotTables: spend by category (matches SUMIFS exactly), months × type grouped by Years + Months, % of Grand Total, amount bands, a slicer by account.
 - Dashboard sheet: monthly expense line chart and spend-by-category bar chart, both driven by one slicer.
 - Timed self-test: rebuilt the cleaning from raw.csv with Power Query (types set with an explicit UK locale, so every DD/MM date is correct).
 - DSA: built a linked list (Node, append, prepend); LC 206 Reverse Linked List, LC 21 Merge Two Sorted Lists, LC 141 Linked List Cycle.
 - Theory: OOP encapsulation (a property that rejects a zero amount), inheritance and polymorphism (Account → SavingsAccount / CurrentAccount).
 
-### Week 7: Linux and Git (in progress)
-- Linux in WSL: navigation, files, find, pipes and text tools (counting rows per category in clean.csv with cut | sort | uniq -c, the same answer as SQL's GROUP BY), permissions, processes, environment variables.
+### Week 7: Linux and Git
+
+- Linux in WSL: navigation, files, find, pipes and text tools (rows per category in clean.csv with cut | sort | uniq -c, the same answer as SQL's GROUP BY), permissions, processes, environment variables.
 - OverTheWire Bandit: levels 0–5.
-- DSA: recursion (factorial, sum of a list, reverse a string), LC 509 Fibonacci (recursive vs loop, why the recursive one is O(2ⁿ)).
+- Git: branching and merging (Learn Git Branching), and a merge conflict created and resolved on purpose.
+- First bash script: backup.sh dumps the database with pg_dump to a dated file. Dumps are gitignored; .gitattributes keeps .sh files with Linux line endings.
+- DSA: recursion, LC 509 (why recursive Fibonacci is O(2ⁿ)), binary search (LC 704, 35, 74).

@@ -79,3 +79,7 @@ LC #704 Binary Search | two pointers that jump halfway | sorted + "find it fast"
 LC #35 Search Insert Position | binary search | "where would target go?" → LC 704 code, but return left instead of −1 (when the loop ends, left = first index whose value is > target) | predicted from LC 704's trace | level 0
 
 LC #74 Search a 2D Matrix | binary search ×2 | sorted matrix → binary search the rows on matrix[mid][0]; when it ends, bottom = last row whose first ≤ target (LC 35 idea); then LC 704 inside that row → O(log m + log n) | v1 was a row loop O(m + log n) | len(matrix) = rows, not all cells | looked at snippets for ideas, v2 written myself
+
+LC #704 redo | wrote recursion with slicing first → indexes counted from the slice (returned 1 not 4), slicing = O(n) copies → fixed with low/high passed into the recursion | loop = O(1) space, recursion = O(log n) stack | loop version → Monday review
+
+LC #35 redo | paper trace correct, but code had left = mid / right = mid (infinite loop) and return left + 1 → matched code back to the table: mid ± 1, return left
