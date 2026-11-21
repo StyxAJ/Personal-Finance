@@ -202,4 +202,8 @@
 
 2026-11-20 | B (17:40–19:30) | LC 74 Search a 2D Matrix ✅ v1 row loop + binary search (O(m + log n)), v2 two binary searches (O(log m·n)) | learned: len(matrix) = rows; where binary search stops = a position | got pulled into browsing snippets
 
-2026-11-20 | C (21:10–21:45) | first bash script: backup.sh = date → variable → mkdir -p → pg_dump to backups/finance_YYYY-MM-DD.sql, if/else message | built it line by line in the terminal first, then saved as a file | backups/ gitignored, .gitattributes keeps *.sh as LF | keep-last-7 → W13
+2026-11-20 | C (21:10–21:45) | first bash script: backup.sh = date → variable → mkdir -p → pg_dump to backups/finance_YYYY-MM-DD.sql, if/else message | built it line by line in the terminal first, then saved as a file | backups/ gitignored, .gitattributes keeps \*.sh as LF | keep-last-7 → W13
+
+2026-11-21 | A (self-test, stopped at task 2) | lost on paths: built selftest inside the repo (not ~), "~" in quotes, copy landed in ~ instead of here | → guided walkthrough instead; paths questions → review bank
+
+2026-11-21 | B (18:10–19:05) | redos: LC 704 ✅ (v1 sliced the list → wrong index; v2 recursive with low/high) | LC 35 ✅ (paper trace right first time; code drifted from it: left = mid → infinite loop; fixed by re-running the table through the code) | lesson: after coding, re-check the code against my own trace
