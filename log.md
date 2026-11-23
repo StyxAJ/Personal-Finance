@@ -209,3 +209,5 @@
 2026-11-21 | B (18:10–19:05) | redos: LC 704 ✅ (v1 sliced the list → wrong index; v2 recursive with low/high) | LC 35 ✅ (paper trace right first time; code drifted from it: left = mid → infinite loop; fixed by re-running the table through the code) | lesson: after coding, re-check the code against my own trace
 
 2026-11-21 | S (20:00–21:15) | Excel budget vs actual (Sep 2026) on the Dashboard sheet: SUMIFS actuals with ">=" 1 Sep and "<" 1 Oct, over = actual − budget, conditional formatting formula rule (actual > budget, columns locked with $) → 3 red rows: Dining Out 1848.24 > 1500, Entertainment 931.99 > 800, Healthcare 3218.11 > 3000 (same 3 as SQL W4) | ERD on dbdiagram.io → docs/erd.png in README | README Week 7 + venv + backup.sh in How to run | CV lines saved
+
+Mon 23 Nov · A: psycopg connect + 5 rows ✓ (api/db_check.py, password via env var). Hit ConnectionTimeout (server stopped), then "no password supplied" (empty env var); fixed with pg_isready / psql / echo ${#VAR}. Lesson: env vars live only in the terminal that set them. review: L1 ✓, L2 partly, L3 partly
