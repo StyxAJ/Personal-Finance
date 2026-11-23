@@ -83,3 +83,7 @@ LC #74 Search a 2D Matrix | binary search ×2 | sorted matrix → binary search 
 LC #704 redo | wrote recursion with slicing first → indexes counted from the slice (returned 1 not 4), slicing = O(n) copies → fixed with low/high passed into the recursion | loop = O(1) space, recursion = O(log n) stack | loop version → Monday review
 
 LC #35 redo | paper trace correct, but code had left = mid / right = mid (infinite loop) and return left + 1 → matched code back to the table: mid ± 1, return left
+
+## Insertion Sort
+
+Insertion sort: key = arr[i], walk j left from i−1 while j >= 0 and arr[j] > key, shift right; key goes to j + 1 (loop overshoots by one). O(n²), O(n) if already sorted, in place, stable. [help L3]
