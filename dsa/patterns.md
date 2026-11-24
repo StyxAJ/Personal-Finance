@@ -91,3 +91,4 @@ Insertion sort: key = arr[i], walk j left from i−1 while j >= 0 and arr[j] > k
 ## Merge Sort
 
 Merge sort: base case len <= 1; mid = len // 2; sort each half (keep the return); merge = two fingers i, j, take the smaller (<= for stable), then extend both leftovers. O(n log n) time, O(n) extra space, stable, returns a new list. [help L3, VS Code agent]
+
