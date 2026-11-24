@@ -215,3 +215,5 @@ Mon 23 Nov · A: psycopg connect + 5 rows ✓ (api/db_check.py, password via env
 Mon 23 Nov · B: insertion sort ✓ (dsa/week8/insertion_sort.py). Paper trace showed where keys land but not the shifts; redid pass 4 with j. Stuck on j after the last shift (−1) → key at j + 1. Help level 3.
 
 Mon 23 Nov · C (minimum block, started 22:18): GET /health ✓ in /docs. GET /transactions?month moved to Wed C.
+
+Tue 24 Nov · A: TransactionIn (Pydantic) + POST /transactions/check ✓. Paper: columns from information_schema → id left out (sequence), description optional. Checks: valid 200, "abc" 422, missing category_id 422, no description 200. Learned 404 vs 405. review: S2 partly, L3 partly, L2 partly
