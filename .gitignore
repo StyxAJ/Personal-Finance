@@ -6,3 +6,4 @@ backups/
 tempCodeRunnerFile.py
 .venv/
 venv/
+__pycache__/
