@@ -87,3 +87,8 @@ LC #35 redo | paper trace correct, but code had left = mid / right = mid (infini
 ## Insertion Sort
 
 Insertion sort: key = arr[i], walk j left from i−1 while j >= 0 and arr[j] > key, shift right; key goes to j + 1 (loop overshoots by one). O(n²), O(n) if already sorted, in place, stable. [help L3]
+
+## Merge Sort
+
+Merge sort: base case len <= 1; mid = len // 2; sort each half (keep the return); merge = two fingers i, j, take the smaller (<= for stable), then extend both leftovers. O(n log n) time, O(n) extra space, stable, returns a new list. [help L3, VS Code agent]
+
