@@ -94,3 +94,28 @@ def sum_list(lst):
 
 print(sum_list_iterative([1, 2, 3, 4, 5]))  # Output: 15
 print(sum_list([1, 2, 3, 4, 5]))  # Output: 15
+
+
+# ---------------------------------------------------------------
+# Logic (for future reference)
+# ---------------------------------------------------------------
+# Every recursive function = base case + a smaller call.
+#   base case: the smallest input, answered directly (stops the recursion)
+#   recursive case: answer = combine(this step, f(smaller input))
+# No base case -> RecursionError (Python's limit is about 1000 calls deep).
+#
+# factorial(x) = x * factorial(x - 1), base 0 or 1 -> 1
+#   factorial(3) = 3 * factorial(2) = 3 * 2 * factorial(1) = 3 * 2 * 1 = 6
+#
+# fibonacci(n) = fib(n-1) + fib(n-2), base 0 -> 0, 1 -> 1
+#   two calls per level -> about O(2^n); the loop version is O(n).
+#   loop: a, b = b, a + b (both update at once; a = b then b = a + b would be wrong)
+#
+# reverse_string(s) = reverse(s[1:]) + s[0], base "" -> ""
+#   "abc" -> reverse("bc") + "a" -> (reverse("c") + "b") + "a" -> "cba"
+#
+# sum_list(lst) = lst[0] + sum_list(lst[1:]), base [] -> 0
+#
+# Cost of slicing: s[1:] / lst[1:] copies the rest every call,
+# so these two are O(n^2) time. Pass an index instead to make them O(n).
+# Recursion also uses O(n) stack space; the loops use O(1).

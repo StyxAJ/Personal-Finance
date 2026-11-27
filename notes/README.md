@@ -17,8 +17,11 @@ Every note in the repo, one line each.
 | [theory/oop-01-classes.md](../theory/oop-01-classes.md) | Classes, objects, `__init__` and `self`, with the `Transaction` class |
 | [theory/oop-02-encapsulation.md](../theory/oop-02-encapsulation.md) | Encapsulation: `_amount`, name mangling, `@property` + setter so `Transaction` rejects a bad amount |
 | [theory/oop-03-inheritance-polymorphism.md](../theory/oop-03-inheritance-polymorphism.md) | The 4 pillars with `Account` → `SavingsAccount` / `CurrentAccount`: inheritance, polymorphic `withdraw()`, abstraction |
+| [theory/os-03-memory.md](../theory/os-03-memory.md) | Address spaces, virtual vs physical addresses, pages and page tables |
+| [theory/os-04-concurrency.md](../theory/os-04-concurrency.md) | Race conditions, critical sections and locks, deadlock and lock ordering, with `race.py` / `deadlock.py`, and why Postgres doesn't race |
 | [theory/api-keys.md](../theory/api-keys.md) | What an API key is, where it goes, and how to keep it out of git |
 | [dsa/patterns.md](../dsa/patterns.md) | Every LeetCode problem, grouped by pattern: "when I see ___ → I do ___" |
+| [notes/fastapi.md](fastapi.md) | FastAPI from the freeCodeCamp beginner course: routes, path/query params, Pydantic bodies, HTTPException, psycopg in a route, env vars, gotchas |
 | [notes/big-o.md](big-o.md) | Big-O notation with examples of constant, linear and quadratic code |
 | [sql/project/indexes.md](../sql/project/indexes.md) | The 200k-row index benchmark (query plans and timings) |
 | [log.md](../log.md) | Daily study log, grouped by week |
@@ -29,6 +32,7 @@ Every note in the repo, one line each.
 - **How to do something in Excel** → [notes/excel.md](excel.md) (start with its Quick lookup table)
 - **Python syntax** → [notes/python-vocab.md](python-vocab.md)
 - **A terminal / bash command** → [notes/linux.md](linux.md) (start with its Quick lookup table)
+- **FastAPI / building the API** → [notes/fastapi.md](fastapi.md) (start with its Quick lookup table)
 - **A DSA pattern** → [dsa/patterns.md](../dsa/patterns.md)
 - **Theory** (DBMS, OOP, API keys) → [theory/](../theory/)
 - **What I did on a day** → [log.md](../log.md)

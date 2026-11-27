@@ -105,3 +105,16 @@ print("prepend on empty:", other.to_list())
 #   Linked list: prepend is O(1) (no shifting, just move one arrow),
 #                append is O(n) (no tail pointer, so walk to the end).
 #   -> Adding at the FRONT is the cheap one here; it was expensive there.
+
+
+# ---------------------------------------------------------------
+# Logic (for future reference)
+# ---------------------------------------------------------------
+# Summary of the notes above:
+#   Node = value + next arrow. LinkedList only stores head.
+#   prepend: new.next = head, THEN head = new  -> O(1)
+#   append:  walk until current.next is None, attach there -> O(n)
+#   visit all (to_list / length): walk until current is None -> O(n)
+# Loop condition:
+#   `while current.next is not None` -> stop ON the last node (to attach after it)
+#   `while current is not None`      -> visit every node, stop after the last
