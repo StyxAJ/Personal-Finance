@@ -221,3 +221,9 @@ Tue 24 Nov · A: TransactionIn (Pydantic) + POST /transactions/check ✓. Paper:
 Tue 24 Nov · B: merge sort ✓ (dsa/week8/merge_sort.py), all 4 checks. Paper: odd split (// 2), merges must undo their own split. First real trace table done alone (merge of [2,4,5]+[1,3]+6 with fingers = i, j). Help: VS Code agent hints + template (L3) → redo from blank Sat. Predictions skipped.
 
 Tue 24 Nov · D: OS 3 memory. Note drafted by dictation + Claude/Gemini (marked in file). Quiz 6/10. Want visual/hands-on version → Week 11 (address-space drawings + translate() script with // and %).
+
+Wed 25 Nov · summary: Lost on FastAPI + DB endpoints. A: /categories/{id} code written (Stack Overflow + Google), but the endpoint gives "internal server error", cause not found yet (check the traceback, DB_PASSWORD name vs value, uvicorn terminal). C: not started, depends on A. Need hands-on FastAPI: how a request becomes a function call, path vs query params, connect → execute → fetch, HTTPException. B: quicksort partition trace done and correct (table mine, AI only reformatted); quick_sort.py is almost done (partition is correct, recursion looks right), to be redone from a blank page Sat.
+
+Thu 26 Nov · A: FastAPI by hand (video + practice.py), /categories/{id} 200/404 ✓/✗. 500 cause: data in avalability
+
+Thu 26 Nov · B: LC 56 ✓ (sort by start, merge if start <= last end, end = max). Predictions: ✓/✗

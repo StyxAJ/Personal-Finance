@@ -32,3 +32,25 @@ class MinStack:
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+
+
+# ---------------------------------------------------------------
+# Logic (for future reference)
+# ---------------------------------------------------------------
+# Same idea as 155_min_stack.py, rewritten from blank.
+#
+# Difference: _is_empty(stack) and _peek(stack) take the stack as a parameter,
+# so ONE helper works for both main_stack and min_stack.
+#
+# Rules:
+#   push: min stack empty or value <= its top -> also push to min stack
+#   pop:  value leaving == min stack top -> also pop min stack
+#   getMin: peek min stack
+#
+# Trace: push 5, push 3, push 7, push 3
+#   main [5, 3, 7, 3]   min [5, 3, 3]   getMin 3
+#   pop 3 -> min [5, 3]  getMin 3
+#   pop 7 -> min [5, 3]  getMin 3 (7 was never in min)
+#   pop 3 -> min [5]     getMin 5
+#
+# Big-O: O(1) per operation, O(n) space.

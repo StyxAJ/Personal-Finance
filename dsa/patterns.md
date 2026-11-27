@@ -92,3 +92,11 @@ Insertion sort: key = arr[i], walk j left from i−1 while j >= 0 and arr[j] > k
 
 Merge sort: base case len <= 1; mid = len // 2; sort each half (keep the return); merge = two fingers i, j, take the smaller (<= for stable), then extend both leftovers. O(n log n) time, O(n) extra space, stable, returns a new list. [help L3, VS Code agent]
 
+## Quick Sort
+
+Quick sort (Lomuto): pivot = array[high]; i = low − 1 marks the end of the "≤ pivot" zone; j scans low..high−1, if array[j] <= pivot: i += 1, swap i and j; finally swap the pivot into i + 1 and return it. Recurse on low..p−1 and p+1..high while low < high. O(n log n) average, O(n²) worst (already sorted + last-element pivot), in place, not stable. [help \_\_\_]
+
+## Intervals
+
+LC #56 Merge Intervals | sort + compare with the last merged | "overlapping ranges" → intervals.sort(key=lambda x: x[0]); for start, end in intervals: if not merged or start > merged[-1][1] → append [start, end], else merged[-1][1] = max(merged[-1][1], end) | after sorting, an overlap can only be with the LAST merged interval, so one loop replaces the double loop; max() because [1,10] + [2,3] must stay 10; `not merged` must come first in the `or` (empty list → IndexError) | O(n log n) for the sort | needed hint (sort step + empty-list guard)
+

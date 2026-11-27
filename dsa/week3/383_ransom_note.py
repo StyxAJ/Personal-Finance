@@ -19,3 +19,26 @@ s = Solution()
 print(s.canConstruct("a", "b"))  # False
 print(s.canConstruct("aa", "ab"))  # False
 print(s.canConstruct("aa", "aab"))  # True
+
+
+# ---------------------------------------------------------------
+# Logic (for future reference)
+# ---------------------------------------------------------------
+# Pattern: hash map counting, "can I build A from the letters of B?"
+#
+# Idea: magazine is the supply, ransomNote is the demand.
+# Count the supply, then spend it letter by letter.
+#
+# Steps:
+#   counts = letter -> how many in magazine
+#   for each ch in ransomNote:
+#     counts.get(ch, 0) == 0 -> False (ran out / never had it)
+#     else counts[ch] -= 1
+#   -> True
+#
+# `counts.get(ch, 0)` returns 0 instead of raising KeyError for a missing letter.
+#
+# Trace: ("aa", "aab") -> counts {a:2, b:1} -> spend a (1), spend a (0) -> True
+#        ("aa", "ab")  -> counts {a:1, b:1} -> spend a (0), next a is 0 -> False
+#
+# Big-O: O(m + n) time, O(1) space (26 letters max).
